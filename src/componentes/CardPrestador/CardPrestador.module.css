@@ -1,0 +1,52 @@
+.container{
+    background-color: var(--white);
+    width: 390px;
+    height: 445px;
+    border-radius: 20px;
+}
+.subcontainer{
+    margin-top: 51px;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+.title{
+    font-size: var(--font-size-g);
+    font-family: var(--font-family-bold);
+    color: var(--purple700);
+    margin: 0px;
+    margin-top: 25px;
+}
+.service{
+    font-size: var(--font-size-p);
+    color: var(--purple400);
+    margin: 0px;
+    
+}
+.iconText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.bloco{
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+.icon {
+    font-family: 'Material Symbols Outlined', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Ajuste o tamanho conforme necessário */
+    color: var(--purple700);
+    
+}
+.text{
+    color: var(--purple700);
+    margin: 8px;
+}
+  
+  
+  

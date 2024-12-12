@@ -1,0 +1,44 @@
+:root {
+  /* Cores */
+  --white: #fff;
+  --purple200: #e8e8e8;
+  --purple300: #eae1fd;
+  --purple350: #BDBAD4;
+  --purple400: #9089cb;
+  --purple500: #736bbd;
+  --purple600: #5e54b3;
+  --purple700: #564caf;
+
+  /* Fontes */
+  --font-family-regular: 'Roboto_400Regular';
+  --font-family-bold: 'Roboto_700Bold';
+
+  /* Tamanhos de Fonte */
+  --font-size-pp: 12px;
+  --font-size-p: 16px;
+  --font-size-m: 20px;
+  --font-size-g: 24px;
+  --font-size-gg: 36px;
+}
+
+ 
+ /* *{
+   margin:0;
+   padding: 0;
+   box-sizing: border-box;
+   
+ }
+ a {
+   text-decoration: inherit;
+ }
+ 
+ body,input,textarea,select {
+  font-family: 'Roboto_400Regular'
+ } */
+ 
+ 
+ 
+ 
+ 
+ 
+ 
