@@ -4,8 +4,13 @@
     align-items:center;
     justify-content:center;
     background-color: bisque;
-    height: 100vh;
+    height: 2000px;
     gap: 20px;
-    
    }
+
+.prestador{
+display: flex;
+gap: 20px;
+
+}
    

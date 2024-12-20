@@ -1,52 +1,134 @@
-.container{
+.container {
     background-color: var(--white);
-    width: 390px;
-    height: 445px;
+    width: 330px; /* Usa largura relativa para dispositivos menores */
+    max-width: 350px; /* Define um limite máximo */
+    height: auto; /* Ajusta automaticamente a altura conforme o conteúdo */
     border-radius: 20px;
+    padding: 20px; /* Adiciona espaçamento interno */
+    box-sizing: border-box; /* Inclui o padding no cálculo de largura/altura */
 }
-.subcontainer{
-    margin-top: 51px;
+
+.subcontainer {
+    margin-top: 2vh; /* Margem relativa à altura da viewport */
     background-color: var(--white);
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px; /* Usa unidades relativas para espaçamento */
     align-items: center;
+    text-align: center; /* Centraliza o texto */
+    border-radius: 20px;
 }
-.title{
-    font-size: var(--font-size-g);
+
+.title {
+    font-size: 1.5rem; /* Usa unidades relativas para fonte */
     font-family: var(--font-family-bold);
     color: var(--purple700);
-    margin: 0px;
-    margin-top: 25px;
+    margin-top: 15px; /* Ajuste menor para layouts compactos */
 }
-.service{
-    font-size: var(--font-size-p);
+
+.service {
+    font-size: 1rem; /* Tamanho relativo para adaptação */
     color: var(--purple400);
-    margin: 0px;
-    
 }
-.iconText{
+
+.iconText {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 5px; /* Espaçamento relativo */
+    flex-wrap: wrap; /* Permite quebra de linha se necessário */
 }
-.bloco{
+.image {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%; /* Usa 50% para uma borda redonda */
+    object-fit: cover; /* Garante que a imagem se ajuste bem ao container */
+}
+
+
+.bloco {
     margin-top: 15px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaçamento entre os itens */
 }
+
 .icon {
     font-family: 'Material Symbols Outlined', sans-serif;
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;  /* Ajuste o tamanho conforme necessário */
+    font-size: 20px; /* Ajuste de tamanho */
     color: var(--purple700);
-    
 }
-.text{
+
+.text {
     color: var(--purple700);
-    margin: 8px;
+    margin: 5px;
+    font-size: 0.9rem; /* Tamanho relativo */
 }
-  
-  
-  
+
+img {
+    width: 30vw; /* Tamanho dinâmico com base na largura da viewport */
+    max-width: 160px; /* Limita o tamanho máximo */
+    height: auto;
+    border-radius: 1000px;
+}
+
+/* Media Queries para dispositivos menores */
+@media (max-width: 768px) {
+    .container {
+        width: 55%; /* Ajusta a largura para dispositivos menores */
+        max-width: 300px;
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 1.2rem; /* Reduz o tamanho da fonte */
+    }
+
+    .service {
+        font-size: 0.9rem; /* Reduz o tamanho da fonte */
+    }
+
+    .iconText {
+        justify-content: center; /* Centraliza os ícones */
+    }
+
+    .image {
+        width: 130px; /* Ajusta o tamanho da imagem */
+        height: 130px;
+    }
+
+    .text {
+        font-size: 0.8rem; /* Reduz o tamanho da fonte */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 50%; /* Quase toda a largura da tela */
+        max-width: 260px;
+        padding: 10px; /* Padding menor para telas pequenas */
+    }
+
+    .title {
+        font-size: 1rem; /* Reduz ainda mais o tamanho da fonte */
+    }
+
+    .service {
+        font-size: 0.8rem; /* Tamanho mais compacto */
+    }
+
+    .iconText {
+        gap: 3px; /* Menor espaçamento entre os ícones */
+    }
+
+    .image {
+        width: 100px; /* Tamanho menor da imagem */
+        height: 100px;
+    }
+
+    .text {
+        font-size: 0.7rem; /* Reduz o texto para telas muito pequenas */
+    }
+}

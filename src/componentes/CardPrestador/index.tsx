@@ -14,7 +14,7 @@ export function CardPrestador({ prestador, servico, city, telefone, email }: Cus
     return (
         <div className={styles.container}>
             <div className={styles.subcontainer}>
-                <img style={{ width: 150, height: 160, borderRadius: 1000 }} src={foto} alt="React Logo" />
+            <img className={styles.image} src={foto} alt="Foto perfil" />
                 <h1 className={styles.title}>{prestador}</h1>
                 <p className={styles.service}>{servico}</p>
                 <div className={styles.bloco}>
