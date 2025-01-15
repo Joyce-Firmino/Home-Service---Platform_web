@@ -36,7 +36,6 @@ export function ModalConfirm({ icone, titulo, menssagem }: CustomModalProps) {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }

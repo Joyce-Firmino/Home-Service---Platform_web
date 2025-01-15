@@ -71,15 +71,6 @@ export function Home() {
           uriFoto='../../assets/pedreiro.webp'
           key={5}
         />
-        <CardPrestador
-          city='São José de Piranhas - PB'
-          email='danilo@gmail.com'
-          prestador='Danilo James'
-          servico='Pedreiro'
-          telefone='(83) 99632-7456'
-          uriFoto='../../assets/pedreiro.webp'
-          key={5}
-        />
       </div>
 
 

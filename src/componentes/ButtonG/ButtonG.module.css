@@ -39,7 +39,7 @@
       }
     }
     
-    @media (max-width: 480px) {
+    @media (max-width: 431px) {
       .container {
         width: 200px; /* Botão mais estreito em telas muito pequenas */
         height: 35px;

@@ -4,6 +4,7 @@
     align-items:center;
     justify-content:center;
     background-color: bisque;
+    width: 2000px;
     height: 2000px;
     gap: 20px;
    }
@@ -11,6 +12,15 @@
 .prestador{
 display: flex;
 gap: 20px;
-
 }
-   
+
+@media (max-width: 500px) {
+    .container {
+        width: 430px;
+
+    }
+    .prestador {
+        display:flex;
+        flex-direction:column;
+    }
+}

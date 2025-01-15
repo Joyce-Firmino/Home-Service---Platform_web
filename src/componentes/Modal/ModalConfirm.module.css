@@ -1,13 +1,13 @@
 .container {
     background-color: var(--white);
-    width: 90%; /* Usa uma largura relativa */
+    width: 450px; /* Usa uma largura relativa */
     max-width: 504px; /* Limita o tamanho máximo */
     height: auto;
     border-radius: 20px;
 }
 
 .subcontainer {
-    margin-top: 5vh; /* Margem relativa à altura da viewport */
+    margin-top: 3vh; /* Margem relativa à altura da viewport */
     background-color: var(--white);
     display: flex;
     flex-direction: column;
@@ -57,7 +57,10 @@
 @media (max-width: 768px) {
     .container {
         padding: 1rem; /* Reduz o padding */
-        max-width: 60%; /* Permite ocupar mais da largura */
+        max-width: 380px; /* Permite ocupar mais da largura */
+    }
+    .subcontainer{
+        margin-top: 2vh;
     }
 
     .icon {
@@ -78,11 +81,10 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 431px) {
     .container {
         padding: 0.8rem;
-        height: 11%;
-        width: 40%;
+        width: 250px;
     }
     .subcontainer{
         margin-top: 2vh;
