@@ -1,5 +1,5 @@
 import foto from '../../assets/pedreiro.webp';
-import { DivBloco, ImgImage, DivContainer, IIcon, DivIconText, PService, DivSubContainer, H1Title, PText } from './styled';
+import { DivBloco, ImgImage, DivContainer, IIcon, DivIconText, PService, DivInfo, DivGlobal, H1Title, PText, HrLiinha } from './styled';
 
 interface CustomCardProps {
   uriFoto: string;
@@ -13,10 +13,14 @@ interface CustomCardProps {
 export function CPCardPrestador({ prestador, servico, city, telefone, email }: CustomCardProps) {
   return (
     <DivContainer>
-      <DivSubContainer>
-        <ImgImage src={foto} alt="Foto perfil" />
-        <H1Title>{prestador}</H1Title>
-        <PService>{servico}</PService>
+      <ImgImage src={foto} alt="Foto perfil" />
+      <DivGlobal>
+        <DivInfo>
+          <H1Title>{prestador}</H1Title>
+          <PService>{servico}</PService>
+        </DivInfo>
+        <HrLiinha>
+        </HrLiinha>
         <DivBloco>
           <DivIconText>
             <IIcon>location_on</IIcon>
@@ -31,7 +35,7 @@ export function CPCardPrestador({ prestador, servico, city, telefone, email }: C
             <PText>{email}</PText>
           </DivIconText>
         </DivBloco>
-      </DivSubContainer>
+      </DivGlobal>
     </DivContainer>
   );
 }

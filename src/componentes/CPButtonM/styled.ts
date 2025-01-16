@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import breakpoints from '../../breakPoints';
 
 interface ButtonProps {
   color: string;
@@ -15,12 +16,12 @@ export const DivContainer = styled.div`
   width: 280px;
   height: 40px;
 
-  @media (max-width: 768px) {
+  @media (${breakpoints.tablet}px) {
     width: 240px;
     height: 36px;
   }
 
-  @media (max-width: 431px) {
+  @media (${breakpoints.mobile}px) {
     width: 200px;
     height: 30px;
   }
@@ -38,11 +39,11 @@ export const Button = styled.button<ButtonProps>`
   align-items: center;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (${breakpoints.tablet}px) {
     border-radius: 20px;
   }
 
-  @media (max-width: 431px) {
+  @media (${breakpoints.mobile}px) {
     border-radius: 15px;
   }
 `;
@@ -51,11 +52,11 @@ export const SpanTitleButton = styled.span`
   font-size: ${props => props.theme.FONTSIZE.m}px;
   font-family: var(--font-family-regular);
 
-  @media (max-width: 768px) {
+  @media (${breakpoints.tablet}px) {
     font-size: calc(${props => props.theme.FONTSIZE.m}px * 0.9);
   }
 
-  @media (max-width: 431px) {
+  @media (${breakpoints.mobile}px)  {
     font-size: calc(${props => props.theme.FONTSIZE.m}px * 0.7);
   }
 `;

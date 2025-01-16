@@ -12,12 +12,6 @@ function clickado() {
 }
 
 export function CPModalConfirm({ icone, titulo, menssagem }: CustomModalProps) {
-    const retorno = {
-        icone,
-        titulo,
-        menssagem
-    };
-
     return (
         <DivContainer>
             <DivSubcontainer>

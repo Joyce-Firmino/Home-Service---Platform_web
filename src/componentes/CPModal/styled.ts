@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import breakpoints from '../../breakPoints';
 
 export const DivContainer = styled.div`
   background-color: ${props => props.theme.COLORS.white};
@@ -7,12 +8,12 @@ export const DivContainer = styled.div`
   height: auto;
   border-radius: 20px;
 
-  @media (max-width: 768px) {
+  @media (${breakpoints.tablet}px){
     padding: 1rem;
     max-width: 380px;
   }
 
-  @media (max-width: 431px) {
+  @media (${breakpoints.mobile}px) {
     padding: 0.8rem;
     width: 250px;
   }
@@ -27,11 +28,11 @@ export const DivSubcontainer = styled.div`
   align-items: center;
   border-radius: 20px;
 
-  @media (max-width: 768px) {
+  @media (${breakpoints.tablet}px) {
     margin-top: 2vh;
   }
 
-  @media (max-width: 431px) {
+  @media (${breakpoints.mobile}px)  {
     margin-top: 2vh;
     height: 9%;
   }
@@ -46,11 +47,11 @@ export const IIcon = styled.i`
   vertical-align: middle;
   color: ${props => props.theme.COLORS.green100};
 
-  @media (max-width: 768px) {
+  @media (${breakpoints.tablet}px) {
     font-size: 8vw;
   }
 
-  @media (max-width: 431px) {
+  @media (${breakpoints.mobile}px)  {
     font-size: 10vw;
   }
 `;
@@ -69,11 +70,11 @@ export const PTitulo = styled.p`
   font-weight: bold;
   color: ${props => props.theme.COLORS.purple700};
 
-  @media (max-width: 768px) {
+  @media (${breakpoints.tablet}px) {
     font-size: 1.2rem;
   }
 
-  @media (max-width: 431px) {
+  @media (${breakpoints.mobile}px)  {
     font-size: 1rem;
   }
 `;
@@ -86,11 +87,11 @@ export const PMsg = styled.p`
   overflow-wrap: break-word;
   text-align: center;
 
-  @media (max-width: 768px) {
+  @media (${breakpoints.tablet}px) {
     font-size: 1rem;
   }
 
-  @media (max-width: 431px) {
+  @media (${breakpoints.mobile}px)  {
     font-size: 0.9rem;
     max-width: 100%;
   }
@@ -100,12 +101,12 @@ export const DivButtonContainer = styled.div`
   margin-top: 5%;
   margin-bottom: 5%;
 
-  @media (max-width: 768px) {
+  @media (${breakpoints.tablet}px) {
     margin-top: 3%;
     margin-bottom: 3%;
   }
 
-  @media (max-width: 431px) {
+  @media (${breakpoints.mobile}px)  {
     margin-top: 3%;
     margin-bottom: 3%;
   }

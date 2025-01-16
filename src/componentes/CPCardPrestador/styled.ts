@@ -1,46 +1,47 @@
-
-  // color: ${props => props.theme.COLORS.purple700};
-  import styled from 'styled-components';
+import styled from 'styled-components';
+import breakpoints from '../../breakPoints';
 
   export const DivContainer = styled.div`
     background-color: ${props => props.theme.COLORS.white};
+    display: flex;
     width: 330px;
     max-width: 350px;
-    border-radius: 20px;
+    border-radius: 18px;
     padding: 20px;
     box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
   
-    @media (max-width: 768px) {
+    @media (${breakpoints.tablet}px) {
       width: 290px;
       padding: 15px;
     }
   
-    @media (max-width: 431px) {
-      width: 260px;
+    @media (${breakpoints.mobile}px) {
+      width: 367px;
+      height: 166px;
       padding: 10px;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 22px;
+
     }
-  `;
-  
-  export const DivSubContainer = styled.div`
-    margin-top: 2vh;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    text-align: center;
   `;
   
   export const H1Title = styled.h1`
     font-size: 1.5rem;
     font-family: var(--font-family-bold);
     color: ${props => props.theme.COLORS.purple700};
-    margin-top: 15px;
+    /* margin-top: 15px; */
   
-    @media (max-width: 768px) {
+    @media (${breakpoints.tablet}px) {
       font-size: 1.2rem;
     }
   
-    @media (max-width: 431px) {
+    @media (${breakpoints.mobile}px)  {
       font-size: 1rem;
     }
   `;
@@ -49,11 +50,11 @@
     font-size: 1rem;
     color: ${props => props.theme.COLORS.purple400};
   
-    @media (max-width: 768px) {
+    @media (${breakpoints.tablet}px) {
       font-size: 0.9rem;
     }
   
-    @media (max-width: 431px) {
+    @media (${breakpoints.mobile}px)  {
       font-size: 0.8rem;
     }
   `;
@@ -63,33 +64,74 @@
     height: 160px;
     border-radius: 50%;
     object-fit: cover;
+    
   
-    @media (max-width: 768px) {
+    @media (${breakpoints.tablet}px) {
       width: 130px;
       height: 130px;
     }
   
-    @media (max-width: 431px) {
+    @media (${breakpoints.mobile}px)  {
       width: 100px;
       height: 100px;
     }
   `;
+
+  export const DivInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+
+    @media (${breakpoints.mobile}px)  {
+      align-items: flex-start;
+    }
+  `;
+
+ export const DivGlobal = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @media (${breakpoints.mobile}px)  {
+      display: flex;
+      flex-direction: column;   
+      align-items: flex-start; }
+  `;
+
+export const HrLiinha = styled.hr`
+    display: none;
+    
+      @media (${breakpoints.tablet}px) {
+   
+    }
+  
+    @media (${breakpoints.mobile}px) {
+      display: block;
+      width: 100px;
+      border-top: 2px solid ${props => props.theme.COLORS.purple700};
+    }
+    `;
   
   export const DivBloco = styled.div`
-    margin-top: 15px;
-    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    @media (${breakpoints.mobile}px)  {
+      align-items: flex-start;
+      gap: 1px;
+    }
   `;
   
   export const DivIconText = styled.div`
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 5px;
     flex-wrap: wrap;
   
-    @media (max-width: 431px) {
+    @media (${breakpoints.mobile}px)  {
       gap: 3px;
     }
   `;
@@ -107,11 +149,11 @@
     margin: 5px;
     font-size: 0.9rem;
   
-    @media (max-width: 768px) {
+    @media (${breakpoints.tablet}px) {
       font-size: 0.8rem;
     }
   
-    @media (max-width: 431px) {
+    @media (${breakpoints.mobile}px) {
       font-size: 0.7rem;
     }
   `;
