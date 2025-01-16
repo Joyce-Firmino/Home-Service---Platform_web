@@ -1,35 +1,110 @@
 
   // color: ${props => props.theme.COLORS.purple700};
   import styled from 'styled-components';
+  import breakpoints from '../../breakPoints';
+import { GlobalStyle } from '../../global';
 
   export const DivContainer = styled.div`
     background-color: ${props => props.theme.COLORS.white};
-    width: 330px;
-    max-width: 350px;
-    border-radius: 20px;
-    padding: 20px;
+    width: 394px;
+    height: 381px;
+    border-radius: 18px;
+    padding:  0;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
   
-    @media (max-width: 768px) {
+    @media (${breakpoints.tablet}px) {
       width: 290px;
       padding: 15px;
     }
   
-    @media (max-width: 431px) {
-      width: 260px;
-      padding: 10px;
+    @media (${breakpoints.mobile}px) {
+      width: 367px;
+      height: 166px;
+      padding: 0;
+      flex-direction: row;
+      gap: 22px;
     }
   `;
+
+  export const HrLiinha = styled.hr`
+    display: none;
+    
+      @media (${breakpoints.tablet}px) {
+   
+    }
   
-  export const DivSubContainer = styled.div`
-    margin-top: 2vh;
+    @media (${breakpoints.mobile}px) {
+      display: block;
+      width: 100px;
+      border-top: 2px solid ${props => props.theme.COLORS.purple700};
+    }
+  
+  `
+
+  
+  export const DivImagem = styled.div`
+    background-color: ${props => props.theme.COLORS.purple700};
+    width: 100%;
+    padding: 39px 145px;
+    border-radius: 18px 18px 0  0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     align-items: center;
-    text-align: center;
-  `;
+    justify-content: center;
+
+    @media (${breakpoints.tablet}px) {
+
+    }
   
+    @media (${breakpoints.mobile}px) {
+      height: 100%;
+      width: 163px;
+      border-radius: 18px 0 0 18px;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      }
+
+  `;
+
+  export const DivInferior = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 294px;
+    height: 169px;
+    align-items: flex-start;
+    justify-content: center;
+
+    
+    
+    @media (${breakpoints.tablet}px) {
+      
+    }
+    @media (${breakpoints.mobile}px) {
+      width: 196px;
+      height: 135px;
+      gap: 10px;
+      align-items: flex-start;
+      justify-content: space-between;
+
+
+   }
+
+
+  `
+
+export const DivTextos = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+`
+
   export const H1Title = styled.h1`
     font-size: 1.5rem;
     font-family: var(--font-family-bold);
@@ -42,6 +117,7 @@
   
     @media (max-width: 431px) {
       font-size: 1rem;
+      margin-top: 0px;
     }
   `;
   
@@ -59,9 +135,8 @@
   `;
   
   export const ImgImage = styled.img`
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
   
     @media (max-width: 768px) {
@@ -70,22 +145,27 @@
     }
   
     @media (max-width: 431px) {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
     }
   `;
   
   export const DivBloco = styled.div`
-    margin-top: 15px;
-    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    align-items: flex-start;
+    margin-top: 22px;
+
+    @media (max-width: 431px) {
+      margin-top: 0;
+
+    }
   `;
   
   export const DivIconText = styled.div`
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 5px;
     flex-wrap: wrap;
   

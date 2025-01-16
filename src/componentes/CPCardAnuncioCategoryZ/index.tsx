@@ -1,5 +1,5 @@
-import foto from '../../assets/pedreiro.webp';
-import { DivBloco, ImgImage, DivContainer, IIcon, DivIconText, PService, DivSubContainer, H1Title, PText } from './styled';
+import foto from '../../assets/cozinhar-comida-em-uma-cacarola-quenteBranca.png';
+import { DivBloco, ImgImage, DivContainer, IIcon, DivIconText, PService, DivImagem, H1Title, PText, DivInferior, DivTextos, HrLiinha } from './styled';
 
 interface CustomCardProps {
   uriFoto: string;
@@ -10,13 +10,19 @@ interface CustomCardProps {
   email: string;
 }
 
-export function CardPrestador({ prestador, servico, city, telefone, email }: CustomCardProps) {
+export function CPCardAnuncioCategory({ prestador, servico, city, telefone, email }: CustomCardProps) {
   return (
     <DivContainer>
-      <DivSubContainer>
+      <DivImagem>
         <ImgImage src={foto} alt="Foto perfil" />
-        <H1Title>{prestador}</H1Title>
-        <PService>{servico}</PService>
+      </DivImagem>
+      <DivInferior>
+        <DivTextos>
+          <H1Title>{prestador}</H1Title>
+          <PService>{servico}</PService>
+        </DivTextos>
+        <HrLiinha>
+        </HrLiinha>
         <DivBloco>
           <DivIconText>
             <IIcon>location_on</IIcon>
@@ -27,11 +33,11 @@ export function CardPrestador({ prestador, servico, city, telefone, email }: Cus
             <PText>{telefone}</PText>
           </DivIconText>
           <DivIconText>
-            <IIcon>mail</IIcon>
+            <IIcon>payments</IIcon>
             <PText>{email}</PText>
           </DivIconText>
         </DivBloco>
-      </DivSubContainer>
+      </DivInferior>
     </DivContainer>
   );
 }

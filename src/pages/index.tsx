@@ -1,6 +1,7 @@
 import { CPButtonG } from '../componentes/CPButtonG';
 import { CPButtonM } from '../componentes/CPButtonM';
 import { CPButtonP } from '../componentes/CPButtonP';
+import { CPCardAnuncioCategory } from '../componentes/CPCardAnuncioCategoryZ';
 import { CPCardPrestador } from '../componentes/CPCardPrestador';
 import { CPModalConfirm } from '../componentes/CPModal';
 import { DivContainer, DivPrestador } from './styled';
@@ -64,6 +65,17 @@ export function Home() {
           uriFoto="../../assets/pedreiro.webp"
           key={5}
         />
+
+        <CPCardAnuncioCategory
+          city="São José de Piranhas - PB"
+          email="danilo@gmail.com"
+          prestador="Danilo James"
+          servico="Pedreiro"
+          telefone="(83) 99632-7456"
+          uriFoto="../../assets/pedreiro.webp"
+          key={5}
+        />
+
       </DivPrestador>
       <CPModalConfirm
         icone="check_circle"
