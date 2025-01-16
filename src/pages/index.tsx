@@ -1,10 +1,9 @@
-import React from 'react';
-import { ButtonG } from '../componentes/ButtonG';
-import { ButtonM } from '../componentes/ButtonM';
-import { ButtonP } from '../componentes/ButtonP';
-import { CardPrestador } from '../componentes/CardPrestador';
-import { ModalConfirm } from '../componentes/Modal';
-import { Container, Prestador } from './styled';
+import { CPButtonG } from '../componentes/CPButtonG';
+import { CPButtonM } from '../componentes/CPButtonM';
+import { CPButtonP } from '../componentes/CPButtonP';
+import { CPCardPrestador } from '../componentes/CPCardPrestador';
+import { CPModalConfirm } from '../componentes/CPModal';
+import { DivContainer, DivPrestador } from './styled';
 
 export function Home() {
   function clickado() {
@@ -12,8 +11,8 @@ export function Home() {
   }
 
   return (
-    <Container>
-      <ButtonP
+    <DivContainer>
+      <CPButtonP
         title="Button P"
         onClick={clickado}
         color="blue"
@@ -21,7 +20,7 @@ export function Home() {
         borderColor="black"
         borderWidth={2}
       />
-      <ButtonM
+      <CPButtonM
         title="Button M"
         onClick={clickado}
         color="black"
@@ -29,7 +28,7 @@ export function Home() {
         borderColor="black"
         borderWidth={2}
       />
-      <ButtonG
+      <CPButtonG
         title="Button G"
         onClick={clickado}
         color="red"
@@ -37,8 +36,8 @@ export function Home() {
         borderColor="black"
         borderWidth={2}
       />
-      <Prestador>
-        <CardPrestador
+      <DivPrestador>
+        <CPCardPrestador
           city="São José de Piranhas - PB"
           email="danilo@gmail.com"
           prestador="Danilo James"
@@ -47,7 +46,7 @@ export function Home() {
           uriFoto="../../assets/pedreiro.webp"
           key={5}
         />
-        <CardPrestador
+        <CPCardPrestador
           city="São José de Piranhas - PB"
           email="danilo@gmail.com"
           prestador="Danilo James"
@@ -56,7 +55,7 @@ export function Home() {
           uriFoto="../../assets/pedreiro.webp"
           key={5}
         />
-        <CardPrestador
+        <CPCardPrestador
           city="São José de Piranhas - PB"
           email="danilo@gmail.com"
           prestador="Danilo James"
@@ -65,13 +64,13 @@ export function Home() {
           uriFoto="../../assets/pedreiro.webp"
           key={5}
         />
-      </Prestador>
-      <ModalConfirm
+      </DivPrestador>
+      <CPModalConfirm
         icone="check_circle"
         menssagem="Sucesso!"
         titulo="Cadastro realizado"
         key={1}
       />
-    </Container>
+    </DivContainer>
   );
 }

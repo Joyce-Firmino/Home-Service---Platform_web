@@ -2,7 +2,7 @@
   // color: ${props => props.theme.COLORS.purple700};
   import styled from 'styled-components';
 
-  export const Container = styled.div`
+  export const DivContainer = styled.div`
     background-color: ${props => props.theme.COLORS.white};
     width: 330px;
     max-width: 350px;
@@ -21,7 +21,7 @@
     }
   `;
   
-  export const SubContainer = styled.div`
+  export const DivSubContainer = styled.div`
     margin-top: 2vh;
     display: flex;
     flex-direction: column;
@@ -30,7 +30,7 @@
     text-align: center;
   `;
   
-  export const Title = styled.h1`
+  export const H1Title = styled.h1`
     font-size: 1.5rem;
     font-family: var(--font-family-bold);
     color: ${props => props.theme.COLORS.purple700};
@@ -45,7 +45,7 @@
     }
   `;
   
-  export const Service = styled.p`
+  export const PService = styled.p`
     font-size: 1rem;
     color: ${props => props.theme.COLORS.purple400};
   
@@ -58,7 +58,7 @@
     }
   `;
   
-  export const Image = styled.img`
+  export const ImgImage = styled.img`
     width: 160px;
     height: 160px;
     border-radius: 50%;
@@ -75,7 +75,7 @@
     }
   `;
   
-  export const Bloco = styled.div`
+  export const DivBloco = styled.div`
     margin-top: 15px;
     margin-bottom: 10px;
     display: flex;
@@ -83,7 +83,7 @@
     gap: 10px;
   `;
   
-  export const IconText = styled.div`
+  export const DivIconText = styled.div`
     display: flex;
     justify-content: center;
     gap: 5px;
@@ -94,7 +94,7 @@
     }
   `;
   
-  export const Icon = styled.i`
+  export const IIcon = styled.i`
     font-family: 'Material Symbols Outlined', sans-serif;
     font-weight: normal;
     font-style: normal;
@@ -102,7 +102,7 @@
     color: ${props => props.theme.COLORS.purple700};
   `;
   
-  export const Text = styled.p`
+  export const PText = styled.p`
     color: ${props => props.theme.COLORS.purple700};
     margin: 5px;
     font-size: 0.9rem;

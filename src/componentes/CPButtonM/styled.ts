@@ -7,7 +7,7 @@ interface ButtonProps {
   borderWidth: number;
 }
 
-export const ContainerStyled = styled.div`
+export const DivContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +26,7 @@ export const ContainerStyled = styled.div`
   }
 `;
 
-export const ButtonMStyled = styled.button<ButtonProps>`
+export const Button = styled.button<ButtonProps>`
   width: 100%;
   height: 100%;
   border-radius: 30px;
@@ -47,7 +47,7 @@ export const ButtonMStyled = styled.button<ButtonProps>`
   }
 `;
 
-export const TitleButtonStyled = styled.span`
+export const SpanTitleButton = styled.span`
   font-size: ${props => props.theme.FONTSIZE.m}px;
   font-family: var(--font-family-regular);
 

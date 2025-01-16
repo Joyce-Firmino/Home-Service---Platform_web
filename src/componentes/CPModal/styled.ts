@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContainerStyled = styled.div`
+export const DivContainer = styled.div`
   background-color: ${props => props.theme.COLORS.white};
   width: 450px;
   max-width: 504px;
@@ -18,7 +18,7 @@ export const ContainerStyled = styled.div`
   }
 `;
 
-export const SubcontainerStyled = styled.div`
+export const DivSubcontainer = styled.div`
   margin-top: 3vh;
   background-color: ${props => props.theme.COLORS.white};
   display: flex;
@@ -37,7 +37,7 @@ export const SubcontainerStyled = styled.div`
   }
 `;
 
-export const IconStyled = styled.i`
+export const IIcon = styled.i`
   font-family: 'Material Symbols Outlined', sans-serif;
   font-weight: normal;
   font-style: normal;
@@ -55,7 +55,7 @@ export const IconStyled = styled.i`
   }
 `;
 
-export const TextStyled = styled.div`
+export const DivText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,7 +64,7 @@ export const TextStyled = styled.div`
   max-width: 100%;
 `;
 
-export const TituloStyled = styled.p`
+export const PTitulo = styled.p`
   font-size: 1.5rem;
   font-weight: bold;
   color: ${props => props.theme.COLORS.purple700};
@@ -78,7 +78,7 @@ export const TituloStyled = styled.p`
   }
 `;
 
-export const MsgStyled = styled.p`
+export const PMsg = styled.p`
   color: ${props => props.theme.COLORS.purple700};
   font-size: 1.2rem;
   max-width: 400px;
@@ -96,7 +96,7 @@ export const MsgStyled = styled.p`
   }
 `;
 
-export const ButtonContainerStyled = styled.div`
+export const DivButtonContainer = styled.div`
   margin-top: 5%;
   margin-bottom: 5%;
 

@@ -7,26 +7,26 @@ interface ButtonProps {
   borderWidth: number;
 }
 
-export const ContainerStyled = styled.div`
+export const DivContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
-  width: 300px;
-  height: 60px;
+  width: 155px;
+  height: 55px;
 
   @media (max-width: 768px) {
-    width: 250px;
-    height: 50px;
+    width: 135px;
+    height: 48px;
   }
 
   @media (max-width: 431px) {
-    width: 200px;
+    width: 120px;
     height: 35px;
   }
 `;
 
-export const ButtonGStyled = styled.button<ButtonProps>`
+export const Button = styled.button<ButtonProps>`
   width: 100%;
   height: 100%;
   border-radius: 30px;
@@ -44,47 +44,51 @@ export const ButtonGStyled = styled.button<ButtonProps>`
 
   @media (max-width: 431px) {
     border-radius: 15px;
+    width: 50%;
   }
 `;
 
-export const TitleButtonStyled = styled.span`
+export const SpanTitleButton = styled.span`
   font-size: ${props => props.theme.FONTSIZE.m}px;
   font-family: var(--font-family-regular);
 
   @media (max-width: 768px) {
-    font-size: 0.9rem;
+    font-size: calc(${props => props.theme.FONTSIZE.m}px * 0.9);
   }
 
   @media (max-width: 431px) {
-    font-size: 0.8rem;
+    font-size: calc(${props => props.theme.FONTSIZE.m}px * 0.6);
   }
 `;
+
 
 /* Regras de mídia agrupadas no final */
 // export const MediaStyles = styled.div`
 //   @media ${breakpoints.tablet} {
 //     ${ContainerStyled} {
-//       width: 250px;
-//       height: 50px;
+//       width: 135px;
+//       height: 48px;
 //     }
-//     ${ButtonGStyled} {
+//     ${ButtonPStyled} {
 //       border-radius: 20px;
 //     }
 //     ${TitleButtonStyled} {
-//       font-size: 0.9rem;
+//       font-size: calc(var(--font-size-m) * 0.9);
 //     }
 //   }
 
 //   @media ${breakpoints.mobile} {
 //     ${ContainerStyled} {
-//       width: 200px;
+//       width: 120px;
 //       height: 35px;
 //     }
-//     ${ButtonGStyled} {
+//     ${ButtonPStyled} {
 //       border-radius: 15px;
+//       width: 50%;
 //     }
+    
 //     ${TitleButtonStyled} {       
-//       font-size: 0.8rem;
+//       font-size: calc(var(--font-size-m) * 0.6);
 //     }
-//   }
-// `;
+//   }`;
+

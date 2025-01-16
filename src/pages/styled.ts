@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const DivContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Prestador = styled.div`
+export const DivPrestador = styled.div`
   display: flex;
   gap: 20px;
 

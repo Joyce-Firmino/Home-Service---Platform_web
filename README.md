@@ -32,3 +32,9 @@ A **Home Service Platform - Web** é a versão para navegadores do aplicativo **
 - 🌐 Axios
 
 ---
+
+Regra de nomeação:
+
+- sempre que for criar uma tag que use styled component, seguir a regra de nomeação a seguir: nome da tag começando em maiúsculo + nome escolhido -> Exemplo: DivContainer / PText / IIcon / SpanTitle ...
+
+- em relação aos componentes, sempre colocar o prefíxo CP antes do nome do componente -> Exemplo: CPButtonM / CPModal / CPCard ...
