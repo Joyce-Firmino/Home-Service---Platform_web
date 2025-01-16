@@ -13,7 +13,6 @@ export const defaultTheme = {
 
     },
     FONTSIZE: {
-        sm: 16,
         pp: 12,
         p: 16,
         m: 20,

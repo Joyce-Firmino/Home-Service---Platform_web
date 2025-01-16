@@ -48,15 +48,15 @@ export const ButtonMStyled = styled.button<ButtonProps>`
 `;
 
 export const TitleButtonStyled = styled.span`
-  font-size: var(--font-size-m);
+  font-size: ${props => props.theme.FONTSIZE.m}px;
   font-family: var(--font-family-regular);
 
   @media (max-width: 768px) {
-    font-size: calc(var(--font-size-m) * 0.9);
+    font-size: calc(${props => props.theme.FONTSIZE.m}px * 0.9);
   }
 
   @media (max-width: 431px) {
-    font-size: calc(var(--font-size-m) * 0.7);
+    font-size: calc(${props => props.theme.FONTSIZE.m}px * 0.7);
   }
 `;
 

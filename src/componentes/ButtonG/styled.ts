@@ -48,7 +48,7 @@ export const ButtonGStyled = styled.button<ButtonProps>`
 `;
 
 export const TitleButtonStyled = styled.span`
-  font-size: var(--font-size-m);
+  font-size: ${props => props.theme.FONTSIZE.m}px;
   font-family: var(--font-family-regular);
 
   @media (max-width: 768px) {
