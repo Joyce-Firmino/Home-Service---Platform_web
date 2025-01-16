@@ -1,21 +1,18 @@
+import React from 'react';
 import { ButtonG } from '../componentes/ButtonG';
 import { ButtonM } from '../componentes/ButtonM';
 import { ButtonP } from '../componentes/ButtonP';
 import { CardPrestador } from '../componentes/CardPrestador';
 import { ModalConfirm } from '../componentes/Modal';
-import styles from './Home.module.css';
-
-
+import { Container, Prestador } from './styled';
 
 export function Home() {
-
   function clickado() {
-    alert("Clicado!");
-
+    alert('Clicado!');
   }
-  return (
-    <div className={styles.container}>
 
+  return (
+    <Container>
       <ButtonP
         title="Button P"
         onClick={clickado}
@@ -24,8 +21,6 @@ export function Home() {
         borderColor="black"
         borderWidth={2}
       />
-
-
       <ButtonM
         title="Button M"
         onClick={clickado}
@@ -34,7 +29,6 @@ export function Home() {
         borderColor="black"
         borderWidth={2}
       />
-
       <ButtonG
         title="Button G"
         onClick={clickado}
@@ -43,45 +37,41 @@ export function Home() {
         borderColor="black"
         borderWidth={2}
       />
-      <div className={styles.prestador}>
+      <Prestador>
         <CardPrestador
-          city='São José de Piranhas - PB'
-          email='danilo@gmail.com'
-          prestador='Danilo James'
-          servico='Pedreiro'
-          telefone='(83) 99632-7456'
-          uriFoto='../../assets/pedreiro.webp'
+          city="São José de Piranhas - PB"
+          email="danilo@gmail.com"
+          prestador="Danilo James"
+          servico="Pedreiro"
+          telefone="(83) 99632-7456"
+          uriFoto="../../assets/pedreiro.webp"
           key={5}
         />
         <CardPrestador
-          city='São José de Piranhas - PB'
-          email='danilo@gmail.com'
-          prestador='Danilo James'
-          servico='Pedreiro'
-          telefone='(83) 99632-7456'
-          uriFoto='../../assets/pedreiro.webp'
+          city="São José de Piranhas - PB"
+          email="danilo@gmail.com"
+          prestador="Danilo James"
+          servico="Pedreiro"
+          telefone="(83) 99632-7456"
+          uriFoto="../../assets/pedreiro.webp"
           key={5}
         />
         <CardPrestador
-          city='São José de Piranhas - PB'
-          email='danilo@gmail.com'
-          prestador='Danilo James'
-          servico='Pedreiro'
-          telefone='(83) 99632-7456'
-          uriFoto='../../assets/pedreiro.webp'
+          city="São José de Piranhas - PB"
+          email="danilo@gmail.com"
+          prestador="Danilo James"
+          servico="Pedreiro"
+          telefone="(83) 99632-7456"
+          uriFoto="../../assets/pedreiro.webp"
           key={5}
         />
-      </div>
-
-
+      </Prestador>
       <ModalConfirm
         icone="check_circle"
         menssagem="Sucesso!"
         titulo="Cadastro realizado"
         key={1}
       />
-
-
-    </div>
-  )
+    </Container>
+  );
 }

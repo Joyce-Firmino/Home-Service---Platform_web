@@ -1,6 +1,5 @@
 import { ButtonG } from "../ButtonG";
-import { ButtonP } from "../ButtonP";
-import styles from './ModalConfirm.module.css'
+import { ContainerStyled, SubcontainerStyled, IconStyled, TextStyled, TituloStyled, MsgStyled, ButtonContainerStyled } from './styled';
 
 interface CustomModalProps {
     icone: string;
@@ -9,7 +8,7 @@ interface CustomModalProps {
 }
 
 function clickado() {
-    alert("Cilcado")
+    alert("Clicado");
 }
 
 export function ModalConfirm({ icone, titulo, menssagem }: CustomModalProps) {
@@ -17,15 +16,16 @@ export function ModalConfirm({ icone, titulo, menssagem }: CustomModalProps) {
         icone,
         titulo,
         menssagem
-    }
+    };
+
     return (
-        <div className={styles.container}>
-            <div className={styles.subcontainer}>
-                <i className={styles.icon}>{icone}</i>
-                <div className={styles.text}>
-                    <p className={styles.titulo}>{titulo}</p>
-                    <p className={styles.msg}>{menssagem}</p>
-                    <div className= {styles.button}>
+        <ContainerStyled>
+            <SubcontainerStyled>
+                <IconStyled>{icone}</IconStyled>
+                <TextStyled>
+                    <TituloStyled>{titulo}</TituloStyled>
+                    <MsgStyled>{menssagem}</MsgStyled>
+                    <ButtonContainerStyled>
                         <ButtonG
                             color="#564caf"
                             onClick={clickado}
@@ -33,11 +33,9 @@ export function ModalConfirm({ icone, titulo, menssagem }: CustomModalProps) {
                             title="Continuar"
                             key={2}
                         />
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+                    </ButtonContainerStyled>
+                </TextStyled>
+            </SubcontainerStyled>
+        </ContainerStyled>
+    );
 }
-
-
