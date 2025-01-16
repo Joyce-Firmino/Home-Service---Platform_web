@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import breakpoints from '../../breakPoints';
+import breakpoints from '../../../breakPoints';
 
 interface ButtonProps {
   color: string;
@@ -13,17 +13,17 @@ export const DivContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
-  width: 155px;
-  height: 55px;
+  width: 280px;
+  height: 40px;
 
   @media (${breakpoints.tablet}px) {
-    width: 135px;
-    height: 48px;
+    width: 240px;
+    height: 36px;
   }
 
-  @media (${breakpoints.mobile}px){
-    width: 120px;
-    height: 35px;
+  @media (${breakpoints.mobile}px) {
+    width: 200px;
+    height: 30px;
   }
 `;
 
@@ -43,9 +43,8 @@ export const Button = styled.button<ButtonProps>`
     border-radius: 20px;
   }
 
-  @media (${breakpoints.mobile}px)  {
+  @media (${breakpoints.mobile}px) {
     border-radius: 15px;
-    width: 50%;
   }
 `;
 
@@ -58,38 +57,7 @@ export const SpanTitleButton = styled.span`
   }
 
   @media (${breakpoints.mobile}px)  {
-    font-size: calc(${props => props.theme.FONTSIZE.m}px * 0.6);
+    font-size: calc(${props => props.theme.FONTSIZE.m}px * 0.7);
   }
 `;
-
-
-/* Regras de mídia agrupadas no final */
-// export const MediaStyles = styled.div`
-//   @media ${breakpoints.tablet} {
-//     ${ContainerStyled} {
-//       width: 135px;
-//       height: 48px;
-//     }
-//     ${ButtonPStyled} {
-//       border-radius: 20px;
-//     }
-//     ${TitleButtonStyled} {
-//       font-size: calc(var(--font-size-m) * 0.9);
-//     }
-//   }
-
-//   @media ${breakpoints.mobile} {
-//     ${ContainerStyled} {
-//       width: 120px;
-//       height: 35px;
-//     }
-//     ${ButtonPStyled} {
-//       border-radius: 15px;
-//       width: 50%;
-//     }
-    
-//     ${TitleButtonStyled} {       
-//       font-size: calc(var(--font-size-m) * 0.6);
-//     }
-//   }`;
 

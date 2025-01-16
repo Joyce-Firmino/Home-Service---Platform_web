@@ -1,9 +1,9 @@
-import { CPButtonG } from '../componentes/CPButtonG';
-import { CPButtonM } from '../componentes/CPButtonM';
-import { CPButtonP } from '../componentes/CPButtonP';
-import { CPCardAnuncioCategory } from '../componentes/CPCardAnuncioCategoryZ';
-import { CPCardPrestador } from '../componentes/CPCardPrestador';
-import { CPModalConfirm } from '../componentes/CPModal';
+import { CPButtonG } from '../componentes/Buttons/CPButtonG';
+import { CPButtonM } from '../componentes/Buttons/CPButtonM';
+import { CPButtonP } from '../componentes/Buttons/CPButtonP';
+import { CPCardAnuncioCategory } from '../componentes/Cards/CPCardAnuncioCategoryZ';
+import { CPCardPrestador } from '../componentes/Cards/CPCardPrestador';
+import { CPModalConfirm } from '../componentes/Modals/CPModal';
 import { DivContainer, DivPrestador } from './styled';
 
 export function Home() {

@@ -1,4 +1,4 @@
-import foto from '../../assets/cozinhar-comida-em-uma-cacarola-quenteBranca.png';
+import foto from '../../../assets/cozinhar-comida-em-uma-cacarola-quenteBranca.png';
 import { DivBloco, ImgImage, DivContainer, IIcon, DivIconText, PService, DivImagem, H1Title, PText, DivInferior, DivTextos, HrLiinha } from './styled';
 
 interface CustomCardProps {

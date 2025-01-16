@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import breakpoints from '../../breakPoints';
+import breakpoints from '../../../breakPoints';
 
   export const DivContainer = styled.div`
     background-color: ${props => props.theme.COLORS.white};
     display: flex;
     width: 330px;
-    max-width: 350px;
     border-radius: 18px;
     padding: 20px;
     box-sizing: border-box;
@@ -157,50 +156,3 @@ export const HrLiinha = styled.hr`
       font-size: 0.7rem;
     }
   `;
-  
-/* Regras de mídia agrupadas no final */
-// export const MediaStyles = styled.div`
-// @media ${breakpoints.tablet} {
-//   ${Container} {
-//     width: 290px;
-//     padding: 15px;
-//   }
-//   ${Title} {
-//     font-size: 1.2rem;
-//   }
-//   ${Service} {
-//     font-size: 0.9rem;
-//   }
-//   ${Image} {       
-//     width: 130px;
-//     height: 130px;
-//   }
-//   ${Text} {       
-//     font-size: 0.8rem;
-//   }
-// }
-
-// @media ${breakpoints.mobile} {
-//   ${Container} {
-//     width: 260px;
-//   padding: 10px;
-//   background-color: red;
-//   }
-//   ${Title} {
-//     font-size: 1rem;
-//   }
-  
-//   ${Service} {       
-//     font-size: 0.8rem;
-//   }
-//   ${Image} {       
-//     width: 100px;
-//     height: 100px;
-//   }
-//   ${IconText} {       
-//     gap: 3px;
-//   }
-//   ${Text} {       
-//     font-size: 0.7rem;
-//   }
-// }`;

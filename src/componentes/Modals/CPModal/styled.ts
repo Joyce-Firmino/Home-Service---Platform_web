@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import breakpoints from '../../breakPoints';
+import breakpoints from '../../../breakPoints';
 
 export const DivContainer = styled.div`
   background-color: ${props => props.theme.COLORS.white};
@@ -111,56 +111,3 @@ export const DivButtonContainer = styled.div`
     margin-bottom: 3%;
   }
 `;
-
-
-
-  /* Regras de mídia agrupadas no final */
-  // export const MediaStyles = styled.div`
-  // @media ${breakpoints.tablet} {
-  //   ${ContainerStyled} {
-  //     padding: 1rem;
-  //     max-width: 380px;
-  //   }
-  //   ${SubcontainerStyled} {
-  //     margin-top: 2vh;
-  //   }
-  //   ${IconStyled} {
-  //     font-size: 8vw;
-  //   }
-  //   ${TituloStyled} {       
-  //     font-size: 1.2rem;
-  //   }
-  //   ${MsgStyled} {       
-  //     font-size: 1rem;
-  //   }
-  //   ${ButtonContainerStyled} {       
-  //     margin-top: 3%;
-  //     margin-bottom: 3%;
-  //   }
-  // }
-  
-  // @media ${breakpoints.mobile} {
-  //   ${ContainerStyled} {
-  //     padding: 0.8rem;
-  //     width: 250px;
-  //   }
-  //   ${SubcontainerStyled} {
-  //     margin-top: 2vh;
-  //     height: 9%;
-  //   }
-    
-  //   ${IconStyled} {       
-  //     font-size: 10vw;
-  //   }
-  //   ${TituloStyled} {       
-  //     font-size: 1rem;
-  //   }
-  //   ${MsgStyled} {       
-  //     font-size: 0.9rem;
-  //     max-width: 100%;
-  //   }
-  //   ${ButtonContainerStyled} {       
-  //     margin-top: 3%;
-  //     margin-bottom: 3%;
-  //   }
-  // }`;

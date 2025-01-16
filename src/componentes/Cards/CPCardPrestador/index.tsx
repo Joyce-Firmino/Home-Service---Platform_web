@@ -1,4 +1,4 @@
-import foto from '../../assets/pedreiro.webp';
+import foto from '../../../assets/pedreiro.webp';
 import { DivBloco, ImgImage, DivContainer, IIcon, DivIconText, PService, DivInfo, DivGlobal, H1Title, PText, HrLiinha } from './styled';
 
 interface CustomCardProps {

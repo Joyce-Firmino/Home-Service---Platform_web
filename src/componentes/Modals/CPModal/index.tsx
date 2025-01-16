@@ -1,4 +1,4 @@
-import { CPButtonG } from "../CPButtonG";
+import { CPButtonG } from "../../Buttons/CPButtonG";
 import { DivContainer, DivSubcontainer, IIcon, DivText, PTitulo, PMsg, DivButtonContainer } from './styled';
 
 interface CustomModalProps {

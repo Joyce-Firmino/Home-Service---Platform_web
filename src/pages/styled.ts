@@ -23,19 +23,3 @@ export const DivPrestador = styled.div`
     flex-direction: column;
   }
 `;
-
-
-
-//   /* Regras de mídia agrupadas no final */
-//   export const MediaStyles = styled.div`
-//   @media (max-width: 500px)  {
-//     ${Container} {
-//       width: 430px;
-//       background-color: red;
-//     }
-//     ${Prestador} {
-//       flex-direction: column;
-//     }
-//   }
-  
-// `;

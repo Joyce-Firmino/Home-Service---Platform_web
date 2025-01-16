@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import breakpoints from '../../breakPoints';
+import breakpoints from '../../../breakPoints';
 
 interface ButtonProps {
   color: string;
