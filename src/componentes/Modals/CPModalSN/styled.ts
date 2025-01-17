@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import breakpoints from '../../../breakPoints';
 
+
+
 export const DivContainer = styled.div`
   background-color: ${props => props.theme.COLORS.white};
   width: 450px;
@@ -42,10 +44,10 @@ export const IIcon = styled.i`
   font-family: 'Material Symbols Outlined', sans-serif;
   font-weight: normal;
   font-style: normal;
-  font-size: 7vw;
+  font-size: 8vw;
   display: inline-block;
   vertical-align: middle;
-  color: ${props => props.theme.COLORS.green100};
+  color: ${props => props.theme.COLORS.purple700};
 
   @media (${breakpoints.tablet}px) {
     font-size: 8vw;
@@ -61,7 +63,7 @@ export const DivText = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 10px;
+  gap: 15px;
   max-width: 100%;
 `;
 
@@ -100,6 +102,10 @@ export const PMsg = styled.p`
 export const DivButtonContainer = styled.div`
   margin-top: 5%;
   margin-bottom: 5%;
+  display: flex;
+  flex-direction: row;
+  gap: 26px;
+  
 
   @media (${breakpoints.tablet}px) {
     margin-top: 3%;
@@ -109,5 +115,8 @@ export const DivButtonContainer = styled.div`
   @media (${breakpoints.mobile}px)  {
     margin-top: 3%;
     margin-bottom: 3%;
+    gap: 5px;
+    
+
   }
 `;
