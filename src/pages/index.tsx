@@ -2,7 +2,11 @@ import { CPButtonG } from '../componentes/Buttons/CPButtonG';
 import { CPButtonM } from '../componentes/Buttons/CPButtonM';
 import { CPButtonP } from '../componentes/Buttons/CPButtonP';
 import { CPCardAnuncioCategory } from '../componentes/Cards/CPCardAnuncioCategoryZ';
+import { CPCardCategory } from '../componentes/Cards/CPCardCategoryZ';
 import { CPCardPrestador } from '../componentes/Cards/CPCardPrestador';
+import { CPInput01 } from '../componentes/Inputs/CPInput01';
+import { CPInput02 } from '../componentes/Inputs/CPInput02';
+import { CPInput03 } from '../componentes/Inputs/CPInput03';
 import { CPModalConfirm } from '../componentes/Modals/CPModal';
 import { DivContainer, DivPrestador } from './styled';
 
@@ -83,6 +87,30 @@ export function Home() {
         titulo="Cadastro realizado"
         key={1}
       />
+
+      <CPInput01
+        icone='info'
+        placeholder='digite'
+        titulo='Titulo'>
+
+      </CPInput01>
+
+      <CPInput02
+        icone='info'
+        placeholder='digite'
+        titulo='Titulo'>
+
+      </CPInput02>
+
+      <CPInput03
+        placeholder='digite'
+        titulo='Titulo'>
+
+      </CPInput03>
+
+      <CPCardCategory categoria='Cuidador' foto='../assets/cozinhar-comida-em-uma-cacarola-quenteBranca.png'>
+
+      </CPCardCategory>
     </DivContainer>
   );
 }
