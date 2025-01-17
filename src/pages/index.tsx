@@ -9,6 +9,7 @@ import { CPInput02 } from '../componentes/Inputs/CPInput02';
 import { CPInput03 } from '../componentes/Inputs/CPInput03';
 import { CPModalConfirm } from '../componentes/Modals/CPModalConfirmacao';
 import { CPModalSN } from '../componentes/Modals/CPModalSN';
+import { CPHeader1 } from '../componentes/Others/CPHeader';
 import { DivContainer, DivPrestador } from './styled';
 
 export function Home() {
@@ -18,6 +19,7 @@ export function Home() {
 
   return (
     <DivContainer>
+      <CPHeader1></CPHeader1>
       <CPButtonP
         title="Button P"
         onClick={clickado}
@@ -95,6 +97,7 @@ export function Home() {
       titulo='Sair'
       menssagem='Deseja realmente sair?'
       />
+      
       <CPInput01
         icone='info'
         placeholder='digite'
@@ -118,6 +121,8 @@ export function Home() {
       <CPCardCategory categoria='Cuidador' foto='../assets/cozinhar-comida-em-uma-cacarola-quenteBranca.png'>
 
       </CPCardCategory>
+
+      
     </DivContainer>
   );
 }

@@ -19,7 +19,9 @@ export const defaultTheme = {
         m: 20,
         g: 24,
         g1: 30,
-        gg: 36
+        gg: 36,
+        ex:40,
+        exg:46
     }
 
 } as const
