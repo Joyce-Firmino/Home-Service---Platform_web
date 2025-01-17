@@ -16,13 +16,14 @@ export const DivContainer = styled.div`
   width: 155px;
   height: 55px;
 
+
   @media (${breakpoints.tablet}px) {
     width: 135px;
     height: 48px;
   }
 
   @media (${breakpoints.mobile}px){
-    width: 120px;
+    width: 80px;
     height: 35px;
   }
 `;
@@ -45,7 +46,7 @@ export const Button = styled.button<ButtonProps>`
 
   @media (${breakpoints.mobile}px)  {
     border-radius: 15px;
-    width: 50%;
+    width: 70px;
   }
 `;
 

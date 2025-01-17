@@ -9,6 +9,7 @@ export const defaultTheme = {
         purple600: '#5e54b3',
         purple700: '#564caf',
         green100: '#00FB4F',
+        red100: '#DC3434'
 
 
     },
