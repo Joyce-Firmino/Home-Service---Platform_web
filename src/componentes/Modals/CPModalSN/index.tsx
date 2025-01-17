@@ -1,4 +1,3 @@
-import { CPButtonG } from "../../Buttons/CPButtonG";
 import { CPButtonP } from "../../Buttons/CPButtonP";
 import { DivContainer, DivSubcontainer, IIcon, DivText, PTitulo, PMsg, DivButtonContainer } from './styled';
 

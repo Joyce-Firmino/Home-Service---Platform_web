@@ -2,12 +2,13 @@ import { CPButtonG } from '../componentes/Buttons/CPButtonG';
 import { CPButtonM } from '../componentes/Buttons/CPButtonM';
 import { CPButtonP } from '../componentes/Buttons/CPButtonP';
 import { CPCardAnuncioCategory } from '../componentes/Cards/CPCardAnuncioCategoryZ';
-import { CPCardCategory } from '../componentes/Cards/CPCardCategoryZ';
+import { CPCardCategory } from '../componentes/Cards/CPCardAnuncioCategoryZ copy';
 import { CPCardPrestador } from '../componentes/Cards/CPCardPrestador';
 import { CPInput01 } from '../componentes/Inputs/CPInput01';
 import { CPInput02 } from '../componentes/Inputs/CPInput02';
 import { CPInput03 } from '../componentes/Inputs/CPInput03';
-import { CPModalConfirm } from '../componentes/Modals/CPModal';
+import { CPModalConfirm } from '../componentes/Modals/CPModalConfirmacao';
+import { CPModalSN } from '../componentes/Modals/CPModalSN';
 import { DivContainer, DivPrestador } from './styled';
 
 export function Home() {
@@ -85,9 +86,15 @@ export function Home() {
         icone="check_circle"
         menssagem="Sucesso!"
         titulo="Cadastro realizado"
+        variant= "sucesso"
         key={1}
       />
 
+      <CPModalSN
+      icone='logout'
+      titulo='Sair'
+      menssagem='Deseja realmente sair?'
+      />
       <CPInput01
         icone='info'
         placeholder='digite'
