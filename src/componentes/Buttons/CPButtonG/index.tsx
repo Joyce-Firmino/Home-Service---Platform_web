@@ -3,16 +3,13 @@ import { Button, DivContainer, SpanTitleButton } from './styled';
 interface CustomButtonProps {
   title: string;
   onClick: () => void;
-  color: string;
-  textColor: string;
-  borderColor?: string;
-  borderWidth?: number;
+  variantType: "primario" | "secundario";
 }
 
-export function CPButtonG({title,onClick,color,textColor,borderColor = "transparent",borderWidth = 0,}: CustomButtonProps) {
+export function CPButtonG({ title, onClick, variantType }: CustomButtonProps) {
   return (
     <DivContainer>
-      <Button color={color} textColor={textColor} borderColor={borderColor} borderWidth={borderWidth} onClick={onClick}>
+      <Button variantType={variantType} onClick={onClick}>
         <SpanTitleButton>{title}</SpanTitleButton>
       </Button>
     </DivContainer>

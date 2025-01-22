@@ -21,13 +21,10 @@ export function Home() {
   return (
     <DivContainer>
       
-      <CPButtonP
+      <CPButtonG
         title="Button P"
         onClick={clickado}
-        color="blue"
-        textColor="white"
-        borderColor="black"
-        borderWidth={2}
+        variantType='secundario'
       />
       <CPButtonM
         title="Button M"
@@ -37,111 +34,13 @@ export function Home() {
         borderColor="black"
         borderWidth={2}
       />
-      <CPButtonG
+      <CPButtonP
         title="Button G"
         onClick={clickado}
-        color="red"
-        textColor="white"
-        borderColor="black"
-        borderWidth={2}
-      />
-      <DivPrestador>
-        <CPCardPrestador
-          city="São José de Piranhas - PB"
-          email="danilo@gmail.com"
-          prestador="Danilo James"
-          servico="Pedreiro"
-          telefone="(83) 99632-7456"
-          uriFoto="../../assets/pedreiro.webp"
-          key={5}
-        />
-        <CPCardPrestador
-          city="São José de Piranhas - PB"
-          email="danilo@gmail.com"
-          prestador="Danilo James"
-          servico="Pedreiro"
-          telefone="(83) 99632-7456"
-          uriFoto="../../assets/pedreiro.webp"
-          key={5}
-        />
-        <CPCardPrestador
-          city="São José de Piranhas - PB"
-          email="danilo@gmail.com"
-          prestador="Danilo James"
-          servico="Pedreiro"
-          telefone="(83) 99632-7456"
-          uriFoto="../../assets/pedreiro.webp"
-          key={5}
-        />
+        variantType='primario'
 
-        <CPCardAnuncioCategory
-          city="São José de Piranhas - PB"
-          email="danilo@gmail.com"
-          prestador="Danilo James"
-          servico="Pedreiro"
-          telefone="(83) 99632-7456"
-          uriFoto="../../assets/pedreiro.webp"
-          key={5}
-        />
-
-      </DivPrestador>
-      <CPModalConfirm
-        icone="check_circle"
-        menssagem="Sucesso!"
-        titulo="Cadastro realizado"
-        variant= "sucesso"
-        key={1}
-      />
-
-      <CPModalSN
-      icone='logout'
-      titulo='Sair'
-      menssagem='Deseja realmente sair?'
       />
       
-      <CPInput01
-        icone='info'
-        placeholder='digite'
-        titulo='Titulo'
-        variantSize='grande'>
-      </CPInput01>
-
-      <CPInput01
-        icone='info'
-        placeholder='digite'
-        titulo='Titulo'
-        variantSize='pequeno'>
-      </CPInput01>
-
-      <CPInput02
-        icone='info'
-        placeholder='digite'
-        titulo='Titulo'
-        variantSize='pequeno'>
-      </CPInput02>
-
-      <CPInput02
-        icone='info'
-        placeholder='digite'
-        titulo='Titulo'
-        variantSize='grande'>
-      </CPInput02>
-
-      <CPInput03
-        placeholder='digite'
-        titulo='Titulo'
-        variantSize='pequeno'>
-      </CPInput03>
-
-      <CPInput03
-        placeholder='digite'
-        titulo='Titulo'
-        variantSize='pequeno'>
-      </CPInput03>
-
-      <CPCardCategory uriFoto='' categoria='Cuidador'>
-
-      </CPCardCategory>
 
       
     </DivContainer>

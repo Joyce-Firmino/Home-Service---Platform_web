@@ -35,12 +35,10 @@ export function Login() {
       ></CPInput02>
 
       <CPButtonG
-      color='#564caf'
-      title='Login'
-      textColor='white'
-      >
-
-      </CPButtonG>
+        title="Button P"
+        onClick={clickado}
+        variantType='primario'
+      />
 
     </DivContainer>
       

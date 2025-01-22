@@ -2,10 +2,7 @@ import styled from 'styled-components';
 import breakpoints from '../../../breakPoints';
 
 interface ButtonProps {
-  color: string;
-  textColor: string;
-  borderColor: string;
-  borderWidth: number;
+  variantType: string;
 }
 
 export const DivContainer = styled.div`
@@ -32,13 +29,21 @@ export const Button = styled.button<ButtonProps>`
   width: 100%;
   height: 100%;
   border-radius: 30px;
-  background-color: ${({ color }) => color};
-  color: ${({ textColor }) => textColor};
-  border: solid ${({ borderColor }) => borderColor} ${({ borderWidth }) => `${borderWidth}px`};
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  font-weight: 500;
+  
+  background-color: ${({ variantType, theme }) =>
+    variantType === "primario" ? theme.COLORS.purple700 : variantType === "secundario" ? theme.COLORS.white : "#ffffff"};
+
+  color: ${({ variantType, theme }) =>
+    variantType === "primario" ?  theme.COLORS.white : variantType === "secundario" ? theme.COLORS.purple700: "#00000"};
+  
+  border: solid ${({ variantType, theme }) => variantType === "primario" ?  "transparent": variantType === "secundario" ? theme.COLORS.purple700: "#00000"} 3px;
+
+
 
   @media (${breakpoints.tablet}px) {
     border-radius: 20px;
