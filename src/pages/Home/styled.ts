@@ -6,8 +6,8 @@ export const DivContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: bisque;
-  width: 100%;
-  height: 100%;
+  width: 1440px;
+  height: 1080px;
   gap: 20px;
 
   @media (max-width: 500px) {

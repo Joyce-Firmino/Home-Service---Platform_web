@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const DivContainer = styled.div`
     height: 220px;
-    width: 100%;
+    width: 1440px;
     background-color: ${props => props.theme.COLORS.purple700};
     
 

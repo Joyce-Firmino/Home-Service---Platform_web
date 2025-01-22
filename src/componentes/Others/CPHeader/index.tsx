@@ -1,5 +1,5 @@
 import { DivBloco, DivContainer, DivLogo, ImgLogo, H1Title, DivCategorias, PCategoria, PCadastro, PLogin } from "./styled";
-import foto from "../../../assets/logo.png"
+import foto from "../../../assets/logoBranca.png"
 
 interface CustomHeaderProps {
     uriFoto: string;

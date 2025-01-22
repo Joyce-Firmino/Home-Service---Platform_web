@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 import breakpoints from '../../../breakPoints';
 
-export const DivContainer = styled.div`
+
+type CustomInputProps = {
+  variantComponent: string;
+}
+
+
+export const DivContainer = styled.div<CustomInputProps>`
   width: 353px;
   height: 84px;
   display: flex;
@@ -14,6 +20,12 @@ export const DivContainer = styled.div`
     color: ${props => props.theme.COLORS.purple400}; /* Cor do placeholder */
   }
 
+  width: ${props => props.variantComponent === 'pequeno' ?
+    '353px'
+    :
+    '540px'
+  };
+
   @media (${breakpoints.tablet}px){
     padding: 1rem;
     max-width: 380px;
@@ -25,7 +37,7 @@ export const DivContainer = styled.div`
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<CustomInputProps>`
   outline: none; /* Remove o efeito de foco */
   width: 353px;
   height: 56px;
@@ -33,6 +45,12 @@ export const Input = styled.input`
   border: 2px solid ${props => props.theme.COLORS.purple400};
   color: ${props => props.theme.COLORS.purple700};
   padding: 20px;
+
+  width: ${props => props.variantComponent === 'pequeno' ?
+    '353px'
+    :
+    '540px'
+  };
 
     @media (${breakpoints.tablet}px) {
     font-size: 8vw;

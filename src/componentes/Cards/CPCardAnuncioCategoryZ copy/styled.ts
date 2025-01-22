@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     border: 2px solid ${props => props.theme.COLORS.purple700};
 
@@ -33,8 +34,8 @@
   `;
 
 export const ImgImage = styled.img`
-width: 100px;
-height: 100px;
+width: 40px;
+height: 40px;
 object-fit: cover;
 
 @media (max-width: 768px) {
@@ -49,7 +50,7 @@ object-fit: cover;
 `;
   
   export const PService = styled.p`
-    font-size: 1rem;
+    font-size: 20px;
     color: ${props => props.theme.COLORS.purple700};
     font-weight: bold;
 

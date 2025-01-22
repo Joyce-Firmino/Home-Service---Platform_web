@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import breakpoints from '../../../breakPoints';
 
+type CustomInputProps = {
+  variantComponent: string;
+}
+
 export const DivContainer = styled.div`
   width: 353px;
   height: 84px;
@@ -16,18 +20,16 @@ export const DivContainer = styled.div`
   }
 
   @media (${breakpoints.tablet}px){
-    padding: 1rem;
-    max-width: 380px;
+
   }
 
   @media (${breakpoints.mobile}px) {
-    padding: 0.8rem;
-    width: 250px;
+
   }
 `;
-export const DivSubContainer = styled.div`
+
+export const DivSubContainer = styled.div<CustomInputProps>`
   background-color: ${props => props.theme.COLORS.white};
-  width: 353px;
   height: 56px;
   border-radius: 8px;
   border: 2px solid ${props => props.theme.COLORS.purple400};
@@ -41,14 +43,18 @@ export const DivSubContainer = styled.div`
     color: ${props => props.theme.COLORS.purple400}; /* Cor do placeholder */
   }
 
+  width: ${props => props.variantComponent === 'pequeno' ?
+    '353px'
+    :
+    '540px'
+  };
+
   @media (${breakpoints.tablet}px){
-    padding: 1rem;
-    max-width: 380px;
+
   }
 
   @media (${breakpoints.mobile}px) {
-    padding: 0.8rem;
-    width: 250px;
+ 
   }
 `;
 
@@ -62,15 +68,13 @@ export const IIcon = styled.i`
   color: ${props => props.theme.COLORS.purple700};
 
   @media (${breakpoints.tablet}px) {
-    font-size: 8vw;
   }
 
   @media (${breakpoints.mobile}px)  {
-    font-size: 10vw;
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<CustomInputProps>`
   background-color: transparent;
   border-color: transparent;
   outline: none; /* Remove o efeito de foco */
@@ -79,12 +83,16 @@ export const Input = styled.input`
   border-radius: 8px;
   color: ${props => props.theme.COLORS.purple700};
 
+  width: ${props => props.variantComponent === 'pequeno' ?
+    '275px'
+    :
+    '462px'
+  };
+
     @media (${breakpoints.tablet}px) {
-    font-size: 8vw;
   }
 
   @media (${breakpoints.mobile}px)  {
-    font-size: 10vw;
   }
 `;
 
@@ -98,12 +106,10 @@ export const PTitulo = styled.p`
   color: ${props => props.theme.COLORS.purple700};
 
   @media (${breakpoints.tablet}px) {
-    font-size: 8vw;
   }
 
   @media (${breakpoints.mobile}px)  {
-    font-size: 10vw;
-  }
+    }
 `;
 
 

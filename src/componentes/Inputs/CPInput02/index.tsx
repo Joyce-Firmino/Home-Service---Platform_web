@@ -4,18 +4,15 @@ interface CustomModalProps {
     titulo: string;
     placeholder: string;
     icone: string;
+    variantSize: "pequeno" | "grande";
 }
 
-function clickado() {
-    alert("Clicado");
-}
-
-export function CPInput02({ titulo, placeholder, icone }: CustomModalProps) {
+export function CPInput02({ titulo, placeholder, icone, variantSize }: CustomModalProps) {
     return (
         <DivContainer>
             <PTitulo>{titulo}</PTitulo>
-            <DivSubContainer>
-                <Input placeholder={placeholder}></Input>
+            <DivSubContainer  variantComponent={variantSize}>
+                <Input  variantComponent={variantSize} placeholder={placeholder}></Input>
                 <IIcon>{icone}</IIcon>
             </DivSubContainer>
         </DivContainer>
