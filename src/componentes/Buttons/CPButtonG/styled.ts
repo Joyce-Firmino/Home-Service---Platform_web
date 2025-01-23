@@ -10,8 +10,8 @@ export const DivContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
-  width: 300px;
-  height: 60px;
+  width: 280px;
+  height: 55px;
 
   @media (${breakpoints.tablet}px) {
     width: 250px;

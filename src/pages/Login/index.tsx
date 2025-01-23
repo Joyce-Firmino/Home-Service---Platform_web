@@ -1,18 +1,8 @@
-
 import { CPButtonG } from '../../componentes/Buttons/CPButtonG';
-import { CPButtonM } from '../../componentes/Buttons/CPButtonM';
-import { CPButtonP } from '../../componentes/Buttons/CPButtonP';
-import { CPCardAnuncioCategory } from '../../componentes/Cards/CPCardAnuncioCategoryZ';
-import { CPCardCategory } from '../../componentes/Cards/CPCardAnuncioCategoryZ copy';
-import { CPCardPrestador } from '../../componentes/Cards/CPCardPrestador';
-import { CPInput01 } from '../../componentes/Inputs/CPInput01';
-import { Input } from '../../componentes/Inputs/CPInput01/styled';
 import { CPInput02 } from '../../componentes/Inputs/CPInput02';
 import { CPInput03 } from '../../componentes/Inputs/CPInput03';
-import { CPModalConfirm } from '../../componentes/Modals/CPModalConfirmacao';
-import { CPModalSN } from '../../componentes/Modals/CPModalSN';
-import { CPHeader1 } from '../../componentes/Others/CPHeader';
-import { DivContainer, DivPrestador } from './styled';
+import { CPImagemLogin } from '../../componentes/Others/CPImagemLogin';
+import { DivContainer, DivImagem, DivInferior, DivInput, DivLateral, DivTitulo, H1Titulo, PDescricao } from './styled';
 
 export function Login() {
   function clickado() {
@@ -22,27 +12,39 @@ export function Login() {
   return (
 
     <DivContainer>
-      <CPInput03
-      titulo='Email'
-      placeholder='Digite aqui seu email'
-      variantSize='grande'
-      ></CPInput03>
-      <CPInput02
-      titulo='Senha'
-      placeholder='Digite sua senha'
-      icone='visibility_off'
-      variantSize='grande'
-      ></CPInput02>
-
-      <CPButtonG
-        title="Button P"
-        onClick={clickado}
-        variantType='primario'
-      />
+      <DivImagem>
+        <CPImagemLogin></CPImagemLogin>
+      </DivImagem>
+      <DivLateral>
+        <DivTitulo>
+          <H1Titulo>Login</H1Titulo>
+          <PDescricao>Preencha os dados para fazer o login</PDescricao>
+        </DivTitulo>
+        <DivInferior>
+          <DivInput>
+            <CPInput03
+              titulo='Email'
+              placeholder='Digite aqui seu email'
+              variantSize='grande'
+            />
+            <CPInput02
+              titulo='Senha'
+              placeholder='Digite sua senha'
+              icone='visibility_off'
+              variantSize='grande'
+            />
+          </DivInput>
+          <CPButtonG
+            title="Login"
+            onClick={clickado}
+            variantType='primario'
+          />
+        </DivInferior>
+      </DivLateral>
 
     </DivContainer>
-      
+
   );
 
-  
+
 }

@@ -14,14 +14,14 @@ export const defaultTheme = {
 
     },
     FONTSIZE: {
-        pp: 12,
+        pp: 14,
         p: 16,
-        m: 20,
+        m: 18,
         g: 24,
         g1: 30,
         gg: 36,
         ex:40,
-        exg:46
+        exg:42
     }
 
 } as const

@@ -22,8 +22,7 @@ export const DivContainer = styled.div`
 
 
   @media (${breakpoints.tablet}px){
-    padding: 1rem;
-    max-width: 380px;
+    
   }
 
   @media (${breakpoints.mobile}px) {
@@ -41,26 +40,25 @@ export const DivSubContainer = styled.div<CustomInputProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 21px  0 21px  ;
-  gap: 10px;
+  justify-content: space-between;
+  padding: 0 0px  0 21px  ;
 
   ::placeholder {
     color: ${props => props.theme.COLORS.purple400}; /* Cor do placeholder */
+    font-size: ${props => props.theme.FONTSIZE.pp}px;
 
   };
   width: ${props => props.variantComponent === 'pequeno' ?
-    '353px'
+    '345px'
     :
-    '540px'};
+    '530px'};
 
   @media (${breakpoints.tablet}px){
-    padding: 1rem;
-    max-width: 380px;
   }
 
   @media (${breakpoints.mobile}px) {
     padding: 0.8rem;
-    width: 250px;
+    width: 353px;
   }
 `;
 
@@ -71,13 +69,13 @@ export const IIcon = styled.i`
   font-size: 22px;
   display: inline-block;
   vertical-align: middle;
-  padding: 10px;
+  padding: 13px 20px;
   color: ${props => props.theme.COLORS.purple700};
 
 
 
   @media (${breakpoints.tablet}px) {
-    font-size: 8vw;
+    font-size: 3vw;
   }
 
   @media (${breakpoints.mobile}px)  {
@@ -96,21 +94,22 @@ export const Input = styled.input<CustomInputProps>`
   width: ${props => props.variantComponent === 'pequeno' ?
     '275px'
     :
-    '442px'};
+    '443px'};
 
     @media (${breakpoints.tablet}px) {
-    font-size: 8vw;
+
   }
 
   @media (${breakpoints.mobile}px)  {
-    font-size: 10vw;
+    width: 275px;
+    font-size: 10px;
   }
 `;
 
 export const PTitulo = styled.p`
   font-weight: normal;
   font-style: normal;
-  font-size: 16px;
+  font-size: ${props => props.theme.FONTSIZE.pp}px;
   font-weight: bold;
   display: inline-block;
   vertical-align: middle;

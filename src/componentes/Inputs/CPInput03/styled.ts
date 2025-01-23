@@ -8,7 +8,6 @@ type CustomInputProps = {
 
 
 export const DivContainer = styled.div<CustomInputProps>`
-  width: 353px;
   height: 84px;
   display: flex;
   flex-direction: column;
@@ -18,12 +17,13 @@ export const DivContainer = styled.div<CustomInputProps>`
 
   ::placeholder {
     color: ${props => props.theme.COLORS.purple400}; /* Cor do placeholder */
+    font-size: ${props => props.theme.FONTSIZE.pp}px;
   }
 
   width: ${props => props.variantComponent === 'pequeno' ?
-    '353px'
+    '345px'
     :
-    '540px'
+    '530px'
   };
 
   @media (${breakpoints.tablet}px){
@@ -47,9 +47,9 @@ export const Input = styled.input<CustomInputProps>`
   padding: 20px;
 
   width: ${props => props.variantComponent === 'pequeno' ?
-    '353px'
+    '345px'
     :
-    '540px'
+    '530px'
   };
 
     @media (${breakpoints.tablet}px) {
@@ -64,7 +64,7 @@ export const Input = styled.input<CustomInputProps>`
 export const PTitulo = styled.p`
   font-weight: normal;
   font-style: normal;
-  font-size: 16px;
+  font-size: ${props => props.theme.FONTSIZE.pp}px;
   font-weight: bold;
   display: inline-block;
   vertical-align: middle;
