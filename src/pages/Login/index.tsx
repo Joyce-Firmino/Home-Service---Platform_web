@@ -2,7 +2,7 @@ import { CPButtonG } from '../../componentes/Buttons/CPButtonG';
 import { CPInput02 } from '../../componentes/Inputs/CPInput02';
 import { CPInput03 } from '../../componentes/Inputs/CPInput03';
 import { CPImagemLogin } from '../../componentes/Others/CPImagemLogin';
-import { DivContainer, DivImagem, DivInferior, DivInput, DivLateral, DivTitulo, H1Titulo, PDescricao } from './styled';
+import { DivContainer, DivInferior, DivInput, DivLateral, DivTitulo, H1Titulo, PDescricao } from './styled';
 
 export function Login() {
   function clickado() {
@@ -12,9 +12,7 @@ export function Login() {
   return (
 
     <DivContainer>
-      <DivImagem>
-        <CPImagemLogin></CPImagemLogin>
-      </DivImagem>
+      <CPImagemLogin></CPImagemLogin>
       <DivLateral>
         <DivTitulo>
           <H1Titulo>Login</H1Titulo>

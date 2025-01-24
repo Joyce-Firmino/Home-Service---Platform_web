@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import foto from "../../../assets/imagemLateralLogin.png"
+import breakpoints from '../../../breakPoints';
 
 
 export const DivImagem = styled.div`
@@ -8,7 +9,15 @@ export const DivImagem = styled.div`
   height: 100%;
   background-image: url(${foto});
   background-size: cover;
-  background-position: center;
+  background-position: center;  
+
+  @media (${breakpoints.tablet}px) {
+    height: 70% ;
+  }
+  
+  @media (${breakpoints.mobile}px) {
+    display: none;
+  }
 `;
 
 export const PBemvindo = styled.p`
@@ -20,4 +29,9 @@ export const PBemvindo = styled.p`
   left: 52%;
   transform: translate(-50%, -50%);
   width: 450px;
+
+  @media (${breakpoints.tablet}px) {
+    font-size: 65px;
+    width: 420px;
+  }
 `;

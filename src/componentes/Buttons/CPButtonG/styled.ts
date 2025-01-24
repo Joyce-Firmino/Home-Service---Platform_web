@@ -19,8 +19,7 @@ export const DivContainer = styled.div`
   }
 
   @media (${breakpoints.mobile}px)  {
-    width: 200px;
-    height: 35px;
+   
   }
 `;
 
@@ -48,7 +47,7 @@ export const Button = styled.button<ButtonProps>`
   }
 
   @media (${breakpoints.mobile}px) {
-    border-radius: 15px;
+    border-radius: 30px;
   }
 `;
 

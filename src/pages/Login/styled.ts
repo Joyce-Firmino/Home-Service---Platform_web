@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import breakpoints from '../../breakPoints';
 
 export const DivContainer = styled.div`
   display: flex;
@@ -8,20 +9,34 @@ export const DivContainer = styled.div`
   background-color: ${props => props.theme.COLORS.purple200};
   width: 100%;
   height: 100vh;
-  gap: 20px;
+  gap: 100px;
   padding: 0 85px 0 0;
 
-  @media (max-width: 500px) {
-    width: 430px;
+  @media (${breakpoints.tablet}px) {
+    padding: 0;
+    flex-direction: column;
+    gap: 100px;
+    padding: 0;
   }
+  @media (${breakpoints.mobile}px) {
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 0;
+
+  }
+      
 `;
 
 export const DivImagem = styled.div`
   width: 50%;
   height: 100%;
   
-@media (max-width: 820px) {
-    display: none;
+@media (${breakpoints.tablet}px) {
+  width: 100%;
+  height: 61%;
+  padding: 0;
   }
 `;
 
@@ -31,6 +46,17 @@ export const DivLateral = styled.div`
   gap: 15px;
   align-items: flex-start;
   width: 536px;
+  
+  @media (${breakpoints.tablet}px) {
+    padding: 10px 0 250px 0;
+  }
+
+  @media (${breakpoints.mobile}px)  {
+   padding: 0;
+   justify-content: center;
+   align-items: center;
+
+}
 `;
 export const DivTitulo = styled.div`
   display: flex;
@@ -38,6 +64,13 @@ export const DivTitulo = styled.div`
   gap: 15px;
   align-items: flex-start;
   width: 536px;
+
+  @media (${breakpoints.mobile}px) {
+    width: 250px;
+  }
+  @media (${breakpoints.mobile}px)  {
+   width: 345px;
+  }
 `;
 
 export const DivInferior = styled.div`
@@ -50,6 +83,11 @@ export const DivInferior = styled.div`
     display: flex;
     flex-direction: column;
     gap: 13px;
+
+    @media (${breakpoints.mobile}px)  {
+      justify-content: center;
+   
+  }
   `;
 
 export const H1Titulo = styled.h1`

@@ -27,13 +27,11 @@ export const DivContainer = styled.div<CustomInputProps>`
   };
 
   @media (${breakpoints.tablet}px){
-    padding: 1rem;
-    max-width: 380px;
+
   }
 
   @media (${breakpoints.mobile}px) {
-    padding: 0.8rem;
-    width: 250px;
+    width: 345px;
   }
 `;
 
@@ -53,11 +51,10 @@ export const Input = styled.input<CustomInputProps>`
   };
 
     @media (${breakpoints.tablet}px) {
-    font-size: 8vw;
   }
 
-  @media (${breakpoints.mobile}px)  {
-    font-size: 10vw;
+  @media (${breakpoints.mobile}px) {
+    width: 345px;
   }
 `;
 
@@ -71,11 +68,9 @@ export const PTitulo = styled.p`
   color: ${props => props.theme.COLORS.purple700};
 
   @media (${breakpoints.tablet}px) {
-    font-size: 8vw;
   }
 
   @media (${breakpoints.mobile}px)  {
-    font-size: 10vw;
   }
 `;
 

@@ -26,8 +26,7 @@ export const DivContainer = styled.div`
   }
 
   @media (${breakpoints.mobile}px) {
-    padding: 0.8rem;
-    width: 250px;
+    width: 345px;
   }
 `;
 
@@ -57,8 +56,7 @@ export const DivSubContainer = styled.div<CustomInputProps>`
   }
 
   @media (${breakpoints.mobile}px) {
-    padding: 0.8rem;
-    width: 353px;
+    width: 345px;
   }
 `;
 
@@ -75,11 +73,10 @@ export const IIcon = styled.i`
 
 
   @media (${breakpoints.tablet}px) {
-    font-size: 3vw;
   }
 
   @media (${breakpoints.mobile}px)  {
-    font-size: 10vw;
+    font-size: 4vw;
   }
 `;
 
@@ -107,8 +104,6 @@ export const Input = styled.input<CustomInputProps>`
 `;
 
 export const PTitulo = styled.p`
-  font-weight: normal;
-  font-style: normal;
   font-size: ${props => props.theme.FONTSIZE.pp}px;
   font-weight: bold;
   display: inline-block;
@@ -116,11 +111,9 @@ export const PTitulo = styled.p`
   color: ${props => props.theme.COLORS.purple700};
 
   @media (${breakpoints.tablet}px) {
-    font-size: 8vw;
   }
 
   @media (${breakpoints.mobile}px)  {
-    font-size: 10vw;
   }
 `;
 
