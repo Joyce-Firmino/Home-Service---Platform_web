@@ -33,6 +33,8 @@ export const DivMediana = styled.div`
   justify-content: center;
   
   @media (${breakpoints.tablet}px) {
+  gap: 10px;
+
   }
 
   @media (${breakpoints.mobile}px)  {
@@ -49,10 +51,14 @@ export const DivDescricao = styled.div`
 
   
   @media (${breakpoints.tablet}px) {
+  width: 400px;
+
   }
 
   @media (${breakpoints.mobile}px)  {
    align-items: center;
+  width: 354px;
+
   } 
 `;
 
@@ -64,6 +70,8 @@ export const DivTextos = styled.div`
 
   
   @media (${breakpoints.tablet}px) {
+  width: 559px;
+
   }
 
   @media (${breakpoints.mobile}px)  {
@@ -80,6 +88,10 @@ export const H1Titulo = styled.h1`
   color: ${props => props.theme.COLORS.purple700};
   
   @media (${breakpoints.tablet}px) {
+  font-size: ${props => props.theme.FONTSIZE.gg}px;
+
+   width: 500px;
+
   }
 
   @media (${breakpoints.mobile}px)  {
@@ -93,6 +105,10 @@ export const PDescricao = styled.p`
   width: 629px;
 
   @media (${breakpoints.tablet}px) {
+  font-size: 22px;
+
+    width: 400px;
+
   }
 
   @media (${breakpoints.mobile}px)  {
@@ -104,6 +120,8 @@ export const ImgTrabalhador = styled.img`
   width: 464px;
   
   @media (${breakpoints.tablet}px) {
+  width: 300px;
+
   }
 
   @media (${breakpoints.mobile}px)  {
@@ -124,21 +142,26 @@ export const DivInferior = styled.div`
    justify-content: center;
   
   @media (${breakpoints.tablet}px) {
+   gap: 12px;
+
   }
 
   @media (${breakpoints.mobile}px)  {
+   gap: 7px;
 
   } 
 `;
 
 export const ImgCelulares = styled.img`
- 
+
+    width: 407px;
   
   @media (${breakpoints.tablet}px) {
+    width: 307px;
   }
 
   @media (${breakpoints.mobile}px)  {
-
+    width: 207px;
   } 
 `;
 
@@ -147,11 +170,12 @@ export const DivBaixar = styled.div`
   flex-direction: column;
   align-items: flex-end;
   gap: 18px;
-  
+
   @media (${breakpoints.tablet}px) {
   }
 
   @media (${breakpoints.mobile}px)  {
+    width: 180px;
 
   } 
 `;
@@ -166,6 +190,9 @@ export const H2Titulo = styled.h2`
   }
 
   @media (${breakpoints.mobile}px)  {
+  width: 180px;
+  font-size: ${props => props.theme.FONTSIZE.g}px;
+
 
   } 
 `;
@@ -177,30 +204,31 @@ export const DivLojas = styled.div`
   }
 
   @media (${breakpoints.mobile}px)  {
+  gap: 15px;
 
   } 
 `;
 
 export const ImgPlayStore = styled.img`
-  width: 120px;
   height: 40px;
   
   @media (${breakpoints.tablet}px) {
   }
 
   @media (${breakpoints.mobile}px)  {
+    height: 25px;
 
   } 
 `;
 
 export const ImgAppStore = styled.img`
-  width: 120px;
   height: 40px;
   
   @media (${breakpoints.tablet}px) {
   }
 
   @media (${breakpoints.mobile}px)  {
+    height: 25px;
 
   } 
 `;
