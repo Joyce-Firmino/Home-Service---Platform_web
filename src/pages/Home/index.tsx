@@ -9,6 +9,12 @@ import celulares from "../../assets/celulares.svg"
 import { PDescricao } from '../Home/styled';
 import { CPButtonG } from '../../componentes/Buttons/CPButtonG';
 
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import { CPCarrossel } from '../../componentes/Others/CPCarrossel';
+import { CPFooter } from '../../componentes/Others/CPFooter';
+
+
 export function Home() {
   function clickado() {
     alert('Clicado!');
@@ -20,8 +26,9 @@ export function Home() {
       {/* <CPHeader1>
 
       </CPHeader1> */}
+
+      {/* <CPCarrossel > </CPCarrossel> */}
       <CPCardCategory categoria='Pedreiro' uriFoto={foto}></CPCardCategory>
-      <DivSuperior>
         <DivMediana>
           <DivDescricao>
             <DivTextos>
@@ -32,7 +39,6 @@ export function Home() {
           </DivDescricao>
           <ImgTrabalhador src={trabalhador} alt="Homem com roupa de trabalho" />
         </DivMediana>
-      </DivSuperior>
 
       <DivInferior>
         <ImgCelulares src={celulares} alt="Homem com roupa de trabalho" />
@@ -46,7 +52,7 @@ export function Home() {
         </DivBaixar>
       </DivInferior>
 
-      {/* <CPFooter></CPFooter> */}
+      <CPFooter></CPFooter>
 
     </DivContainer>
   );

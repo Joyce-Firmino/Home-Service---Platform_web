@@ -8,22 +8,11 @@ export const DivContainer = styled.div`
   justify-content: center;
   background-color: ${props => props.theme.COLORS.purple200};
   width: 100%;
-  height: 300vh;
-  gap: 20px;
+  height: 100%;
 
   @media (max-width: 500px) {
     width: 430px;
   }
-`;
-
-export const DivSuperior = styled.div`
-  
-  @media (${breakpoints.tablet}px) {
-  }
-
-  @media (${breakpoints.mobile}px)  {
-    
-  } 
 `;
 
 export const DivMediana = styled.div`
@@ -31,6 +20,7 @@ export const DivMediana = styled.div`
   flex-direction: row;
   gap: 45px;
   justify-content: center;
+  padding-bottom: 30px;
   
   @media (${breakpoints.tablet}px) {
   gap: 10px;
