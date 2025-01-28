@@ -20,16 +20,15 @@
 
   
     @media (${breakpoints.tablet}px) {
-      width: 290px;
+      width: 135px;
       padding: 15px;
     }
   
     @media (${breakpoints.mobile}px) {
-      width: 367px;
-      height: 166px;
-      padding: 0;
-      flex-direction: row;
-      gap: 22px;
+      width: 85px;
+      height: 97px;
+      flex-direction: column;
+      gap: 5px;
     }
   `;
 
@@ -38,28 +37,27 @@ width: 40px;
 height: 40px;
 object-fit: cover;
 
-@media (max-width: 768px) {
-  width: 130px;
-  height: 130px;
+@media (${breakpoints.tablet}px) {
+
 }
 
-@media (max-width: 431px) {
-  width: 80px;
-  height: 80px;
+@media (${breakpoints.mobile}px) {
+  width: 37px;
+  height: 37px;
 }
 `;
   
   export const PService = styled.p`
-    font-size: 20px;
+    font-size: ${props => props.theme.FONTSIZE.p}px;
     color: ${props => props.theme.COLORS.purple700};
     font-weight: bold;
 
   
-    @media (max-width: 768px) {
+    @media (${breakpoints.tablet}px) {
       font-size: 0.9rem;
     }
   
-    @media (max-width: 431px) {
+    @media (${breakpoints.mobile}px) {
       font-size: 0.8rem;
     }
   `;

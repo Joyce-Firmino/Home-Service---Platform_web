@@ -1,17 +1,13 @@
-
-import { CPButtonG } from '../../componentes/Buttons/CPButtonG';
-import { CPButtonM } from '../../componentes/Buttons/CPButtonM';
-import { CPButtonP } from '../../componentes/Buttons/CPButtonP';
-import { CPCardAnuncioCategory } from '../../componentes/Cards/CPCardAnuncioCategoryZ';
 import { CPCardCategory } from '../../componentes/Cards/CPCardAnuncioCategoryZ copy';
-import { CPCardPrestador } from '../../componentes/Cards/CPCardPrestador';
-import { CPInput01 } from '../../componentes/Inputs/CPInput01';
-import { CPInput02 } from '../../componentes/Inputs/CPInput02';
-import { CPInput03 } from '../../componentes/Inputs/CPInput03';
-import { CPModalConfirm } from '../../componentes/Modals/CPModalConfirmacao';
-import { CPModalSN } from '../../componentes/Modals/CPModalSN';
 import { CPHeader1 } from '../../componentes/Others/CPHeader';
-import { DivContainer, DivPrestador } from './styled';
+import { DivBaixar, DivContainer, DivDescricao, DivInferior, DivLojas, DivMediana, DivSuperior, DivTextos, H1Titulo, H2Titulo, ImgAppStore, ImgCelulares, ImgPlayStore, ImgTrabalhador } from './styled';
+import foto from "../../assets/cozinhar-comida-em-uma-cacarola-quente.png"
+import playstore from "../../assets/playStore.svg"
+import appstore from "../../assets/appstore.svg"
+import trabalhador from "../../assets/trabalhador.svg"
+import celulares from "../../assets/celulares.svg"
+import { PDescricao } from '../Home/styled';
+import { CPButtonG } from '../../componentes/Buttons/CPButtonG';
 
 export function Home() {
   function clickado() {
@@ -20,31 +16,40 @@ export function Home() {
 
   return (
     <DivContainer>
-      
-      <CPButtonG
-        title="Button P"
-        onClick={clickado}
-        variantType='secundario'
-      />
-      <CPButtonM
-        title="Button M"
-        onClick={clickado}
-        color="black"
-        textColor="white"
-        borderColor="black"
-        borderWidth={2}
-      />
-      <CPButtonP
-        title="Button G"
-        onClick={clickado}
-        variantType='primario'
 
-      />
-      
+      {/* <CPHeader1>
 
-      
+      </CPHeader1> */}
+      <CPCardCategory categoria='Pedreiro' uriFoto={foto}></CPCardCategory>
+      <DivSuperior>
+        <DivMediana>
+          <DivDescricao>
+            <DivTextos>
+              <H1Titulo>Encontre o serviço que você procura!</H1Titulo>
+              <PDescricao>Aqui você descobre prestadores de serviço qualificados para resolver qualquer necessidade, seja ela grande ou pequena. Acesse as categorias e encontre o o serviço ideal para você!</PDescricao>
+            </DivTextos>
+            <CPButtonG title='Encontrar prestador' variantType='primario' onClick={clickado}></CPButtonG>
+          </DivDescricao>
+          <ImgTrabalhador src={trabalhador} alt="Homem com roupa de trabalho" />
+        </DivMediana>
+      </DivSuperior>
+
+      <DivInferior>
+        <ImgCelulares src={celulares} alt="Homem com roupa de trabalho" />
+        <DivBaixar>
+          <H2Titulo>Baixe nosso aplicativo
+            mobile e acesse na palma da mão</H2Titulo>
+          <DivLojas>
+            <ImgPlayStore src={playstore} alt="Homem com roupa de trabalho" />
+            <ImgAppStore src={appstore} alt="Homem com roupa de trabalho" />
+          </DivLojas>
+        </DivBaixar>
+      </DivInferior>
+
+      {/* <CPFooter></CPFooter> */}
+
     </DivContainer>
   );
 
-  
+
 }

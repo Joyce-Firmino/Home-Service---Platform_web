@@ -8,25 +8,10 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle/>
-      {/* <Home /> */}
-      <Login />
+      <Home />
+      {/* <Login /> */}
     </ThemeProvider>
   )
 }
 
 export default App;
-
-
-
-
-// import { Home } from "./pages/index";
-
-
-// function App() {
-
-//   return (
-//     <Home />
-//   )
-// }
-
-// export default App
