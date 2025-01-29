@@ -1,30 +1,27 @@
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { register } from 'swiper/element/b';
 
-import { 
-  CarouselProvider, 
-  Slider, 
-  Slide, 
-  ButtonBack, 
-  ButtonNext 
-} from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
-import { CPCardCategory } from '../../Cards/CPCardAnuncioCategoryZ copy';
+register();
 
-
-export function CPCarrossel( ) {
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+export default () => {
   return (
-    <CarouselProvider
-      naturalSlideWidth={100}
-      naturalSlideHeight={125}
-      totalSlides={3}
-      infinite
+    <Swiper
+      spaceBetween={50}
+      slidesPerView={3}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
     >
-      <Slider>
-        <Slide index={0}><CPCardCategory categoria='dede' uriFoto=''/></Slide>
-        <Slide index={1}>I am the second Slide.</Slide>
-        <Slide index={2}>I am the third Slide.</Slide>
-      </Slider>
-      <ButtonBack>Back</ButtonBack>
-      <ButtonNext>Next</ButtonNext>
-    </CarouselProvider>
+      <SwiperSlide>Slide 1</SwiperSlide>
+      <SwiperSlide>Slide 2</SwiperSlide>
+      <SwiperSlide>Slide 3</SwiperSlide>
+      <SwiperSlide>Slide 4</SwiperSlide>
+      ...
+    </Swiper>
   );
 };

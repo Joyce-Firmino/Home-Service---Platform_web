@@ -87,7 +87,6 @@ export const PCopy = styled.p`
     font-weight: bold;
     font-weight: normal;
     font-style: normal;
-    text-align: center;
 `;
 
 export const DivLogo = styled.div`
