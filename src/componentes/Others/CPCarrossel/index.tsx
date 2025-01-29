@@ -1,27 +1,24 @@
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { register } from 'swiper/element/b';
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
+import { ReactNode } from 'react';
+import { Navigation, Pagination } from 'swiper/modules';
 
-register();
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-export default () => {
+import 'swiper/swiper-bundle.css'; // Para versões mais antigas
+
+import './style.css'
+
+interface SliderProps{
+    settings: SwiperProps;
+    children: ReactNode;
+    className?: string
+}
+
+
+
+
+export default function CPCarrossel ({settings, children}: SliderProps) {
   return (
-    <Swiper
-      spaceBetween={50}
-      slidesPerView={3}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
-      ...
-    </Swiper>
+    <Swiper modules={[Navigation, Pagination]} {...settings} className='Swiper'>{children}  </Swiper>
   );
 };

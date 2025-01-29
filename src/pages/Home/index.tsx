@@ -1,20 +1,18 @@
 import { CPCardCategory } from '../../componentes/Cards/CPCardAnuncioCategoryZ copy';
 import { CPHeader1 } from '../../componentes/Others/CPHeader';
 import { DivBaixar, DivContainer, DivDescricao, DivInferior, DivLojas, DivMediana, DivTextos, H1Titulo, H2Titulo, ImgAppStore, ImgCelulares, ImgPlayStore, ImgTrabalhador } from './styled';
-import foto from "../../assets/cozinhar-comida-em-uma-cacarola-quente.png"
 import playstore from "../../assets/playStore.svg"
 import appstore from "../../assets/appstore.svg"
 import trabalhador from "../../assets/trabalhador.svg"
 import celulares from "../../assets/celulares.svg"
 import { PDescricao } from '../Home/styled';
 import { CPButtonG } from '../../componentes/Buttons/CPButtonG';
-
 import { CPFooter } from '../../componentes/Others/CPFooter';
-// import { CPCarrosel } from '../../componentes/Others/CPCarrossel';
-import SimpleSlider from '../../componentes/Others/CPCarrossel';
+import CPCarrossel from '../../componentes/Others/CPCarrossel';
+import { SwiperProps, SwiperSlide } from 'swiper/react';
 
 
-// import 'swiper/css';
+import './style.css';
 
 
 export function Home() {
@@ -22,10 +20,57 @@ export function Home() {
     alert('Clicado!');
   }
 
+  const settings: SwiperProps = {
+    navigation: false,
+    autoHeight: false,
+    loop: true,
+    breakpoints: {
+      429: {
+        slidesPerView: 4,
+      },
+      768: {
+        slidesPerView: 5,
+      },
+      1024: {
+        slidesPerView: 6,
+      },
+    },
+    className: "carrossel"
+
+  };
+
   return (
     <DivContainer>
 
       <CPHeader1 iniciais='JV' name='Jose Vieira' variantType='primario'></CPHeader1>
+      <CPCarrossel settings={settings} >
+
+        <SwiperSlide>
+          <CPCardCategory categoria='Cozinheiro' uriFoto=''/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <CPCardCategory categoria='Cozinheiro' uriFoto=''/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <CPCardCategory categoria='Cozinheiro' uriFoto=''/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <CPCardCategory categoria='Cozinheiro' uriFoto=''/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <CPCardCategory categoria='Cozinheiro' uriFoto=''/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <CPCardCategory categoria='Cozinheiro' uriFoto=''/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <CPCardCategory categoria='Cozinheiro' uriFoto=''/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <CPCardCategory categoria='Cozinheiro' uriFoto=''/>
+        </SwiperSlide>
+      </CPCarrossel>
+      
       <DivMediana>
         <DivDescricao>
           <DivTextos>
