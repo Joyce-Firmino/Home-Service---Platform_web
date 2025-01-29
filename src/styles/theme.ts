@@ -19,6 +19,7 @@ export const defaultTheme = {
         m: 18,
         g: 24,
         g1: 30,
+        g2: 32,
         gg: 36,
         ex:40,
         exg:42

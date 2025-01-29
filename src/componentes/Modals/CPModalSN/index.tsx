@@ -21,19 +21,16 @@ export function CPModalSN({ icone, titulo, menssagem }: CustomModalProps) {
           <PMsg>{menssagem}</PMsg>
           <DivButtonContainer>
             <CPButtonP
-              color="#fff"
-              onClick={clickado}
-              textColor="#564caf"
-              title="Não"
-              borderColor="#564caf"
-              borderWidth={1}
+            onClick={clickado}
+            title="Não"
+            variantType="primario"
+            key={1}
             />
-
             <CPButtonP
-              color="#564caf"
-              onClick={clickado}
-              textColor="#fff"
-              title="Sim"
+            onClick={clickado}
+            title="Sim"
+            variantType="secundario"
+            key={1}
             />
           </DivButtonContainer>
         </DivText>
