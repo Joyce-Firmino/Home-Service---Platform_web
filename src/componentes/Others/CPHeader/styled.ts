@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import breakpoints from "../../../breakPoints";
 
+interface HeaderProps {
+  variantType: string;
+}
+
 export const DivContainer = styled.div`
   display: flex;
   height: 104px;
@@ -39,8 +43,8 @@ export const DivLogo = styled.div`
 `;
 
 export const ImgLogo = styled.img`
-  width: 74px;
-  height: 70px;
+  width: 65px;
+  height: 61px;
 
   @media (${breakpoints.tablet}px) {
     width: 50px;
@@ -61,14 +65,17 @@ export const H1Title = styled.h1`
   }
 `;
 
-export const DivCategorias = styled.div`
+export const DivCategorias = styled.div<HeaderProps>`
   display: flex;
   align-items: center;
-  gap: 35px;
+  gap: 30px;
+
+  gap: ${({ variantType }) =>
+    variantType === "primario" ? 30 : variantType === "secundario" ? 15 : 30}px;
+
 
   @media (${breakpoints.mobile}px) {
     display: none;
-    gap: 500px;
   }
 `;
 
@@ -113,27 +120,24 @@ export const PWelcome = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0;
 
   @media (${breakpoints.mobile}px) {
-    flex-direction: row;
-    align-items: flex-start;
   }
 `;
 
 export const CPProfileWrapper = styled.div`
 
   @media (${breakpoints.mobile}px) {
-    display: none;  /* Oculta o CPProfile no mobile */
-    width: 100px;
-    height: 100px;
-    background-color: aquamarine;
+   
+
   }
 `;
 
 export const PCabecalho = styled.p`
-  font-size: ${(props) => props.theme.FONTSIZE.g}px;
+  font-size: 20px;
   color: ${(props) => props.theme.COLORS.white};
-  font-weight: bold;
+  font-weight: normal;
 
   @media (${breakpoints.mobile}px) {
     font-size: ${(props) => props.theme.FONTSIZE.p}px;
@@ -141,8 +145,16 @@ export const PCabecalho = styled.p`
 `;
 
 // Menu Hamburguer
-export const HamburgerMenu = styled.div`
-  display: none;
+export const HamburgerMenu = styled.div<HeaderProps>`
+    ${({ variantType }) =>
+    variantType === "primario" &&
+    `
+    @media (${breakpoints.mobile}px) {
+      display: flex;
+    }
+  `}
+
+  display: none; /* Deixe flex por padrão */
   flex-direction: column;
   gap: 6px;
   cursor: pointer;
@@ -153,10 +165,16 @@ export const HamburgerMenu = styled.div`
     background-color: ${(props) => props.theme.COLORS.white};
     border-radius: 2px;
   }
+  
 
-  @media (${breakpoints.mobile}px) {
-    display: flex;
-  }
+  /* Se for 'secundaria', esconde no mobile */
+  ${({ variantType }) =>
+    variantType === "secundario" &&
+    `
+    @media (${breakpoints.mobile}px) {
+      display: none;
+    }
+  `}
 `;
 
 // Menu Mobile

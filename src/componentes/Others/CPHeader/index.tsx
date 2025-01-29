@@ -27,8 +27,7 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
                 </DivLogo>
 
                 {/* Categorias Desktop */}
-                <DivCategorias>
-                    <PCategoria>Home</PCategoria>
+                <DivCategorias variantType={variantType} >
                     {variantType === "primario" && (
                         <>
                             <PCategoria>Cadastro</PCategoria>
@@ -49,7 +48,7 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
                 </DivCategorias>
 
                 {/* Menu Hamburguer Mobile */}
-                <HamburgerMenu onClick={toggleMenu}>
+                <HamburgerMenu onClick={toggleMenu} variantType={variantType}>
                     <span />
                     <span />
                     <span />
