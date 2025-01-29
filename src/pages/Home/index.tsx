@@ -24,6 +24,8 @@ export function Home() {
 
   return (
     <DivContainer>
+
+      <CPHeader1 iniciais='JV' name='Jose Vieira' variantType='primario'></CPHeader1>
       <DivMediana>
         <DivDescricao>
           <DivTextos>
@@ -32,7 +34,8 @@ export function Home() {
           </DivTextos>
           <CPButtonG title='Encontrar prestador' variantType='primario' onClick={clickado}></CPButtonG>
         </DivDescricao>
-        <ImgTrabalhador src={trabalhador} alt="Homem com roupa de trabalho" />      </DivMediana>
+        <ImgTrabalhador src={trabalhador} alt="Homem com roupa de trabalho" />
+      </DivMediana>
 
       <DivInferior>
         <ImgCelulares src={celulares} alt="Homem com roupa de trabalho" />

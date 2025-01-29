@@ -2,9 +2,13 @@ import styled from "styled-components";
 import breakpoints from "../../../breakPoints";
 
 export const DivContainer = styled.div`
-  height: 124px;
+  display: flex;
+  height: 104px;
   width: 100%;
   background-color: ${(props) => props.theme.COLORS.purple700};
+  align-items: center;
+  justify-content: center;
+
 
   @media (${breakpoints.tablet}px) {
     width: 100%;
@@ -12,15 +16,16 @@ export const DivContainer = styled.div`
 
   @media (${breakpoints.mobile}px) {
     width: 100%;
+    height: 85px;
   }
 `;
 
 export const DivBloco = styled.div`
   display: flex;
-  height: 124px;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
+  padding: 0 25px;
+  width: 1300px;
 
   @media (${breakpoints.mobile}px) {
     justify-content: space-between;
@@ -36,6 +41,15 @@ export const DivLogo = styled.div`
 export const ImgLogo = styled.img`
   width: 74px;
   height: 70px;
+
+  @media (${breakpoints.tablet}px) {
+    width: 50px;
+    height: auto;
+  }
+  @media (${breakpoints.mobile}px) {
+    width: 40px;
+    height: auto;
+  }
 `;
 
 export const H1Title = styled.h1`
@@ -43,14 +57,14 @@ export const H1Title = styled.h1`
   font-size: ${(props) => props.theme.FONTSIZE.g}px;
 
   @media (${breakpoints.mobile}px) {
-    display: none;
+    font-size: ${(props) => props.theme.FONTSIZE.m}px;
   }
 `;
 
 export const DivCategorias = styled.div`
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 35px;
 
   @media (${breakpoints.mobile}px) {
     display: none;
@@ -58,10 +72,36 @@ export const DivCategorias = styled.div`
   }
 `;
 
+
+
+export const DivMenu = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+    
+
+  @media (${breakpoints.mobile}px) {
+  }
+
+  svg {
+    color: ${(props) => props.theme.COLORS.white};
+  }
+
+`;
+
+export const IIcon = styled.i`
+font-family: 'Material Symbols Outlined', sans-serif;
+font-weight: normal;
+font-style: normal;
+font-size: 20px;
+color: ${props => props.theme.COLORS.white};
+`;
+
 export const PCategoria = styled.p`
-  font-size: ${(props) => props.theme.FONTSIZE.g}px;
+  font-size: 20px;
   color: ${(props) => props.theme.COLORS.white};
-  font-weight: bold;
+  font-weight: normal;
 
   @media (${breakpoints.mobile}px) {
     font-size: ${(props) => props.theme.FONTSIZE.p}px;
@@ -104,12 +144,12 @@ export const PCabecalho = styled.p`
 export const HamburgerMenu = styled.div`
   display: none;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
   cursor: pointer;
 
   span {
     width: 30px;
-    height: 3px;
+    height: 4px;
     background-color: ${(props) => props.theme.COLORS.white};
     border-radius: 2px;
   }
@@ -121,20 +161,22 @@ export const HamburgerMenu = styled.div`
 
 // Menu Mobile
 export const MobileMenu = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100%;
-  background: ${(props) => props.theme.COLORS.purple700};
-  z-index: 1001;
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-  gap: 20px;
+  display: none;
 
-  @media (${breakpoints.mobile}px) {
+
+@media (${breakpoints.mobile}px) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    background: ${(props) => props.theme.COLORS.purple700};
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    gap: 20px;
     display: flex;
   }
 `;
@@ -152,13 +194,17 @@ export const CloseButton = styled.div`
 
 // Fundo Preto Transparente
 export const Backdrop = styled.div`
-  position: fixed;
+  display: none;
+ 
+  @media (${breakpoints.mobile}px) {
+    display: flex;
+    position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5); /* Transparência */
-  z-index: 1000; /* Camada abaixo do menu */
+  z-index: 1000; /* Camada abaixo do menu */  }
 `;
 
 

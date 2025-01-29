@@ -1,9 +1,9 @@
 import foto from "../../../assets/logoBranca.png";
 import { CPProfile } from "../CPProfile";
 
-import { DivBloco, DivContainer, DivLogo, ImgLogo, H1Title, DivCategorias, PCategoria, PWelcome, PCabecalho, HamburgerMenu, MobileMenu, CloseButton, Backdrop, CPProfileWrapper } from "./styled";
+import { DivBloco, DivContainer, DivLogo, ImgLogo, H1Title, DivCategorias, PCategoria, PWelcome, PCabecalho, HamburgerMenu, MobileMenu, CloseButton, Backdrop, CPProfileWrapper, DivMenu, IIcon } from "./styled";
 import { useState } from "react";
-import { AiOutlineClose } from "react-icons/ai"; // Ícone de fechar
+import { AiFillEdit, AiOutlineClose, AiOutlineHome, AiOutlineLogin, AiOutlineProfile } from "react-icons/ai"; // Ícone de fechar
 
 interface CustomHeaderProps {
     name: string;
@@ -65,11 +65,20 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
                     <CloseButton onClick={toggleMenu}>
                         <AiOutlineClose size={24} />
                     </CloseButton>
-                    <PCategoria>Home</PCategoria>
+                    <DivMenu>
+                        <IIcon>home</IIcon>
+                        <PCategoria>Home</PCategoria>
+                    </DivMenu>
                     {variantType === "primario" && (
                         <>
-                            <PCategoria>Cadastro</PCategoria>
-                            <PCategoria>Fazer Login</PCategoria>
+                            <DivMenu>
+                                <IIcon>person</IIcon>
+                                <PCategoria>Cadastro</PCategoria>
+                            </DivMenu>
+                            <DivMenu>
+                                <IIcon>login</IIcon>
+                                <PCategoria>Fazer Login</PCategoria>
+                            </DivMenu>
                         </>
                     )}
                     {variantType === "secundario" && (

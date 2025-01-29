@@ -20,7 +20,7 @@ export const DivMediana = styled.div`
   flex-direction: row;
   gap: 45px;
   justify-content: center;
-  padding-bottom: 30px;
+  padding: 40px 0;
   
   @media (${breakpoints.tablet}px) {
   gap: 10px;
