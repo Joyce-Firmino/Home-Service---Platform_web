@@ -9,10 +9,6 @@ export const DivContainer = styled.div`
   background-color: ${props => props.theme.COLORS.purple200};
   width: 100%;
   height: 100%;
-
-  @media (max-width: 500px) {
-    width: 430px;
-  }
 `;
 
 export const DivMediana = styled.div`
@@ -54,13 +50,13 @@ export const DivDescricao = styled.div`
 
 export const DivTextos = styled.div`
   display: flex;
-  flex-direction: column ;
+  flex-direction: column;
   width: 659px;
   gap: 10px;
+  align-items: center;
+  padding: 35px 0;
 
-  
   @media (${breakpoints.tablet}px) {
-  width: 559px;
 
   }
 
@@ -74,13 +70,12 @@ export const DivTextos = styled.div`
 
 
 export const H1Titulo = styled.h1`
-  font-size: ${props => props.theme.FONTSIZE.exg}px;
+  font-size: ${props => props.theme.FONTSIZE.gg}px;
   color: ${props => props.theme.COLORS.purple700};
   
   @media (${breakpoints.tablet}px) {
-  font-size: ${props => props.theme.FONTSIZE.gg}px;
+  font-size: ${props => props.theme.FONTSIZE.g}px;
 
-   width: 500px;
 
   }
 
@@ -92,10 +87,10 @@ export const H1Titulo = styled.h1`
 export const PDescricao = styled.p`
   font-size: ${props => props.theme.FONTSIZE.g}px;
   color: ${props => props.theme.COLORS.purple700};
-  align-items: center;
-  text-align: center;
-
+  width: 629px;
+  
   @media (${breakpoints.tablet}px) {
+    text-align: center;
   font-size: 22px;
 
 
@@ -106,38 +101,21 @@ export const PDescricao = styled.p`
   } 
 `;
 
-export const ImgTrabalhador = styled.img`
-  width: 464px;
-  
-  @media (${breakpoints.tablet}px) {
-  width: 300px;
 
-  }
-
-  @media (${breakpoints.mobile}px)  {
-    width: 350px;
-
-  } 
-`;
-
-
-export const DivInferior = styled.div`
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   background-color: #CAC6E7;
-   padding: 15px 0;
-   gap: 120px;
-   width: 100%;
+export const DivGridContainer = styled.div`
+   display: grid;
+   grid-template-columns: repeat(3, minmax(400px, 1fr));;
+   gap: 20px;
    justify-content: center;
+   align-items: center;
+   padding-bottom: 80px;
   
   @media (${breakpoints.tablet}px) {
-   gap: 12px;
-
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
   }
 
   @media (${breakpoints.mobile}px)  {
-   gap: 7px;
+    grid-template-columns: repeat(1, minmax(250px, 1fr));
 
   } 
 `;

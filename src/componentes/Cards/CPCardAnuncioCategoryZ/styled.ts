@@ -18,12 +18,12 @@
 
   
     @media (${breakpoints.tablet}px) {
-      width: 290px;
-      padding: 15px;
+      width: 340px;
     }
   
     @media (${breakpoints.mobile}px) {
-      width: 367px;
+      min-width: 367px;
+      width: 80vw;
       height: 166px;
       padding: 0;
       flex-direction: row;
@@ -111,11 +111,11 @@ export const DivTextos = styled.div`
     color: ${props => props.theme.COLORS.purple700};
     margin-top: 15px;
   
-    @media (max-width: 768px) {
+    @media (${breakpoints.mobile}px) {
       font-size: 1.2rem;
     }
   
-    @media (max-width: 431px) {
+    @media (${breakpoints.mobile}px) {
       font-size: 1rem;
       margin-top: 0px;
     }
@@ -125,11 +125,11 @@ export const DivTextos = styled.div`
     font-size: 1rem;
     color: ${props => props.theme.COLORS.purple400};
   
-    @media (max-width: 768px) {
+    @media (${breakpoints.mobile}px) {
       font-size: 0.9rem;
     }
   
-    @media (max-width: 431px) {
+    @media (${breakpoints.mobile}px) {
       font-size: 0.8rem;
     }
   `;
@@ -139,12 +139,12 @@ export const DivTextos = styled.div`
     height: 100px;
     object-fit: cover;
   
-    @media (max-width: 768px) {
+    @media (${breakpoints.mobile}px) {
       width: 130px;
       height: 130px;
     }
   
-    @media (max-width: 431px) {
+    @media (${breakpoints.mobile}px) {
       width: 80px;
       height: 80px;
     }
@@ -156,7 +156,7 @@ export const DivTextos = styled.div`
     align-items: flex-start;
     margin-top: 22px;
 
-    @media (max-width: 431px) {
+    @media (${breakpoints.mobile}px) {
       margin-top: 0;
 
     }
@@ -169,7 +169,7 @@ export const DivTextos = styled.div`
     gap: 5px;
     flex-wrap: wrap;
   
-    @media (max-width: 431px) {
+    @media (${breakpoints.mobile}px) {
       gap: 3px;
     }
   `;
@@ -187,11 +187,11 @@ export const DivTextos = styled.div`
     margin: 5px;
     font-size: 0.9rem;
   
-    @media (max-width: 768px) {
+    @media (${breakpoints.mobile}px) {
       font-size: 0.8rem;
     }
   
-    @media (max-width: 431px) {
+    @media (${breakpoints.mobile}px) {
       font-size: 0.7rem;
     }
   `;

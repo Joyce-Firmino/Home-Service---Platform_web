@@ -1,13 +1,11 @@
 const size = {
-    mobile: '430',
-    tablet: '820',
-    desktop: '1010'
+    mobile: '700',
+    tablet: '1250',
 }
 
 const breakpoints = {
     mobile: `max-width: ${size.mobile}`,
     tablet: `max-width: ${size.tablet}`,
-    desktop: `max-width: ${size.desktop}`,
 }
 
 export default breakpoints

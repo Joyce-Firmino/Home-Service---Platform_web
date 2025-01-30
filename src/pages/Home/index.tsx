@@ -1,4 +1,4 @@
-import { CPCardCategory } from '../../componentes/Cards/CPCardAnuncioCategoryZ copy';
+import { CPCardCategory } from '../../componentes/Cards/CPCardCategory';
 import { CPHeader1 } from '../../componentes/Others/CPHeader';
 import { DivBaixar, DivContainer, DivDescricao, DivInferior, DivLojas, DivMediana, DivTextos, H1Titulo, H2Titulo, ImgAppStore, ImgCelulares, ImgPlayStore, ImgTrabalhador } from './styled';
 import playstore from "../../assets/playStore.svg"
