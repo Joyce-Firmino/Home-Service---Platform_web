@@ -15,9 +15,8 @@ interface CustomCategoryProps {
   category: string;
 }
 
-const category = "Categoria"
 
-export function Category({ }: CustomCategoryProps) {
+export function Category({ category }: CustomCategoryProps) {
   function clickado() {
     alert('Clicado!');
   }
@@ -43,6 +42,7 @@ export function Category({ }: CustomCategoryProps) {
         <CPCardAnuncioCategory city='São José de Piranhas' prestador='José Neto' email='josevieira@gmail.com' servico='Programador' telefone='(99) 9999999' uriFoto=''  ></CPCardAnuncioCategory>
         <CPCardAnuncioCategory city='São José de Piranhas' prestador='José Neto' email='josevieira@gmail.com' servico='Programador' telefone='(99) 9999999' uriFoto=''  ></CPCardAnuncioCategory>
         <CPCardAnuncioCategory city='São José de Piranhas' prestador='José Neto' email='josevieira@gmail.com' servico='Programador' telefone='(99) 9999999' uriFoto=''  ></CPCardAnuncioCategory>
+        
       </DivGridContainer>
       <CPFooter></CPFooter>
     </DivContainer>

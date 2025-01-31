@@ -10,8 +10,8 @@ function App() {
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle/>
       {/* <Home /> */}
-      {/* <Login /> */}
-      <Category/>
+      <Login />
+      {/* <Category category="Programador"/> */}
     </ThemeProvider>
   )
 }

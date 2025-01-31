@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import breakpoints from '../../../breakPoints';
 
-  export const DivContainer = styled.div`
+  export const  DivContainer = styled.div`
     background-color: ${props => props.theme.COLORS.white};
     display: flex;
     width: 330px;
@@ -19,11 +19,14 @@ import breakpoints from '../../../breakPoints';
     }
   
     @media (${breakpoints.mobile}px) {
-      width: 367px;
+      min-width: 367px;
+      width: 80vw;
       height: 166px;
       padding: 10px;
+      padding-left: 50px;
       flex-direction: row;
       justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       gap: 22px;
 

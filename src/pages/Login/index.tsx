@@ -1,13 +1,18 @@
+import { useState } from 'react';
 import { CPButtonG } from '../../componentes/Buttons/CPButtonG';
 import { CPInput02 } from '../../componentes/Inputs/CPInput02';
 import { CPInput03 } from '../../componentes/Inputs/CPInput03';
+import { CPInputEyePassword } from '../../componentes/Inputs/CPInputEyePassword';
 import { CPImagemLogin } from '../../componentes/Others/CPImagemLogin';
 import { DivContainer, DivInferior, DivInput, DivLateral, DivTitulo, H1Titulo, PDescricao } from './styled';
 
 export function Login() {
-  function clickado() {
+  function clicar() {
     alert('Clicado!');
   }
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
+
 
   return (
 
@@ -24,17 +29,18 @@ export function Login() {
               titulo='Email'
               placeholder='Digite aqui seu email'
               variantSize='grande'
+              onChange={setEmail}
             />
-            <CPInput02
+            <CPInputEyePassword
               titulo='Senha'
               placeholder='Digite sua senha'
-              icone='visibility_off'
               variantSize='grande'
+              onChange={setPassword}
             />
           </DivInput>
           <CPButtonG
             title="Login"
-            onClick={clickado}
+            onClick={clicar}
             variantType='primario'
           />
         </DivInferior>

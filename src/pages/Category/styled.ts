@@ -104,7 +104,7 @@ export const PDescricao = styled.p`
 
 export const DivGridContainer = styled.div`
    display: grid;
-   grid-template-columns: repeat(3, minmax(400px, 1fr));;
+   grid-template-columns: repeat(3, minmax(400px, 1fr));; //joyce deve colocar aqui o width do componente dela que é 330px
    gap: 20px;
    justify-content: center;
    align-items: center;
