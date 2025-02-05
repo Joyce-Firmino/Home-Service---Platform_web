@@ -13,13 +13,17 @@ import { SwiperProps, SwiperSlide } from 'swiper/react';
 
 
 import './style.css';
+import { useEffect, useState } from 'react';
+import { CategoriaDTO } from '../../dto/CategoriaDTO';
+import { api } from '../../api/axios';
+import { PrestadorDTO } from '../../dto/GetPrestadorDTO';
 
 
 export function Home() {
   //fazer a lógica de navegação
   const category = () => {
     // navigation.navigate("Category") 
-};
+  };
 
 
   const settings: SwiperProps = {
@@ -41,13 +45,55 @@ export function Home() {
 
   };
 
-  const dados = [
-    { id: 1, servico: "Programador", icone: "../../assets/cozinhar-comida-em-uma-cacarola-quente.png" },
-    { id: 2, servico: "Programador", icone: "../../assets/cozinhar-comida-em-uma-cacarola-quente.png" },
-    { id: 3, servico: "Programador", icone: "../../assets/cozinhar-comida-em-uma-cacarola-quente.png" },
-    { id: 4, servico: "Programador", icone: "../../assets/cozinhar-comida-em-uma-cacarola-quente.png" },
-    { id: 5, servico: "Programador", icone: "http://localhost:3005/files/categorias/e6f86b26e67701f418bdce2a8d799370-carrinho-de-bebe.png" },
-  ];
+  const [dadosCategoria, setDadosCategoria] = useState<CategoriaDTO[]>([]);
+  const [dadosPrestador, setDadosPrestador] = useState<PrestadorDTO[]>([]);
+  const [carregando, setCarregando] = useState<boolean>(false);
+
+  const buscarCategoria = async () => {
+    try {
+      console.log("response");
+      setCarregando(true);
+      const response = await api.get<CategoriaDTO[]>('/listCategorias');
+
+      console.log(response.data);
+
+      setDadosCategoria(response.data);
+    } catch (error) {
+      console.error('Erro ao carregar categorias:', error);
+      // Alert.alert('Erro', 'Não foi possível carregar os anúncios');
+    } finally {
+      setCarregando(false);
+    }
+  };
+
+  const buscarPrestador = async () => {
+    try {
+      const response = await api.get<PrestadorDTO[]>('/prestadorPerfil', {
+        // headers: {
+        //     Authorization: `Bearer ${authData.authData?.token}`,
+        //     email: authData.authData?.email
+        // }
+      });
+      console.log(response.data);
+      setDadosPrestador(response.data);
+    } catch (error) {
+      console.error('Erro ao carregar prestador:', error);
+      // Alert.alert('Erro', 'Não foi possível carregar os anúncios');
+    } finally {
+      setCarregando(false);
+    }
+  };
+
+  useEffect(() => {
+    buscarCategoria();
+    const interval = setInterval(() => {
+      buscarCategoria();
+    }, 30000); // Atualiza a cada 30 segundos
+
+    return () => clearInterval(interval);
+  }, []);
+
+
 
   const usuario = {
     id: 1, iniciais: "JV", name: "José Vieira"
@@ -59,15 +105,17 @@ export function Home() {
       <CPHeader1 iniciais={usuario.iniciais} name={usuario.name} variantType='secundario'></CPHeader1>
 
       <CPCarrossel settings={settings} >
-        {dados.map((dado) => (
+        {dadosCategoria.map((dado) => (
           <SwiperSlide key={dado.id}>
-            <CPCardCategory categoria={dado.servico} uriFoto={dado.icone} />
+            <a onClick={() => (console.log("Olá"))} href=''>
+              <CPCardCategory categoria={dado.servico} uriFoto={dado.icone} />
+            </a>
           </SwiperSlide>
         ))}
       </CPCarrossel>
 
       <DivMediana>
-        <DivDescricao>  
+        <DivDescricao>
           <DivTextos>
             <H1Titulo>Encontre o serviço que você procura!</H1Titulo>
             <PDescricao>Aqui você descobre prestadores de serviço qualificados para resolver qualquer necessidade, seja ela grande ou pequena. Acesse as categorias e encontre o o serviço ideal para você!</PDescricao>

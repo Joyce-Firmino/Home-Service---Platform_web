@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import breakpoints from '../../breakPoints';
 
-export const DivContainer = styled.div`
+export const DivRender = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,6 +9,17 @@ export const DivContainer = styled.div`
   background-color: ${props => props.theme.COLORS.purple200};
   width: 100%;
   height: 100%;
+  @media (${breakpoints.tablet}px) {
+
+  }
+
+  @media (${breakpoints.mobile}px)  {
+  } 
+`;
+
+export const DivContainer = styled.div`
+  background-color: ${props => props.theme.COLORS.purple200};
+
 `;
 
 export const DivMediana = styled.div`

@@ -21,6 +21,7 @@ export const DivMediana = styled.div`
   gap: 45px;
   justify-content: center;
   padding: 40px 0;
+  align-items: center;
   
   @media (${breakpoints.tablet}px) {
   gap: 10px;
