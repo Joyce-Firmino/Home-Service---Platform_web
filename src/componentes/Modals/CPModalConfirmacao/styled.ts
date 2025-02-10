@@ -11,6 +11,9 @@ export const DivContainer = styled.div`
   max-width: 504px;
   height: auto;
   border-radius: 20px;
+  border: solid 1.5px ${props => props.theme.COLORS.purple400};
+
+
 
   @media (${breakpoints.tablet}px){
     padding: 1rem;

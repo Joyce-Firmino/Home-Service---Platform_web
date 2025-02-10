@@ -94,16 +94,20 @@ export const PDescricao = styled.p`
   font-size: ${props => props.theme.FONTSIZE.g}px;
   color: ${props => props.theme.COLORS.purple700};
   align-items: center;
-  text-align: center;
+  text-align: left;
 
   @media (${breakpoints.tablet}px) {
   font-size: 22px;
+  width: 400px;
+
 
 
   }
 
   @media (${breakpoints.mobile}px)  {
     width: 354px;
+    text-align: center;
+
   } 
 `;
 

@@ -17,6 +17,20 @@ export const DivRender = styled.div`
   } 
 `;
 
+export const DivConteudo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: ${props => props.theme.COLORS.purple200};
+  @media (${breakpoints.tablet}px) {
+
+  }
+
+  @media (${breakpoints.mobile}px)  {
+  } 
+`;
+
 export const DivContainer = styled.div`
   background-color: ${props => props.theme.COLORS.purple200};
 

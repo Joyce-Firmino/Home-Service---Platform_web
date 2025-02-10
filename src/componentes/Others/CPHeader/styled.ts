@@ -116,6 +116,14 @@ export const PCategoria = styled.p`
 
 `;
 
+export const AClick = styled.a`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+`;
+
 export const PWelcome = styled.div`
   display: flex;
   flex-direction: column;

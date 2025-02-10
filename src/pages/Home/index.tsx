@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react';
 import { CategoriaDTO } from '../../dto/CategoriaDTO';
 import { api } from '../../api/axios';
 import { PrestadorDTO } from '../../dto/GetPrestadorDTO';
+import { useNavigate } from 'react-router';
 
 
 export function Home() {
@@ -48,6 +49,15 @@ export function Home() {
   const [dadosCategoria, setDadosCategoria] = useState<CategoriaDTO[]>([]);
   const [dadosPrestador, setDadosPrestador] = useState<PrestadorDTO[]>([]);
   const [carregando, setCarregando] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+
+  function navegarParaPaginaCategory() {
+    navigate(`/category`);
+  }
+  function navegarParaPaginaHome() {
+    navigate(`/`);
+  }
 
   const buscarCategoria = async () => {
     try {
@@ -102,12 +112,12 @@ export function Home() {
   return (
     <DivContainer>
 
-      <CPHeader1 iniciais={usuario.iniciais} name={usuario.name} variantType='secundario'></CPHeader1>
+      <CPHeader1 iniciais={usuario.iniciais} name={usuario.name} variantType='primario'></CPHeader1>
 
       <CPCarrossel settings={settings} >
         {dadosCategoria.map((dado) => (
           <SwiperSlide key={dado.id}>
-            <a onClick={() => (console.log("Olá"))} href=''>
+            <a onClick={navegarParaPaginaCategory} href=''>
               <CPCardCategory categoria={dado.servico} uriFoto={dado.icone} />
             </a>
           </SwiperSlide>
@@ -120,7 +130,7 @@ export function Home() {
             <H1Titulo>Encontre o serviço que você procura!</H1Titulo>
             <PDescricao>Aqui você descobre prestadores de serviço qualificados para resolver qualquer necessidade, seja ela grande ou pequena. Acesse as categorias e encontre o o serviço ideal para você!</PDescricao>
           </DivTextos>
-          <CPButtonG title='Encontrar prestador' variantType='primario' onClick={category}></CPButtonG>
+          <CPButtonG title='Encontrar prestador' variantType='primario' onClick={navegarParaPaginaCategory}></CPButtonG>
         </DivDescricao>
         <ImgTrabalhador src={trabalhador} alt="Homem com roupa de trabalho" />
       </DivMediana>

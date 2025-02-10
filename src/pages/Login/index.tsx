@@ -7,11 +7,13 @@ import { CPImagemLogin } from '../../componentes/Others/CPImagemLogin';
 import { DivContainer, DivInferior, DivInput, DivLateral, DivTitulo, H1Titulo, PDescricao } from './styled';
 
 export function Login() {
-  function clicar() {
-    alert('Clicado!');
+
+  const chamarSigIn = async () => {
+    const retorno
   }
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
+
 
 
   return (
@@ -40,7 +42,7 @@ export function Login() {
           </DivInput>
           <CPButtonG
             title="Login"
-            onClick={clicar}
+            onClick={chamarSigIn}
             variantType='primario'
           />
         </DivInferior>

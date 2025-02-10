@@ -21,12 +21,8 @@ export function CPModalConfirm({ icone, titulo, menssagem, variant }: CustomModa
           <PTitulo>{titulo}</PTitulo>
           <PMsg>{menssagem}</PMsg>
           <DivButtonContainer>
-            <CPButtonG
-              color="#564caf"
-              onClick={clickado}
-              textColor="#fff"
-              title="Continuar"
-            />
+            <CPButtonG title='Confirmar' variantType='primario' onClick={clickado}></CPButtonG>
+
           </DivButtonContainer>
         </DivText>
       </DivSubcontainer>

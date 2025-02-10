@@ -15,7 +15,8 @@ export function CPInput01({ titulo, placeholder, icone, variantSize, onChange }:
 
     return (
         <DivContainer>
-            <PTitulo>{titulo}</PTitulo>
+            <PTitulo>{titulo}</PTitulo> 
+            {/* alterar esse p para uma label   */}
             <DivSubContainer variantComponent={variantSize}>
                 <IIcon>{icone}</IIcon>
                 <Input variantComponent={variantSize} placeholder={placeholder} onChange={(e) => onChange(e.target.value)}></Input>

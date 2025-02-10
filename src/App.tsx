@@ -9,8 +9,8 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle/>
-      {/* <Home /> */}
-      <Login />
+      <Home />
+      {/* <Login /> */}
       {/* <Category category="Programador"/> */}
     </ThemeProvider>
   )

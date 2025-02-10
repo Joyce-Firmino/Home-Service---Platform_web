@@ -1,7 +1,8 @@
+import { useNavigate } from "react-router";
 import foto from "../../../assets/logoBranca.png";
 import { CPProfile } from "../CPProfile";
 
-import { DivBloco, DivContainer, DivLogo, ImgLogo, H1Title, DivCategorias, PCategoria, PWelcome, PCabecalho, HamburgerMenu, MobileMenu, CloseButton, Backdrop, CPProfileWrapper, DivMenu, IIcon } from "./styled";
+import { DivBloco, DivContainer, DivLogo, ImgLogo, H1Title, DivCategorias, PCategoria, PWelcome, PCabecalho, HamburgerMenu, MobileMenu, CloseButton, Backdrop, CPProfileWrapper, DivMenu, IIcon, AClick } from "./styled";
 import { useState } from "react";
 import { AiFillEdit, AiOutlineClose, AiOutlineHome, AiOutlineLogin, AiOutlineProfile } from "react-icons/ai"; // Ícone de fechar
 
@@ -18,31 +19,59 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const clicado = () => {
+        alert("Clicado")
+    }
+
+    const navigate = useNavigate();
+
+    function navegarParaPaginaHome() {
+        navigate(`/`);
+    }
+    function navegarParaPaginaPerfil() {
+        navigate(`/perfil`);
+    }
+    function navegarParaPaginaCadastro() {
+        navigate(`/cadastrar`);
+    }
+    function navegarParaPaginaLogin() {
+        navigate(`/login`);
+    }
+
+
     return (
         <DivContainer>
             <DivBloco>
-                <DivLogo>
-                    <ImgLogo src={foto} alt="Logomarca" />
-                    <H1Title>Home Service</H1Title>
-                </DivLogo>
+                <AClick onClick={navegarParaPaginaHome} href="">
+                    <DivLogo>
+                        <ImgLogo src={foto} alt="Logomarca" />
+                        <H1Title>Home Service</H1Title>
+                    </DivLogo>
+                </AClick>
 
                 {/* Categorias Desktop */}
                 <DivCategorias variantType={variantType} >
                     {variantType === "primario" && (
                         <>
-                            <PCategoria>Cadastro</PCategoria>
-                            <PCategoria>Fazer Login</PCategoria>
+                            <AClick onClick={navegarParaPaginaCadastro} href="">
+                                <PCategoria>Cadastro</PCategoria>
+                            </AClick>
+                            <AClick onClick={navegarParaPaginaLogin} href="">
+                                <PCategoria>Fazer Login</PCategoria>
+                            </AClick>
                         </>
                     )}
                     {variantType === "secundario" && (
                         <>
-                            <PWelcome>
-                                <PCabecalho>Bem vindo</PCabecalho>
-                                <PCabecalho>{name}</PCabecalho>
-                            </PWelcome>
-                            <CPProfileWrapper>
-                                <CPProfile variantType="secundario" iniciais={iniciais} />
-                            </CPProfileWrapper>
+                            <AClick onClick={navegarParaPaginaPerfil} href="">
+                                <PWelcome>
+                                    <PCabecalho>Bem vindo</PCabecalho>
+                                    <PCabecalho>{name}</PCabecalho>
+                                </PWelcome>
+                                <CPProfileWrapper>
+                                    <CPProfile variantType="secundario" iniciais={iniciais} />
+                                </CPProfileWrapper>
+                            </AClick>
                         </>
                     )}
                 </DivCategorias>
