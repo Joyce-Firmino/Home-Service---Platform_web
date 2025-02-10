@@ -2,10 +2,10 @@ import { DivContainer, H1Title } from "./styled";
 
 interface CustomProfileProps {
     iniciais: string;
-    variantType: "primario" | "secundario";
+    variantType: "primario" | "secundario" ;
 }
 
-export function CPProfile({ iniciais, variantType }: CustomProfileProps) {
+export function CPProfileP({ iniciais, variantType }: CustomProfileProps) {
     return (
         <DivContainer variantType={variantType}>
             <H1Title variantType={variantType}>

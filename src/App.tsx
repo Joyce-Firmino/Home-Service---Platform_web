@@ -4,6 +4,7 @@ import { GlobalStyle } from "./global";
 import {defaultTheme} from './styles/theme';
 import { Login } from "./pages/Login";
 import { Category } from "./pages/Category";
+import { Cadastro } from "./pages/Cadastro";
 function App() {
 
   return (
@@ -12,6 +13,9 @@ function App() {
       <Home />
       {/* <Login /> */}
       {/* <Category category="Programador"/> */}
+      {/* <Home /> */}
+      {/* <EncontrarPrestador/> */}
+      <Cadastro/>
     </ThemeProvider>
   )
 }

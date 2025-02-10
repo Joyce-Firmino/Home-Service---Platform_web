@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import foto from "../../../assets/logoBranca.png";
-import { CPProfile } from "../CPProfile";
+import { CPProfileP } from "../../Profiles/CPProfileP";
 
 import { DivBloco, DivContainer, DivLogo, ImgLogo, H1Title, DivCategorias, PCategoria, PWelcome, PCabecalho, HamburgerMenu, MobileMenu, CloseButton, Backdrop, CPProfileWrapper, DivMenu, IIcon, AClick } from "./styled";
 import { useState } from "react";
@@ -69,7 +69,7 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
                                     <PCabecalho>{name}</PCabecalho>
                                 </PWelcome>
                                 <CPProfileWrapper>
-                                    <CPProfile variantType="secundario" iniciais={iniciais} />
+                                    <CPProfileP variantType="secundario" iniciais={iniciais} />
                                 </CPProfileWrapper>
                             </AClick>
                         </>
@@ -115,7 +115,7 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
                                 <PCabecalho>Bem vindo</PCabecalho>
                                 <PCabecalho>{name}</PCabecalho>
                             </PWelcome>
-                            <CPProfile variantType="secundario" iniciais={iniciais} />
+                            <CPProfileP variantType="secundario" iniciais={iniciais} />
                         </>
                     )}
                 </MobileMenu>
