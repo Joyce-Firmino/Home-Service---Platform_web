@@ -10,6 +10,10 @@ import { Category } from './pages/Category/index.tsx'
 import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './styles/theme.ts'
 import { GlobalStyle } from './global.ts'
+import { AuthProvider } from './context/authContext.tsx'
+import { PrivateRoutes } from './styles/routes/PrivateRoutes.tsx'
+import { Teste } from './pages/Teste/index.tsx'
+// import { AuthProvider } from './context/authContext.tsx'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +25,10 @@ const router = createBrowserRouter([
     element: <Login />
   },
   {
+    path: "/teste",
+    element: <PrivateRoutes><Teste /></PrivateRoutes>
+  },
+  {
     path: "/category",
     element: <Category category='remover depois' />
   },
@@ -28,9 +36,11 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider theme={defaultTheme}>
-      <GlobalStyle />
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={defaultTheme}>
+        <GlobalStyle />
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </AuthProvider>
   </StrictMode>,
 )
