@@ -22,6 +22,8 @@ interface CustomCardProps {
   servico: string;
   descricao: string;
   pagamento: string;
+  atualizar: () => void;
+  excluir: () => void;
 }
 
 export function CPCardAnuncio({
@@ -29,6 +31,8 @@ export function CPCardAnuncio({
   servico,
   descricao,
   pagamento,
+  atualizar,
+  excluir,
 }: CustomCardProps) {
   return (
     <DivContainer>
@@ -55,12 +59,12 @@ export function CPCardAnuncio({
           <CPButtonPP
             title="Editar"
             variantType="secundario"
-            onClick={() => console.log("clique!")}
+            onClick={atualizar}
           ></CPButtonPP>
           <CPButtonPP
             title="Excluir"
             variantType="primario"
-            onClick={() => console.log("clique!")}
+            onClick={excluir}
           ></CPButtonPP>
         </DivGrupoBotao>
       </DivInferior>
