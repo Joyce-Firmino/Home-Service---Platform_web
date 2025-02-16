@@ -1,0 +1,9 @@
+.Swiper {
+    padding-top: 50px;
+    width: 100%;
+    gap: 10px;
+}
+
+@media (max-width: 430px) {
+
+}

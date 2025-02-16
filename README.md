@@ -32,3 +32,42 @@ A **Home Service Platform - Web** é a versão para navegadores do aplicativo **
 - 🌐 Axios
 
 ---
+
+Regra de nomeação:
+
+- sempre que for criar uma tag que use styled component, seguir a regra de nomeação a seguir: nome da tag começando em maiúsculo + nome escolhido -> Exemplo: DivContainer / PText / IIcon / SpanTitle ...
+
+- em relação aos componentes, sempre colocar o prefíxo CP antes do nome do componente -> Exemplo: CPButtonM / CPModal / CPCard ...
+
+Regra para organização da estilização:
+
+- Manter a mesma ordem do fluxo das tags contidas no arquivo .tsx para qual o styled.ts está sendo criado. Por exemplo:
+
+
+### index.tsx
+
+<DivInferior>
+    <DivInput>
+        <CPInput02
+            titulo='Senha'
+            placeholder='Digite sua senha'
+            icone='visibility_off'
+            variantSize='grande'
+        />
+    </DivInput>
+</DivInferior>
+
+### styled.ts
+
+export const DivInferior = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    align-items: center;
+`;
+
+export const DivInput = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+`;
