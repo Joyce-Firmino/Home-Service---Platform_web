@@ -10,9 +10,11 @@ interface Iprops {
 
 export function PrivateRoutes({ children }: Iprops) {
     const { authData } = useContext(AuthContext);
-    console.log(authData?.token)
-    const teste = false;
+
+    console.log(authData?.token + 'token privateroutes');
+    
+
     return (
-        authData?.token ? <>{children}</> : <Navigate to="/"></Navigate>
+        authData?.token ? <>{children}</> : <Navigate to="/login"></Navigate>
     )
 }

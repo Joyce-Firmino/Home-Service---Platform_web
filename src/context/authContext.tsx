@@ -18,10 +18,15 @@ interface AuthContextDTO {
     authData?: AuthData;
     signIn: (email: string, senha: string) => Promise<AuthData | undefined>;
     logOut: () => Promise<void>;
+    error: boolean;
+    setError: React.Dispatch<React.SetStateAction<boolean>>;
+    setAuthData: React.Dispatch<React.SetStateAction<AuthData | undefined>>
 }
 
 export function AuthProvider({ children }: Iprops) {
     const [authData, setAuthData] = useState<AuthData>();
+    const [error, setError] = useState(false);
+    
 
     async function signIn(email: string, senha: string): Promise<AuthData | undefined> {
         const usuario: UsuarioLogin = {
@@ -35,11 +40,13 @@ export function AuthProvider({ children }: Iprops) {
 
             // Salvando no estado e no AsyncStorage
             setAuthData(data);
-            
+            setError(false)
+
             return data;
         }
         catch (error: any) {
-            // Alert.alert('Erro 123', error.response?.data?.error || 'Erro');
+            // Alert.alert('Erro 123', error.response?.data?.error || 'Erro');            
+            setError(true)
             return undefined;
         }
     }
@@ -51,7 +58,7 @@ export function AuthProvider({ children }: Iprops) {
 
 
     return (
-        <AuthContext.Provider value={{ authData, signIn, logOut }}>
+        <AuthContext.Provider value={{ authData, signIn, logOut, error, setError, setAuthData}}>
             {children}
         </AuthContext.Provider>
     )

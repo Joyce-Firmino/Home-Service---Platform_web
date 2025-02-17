@@ -32,7 +32,7 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
         navigate(`/perfil`);
     }
     function navegarParaPaginaCadastro() {
-        navigate(`/cadastrar`);
+        navigate(`/cadastro`);
     }
     function navegarParaPaginaLogin() {
         navigate(`/login`);

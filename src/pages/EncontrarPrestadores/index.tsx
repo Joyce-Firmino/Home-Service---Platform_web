@@ -1,10 +1,17 @@
+import { useContext } from "react";
 import { CPCardPrestador } from "../../componentes/Cards/CPCardPrestador";
 import { CPFooter } from "../../componentes/Others/CPFooter";
 import { CPHeader1 } from "../../componentes/Others/CPHeader";
 import { DivCards, DivContainer, DivMedia, DivSubcontainer, DivTitulo, H1Titulo, PDescricao } from "./styled";
+import { AuthContext } from "../../context/authContext";
+
+
 
 
 export function EncontrarPrestador() {
+    const context = useContext(AuthContext)
+
+console.log(context.authData?.token);
     return (
         <DivContainer>
             <DivSubcontainer>

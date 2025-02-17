@@ -11,14 +11,15 @@ import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './styles/theme.ts'
 import { GlobalStyle } from './global.ts'
 import { AuthProvider } from './context/authContext.tsx'
+import { Cadastro } from './pages/Cadastro/index.tsx'
+import { EncontrarPrestador } from './pages/EncontrarPrestadores/index.tsx'
 import { PrivateRoutes } from './styles/routes/PrivateRoutes.tsx'
-import { Teste } from './pages/Teste/index.tsx'
 // import { AuthProvider } from './context/authContext.tsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />
+    element: <PrivateRoutes><Home /></PrivateRoutes>
   },
   {
     path: "/login",
@@ -26,11 +27,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/teste",
-    element: <PrivateRoutes><Teste /></PrivateRoutes>
+    element: <PrivateRoutes> <EncontrarPrestador /> </PrivateRoutes>
   },
   {
     path: "/category",
-    element: <Category category='remover depois' />
+    element: <PrivateRoutes><Category category='remover depois' /></PrivateRoutes>
   },
 ])
 
@@ -44,3 +45,5 @@ createRoot(document.getElementById('root')!).render(
     </AuthProvider>
   </StrictMode>,
 )
+
+// element: <PrivateRoutes> <Cadastro /> </PrivateRoutes>

@@ -7,10 +7,7 @@ export const DivContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: ${props => props.theme.COLORS.purple200};
-  width: 100%;
   height: 100vh;
-  gap: 100px;
-  padding: 0 85px 0 0;
 
   @media (${breakpoints.tablet}px) {
     padding: 0;
@@ -30,8 +27,7 @@ export const DivContainer = styled.div`
 `;
 
 export const DivImagem = styled.div`
-  width: 50%;
-  height: 100%;
+
   
 @media (${breakpoints.tablet}px) {
   width: 100%;
@@ -42,11 +38,11 @@ export const DivImagem = styled.div`
 
 export const DivLateral = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: flex-start;
-  width: 536px;
-  
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+  width: 100%;
+  height: 100%;
   @media (${breakpoints.tablet}px) {
     padding: 10px 0 250px 0;
   }
@@ -55,9 +51,16 @@ export const DivLateral = styled.div`
    padding: 0;
    justify-content: center;
    align-items: center;
+  }
+`
 
-}
+export const DivConteudo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
 `;
+
 export const DivTitulo = styled.div`
   display: flex;
   flex-direction: column;

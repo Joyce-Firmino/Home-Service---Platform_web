@@ -13,6 +13,7 @@ export const DivContainer = styled.div`
   width: 280px;
   height: 55px;
 
+
   @media (${breakpoints.tablet}px) {
     width: 230px;
     height: 50px;
@@ -32,6 +33,10 @@ export const Button = styled.button<ButtonProps>`
   align-items: center;
   cursor: pointer;
   font-weight: 500;
+  &:hover{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  }
+      
   
   background-color: ${({ variantType, theme }) =>
     variantType === "primario" ? theme.COLORS.purple700 : variantType === "secundario" ? theme.COLORS.white : "#ffffff"};
@@ -54,6 +59,7 @@ export const Button = styled.button<ButtonProps>`
 export const SpanTitleButton = styled.span`
   font-size: ${props => props.theme.FONTSIZE.m}px;
   font-family: var(--font-family-regular);
+
 
   @media (${breakpoints.tablet}px) {
     font-size: 0.9rem;

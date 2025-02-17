@@ -5,14 +5,42 @@ type CustomModalProps = {
   variantComponent: string;
 }
 
+export const DivSombra = styled.div`
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Transparência */
+    z-index: 1000; /* Camada abaixo do menu */  
+
+  @media (${breakpoints.tablet}px) {
+    margin-top: 2vh;
+  }
+
+  @media (${breakpoints.mobile}px)  {
+    margin-top: 2vh;
+    height: 9%;
+  }
+`;
+
 export const DivContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: fixed;
+
   background-color: ${props => props.theme.COLORS.white};
   width: 450px;
   max-width: 504px;
   height: auto;
   border-radius: 20px;
-  border: solid 1.5px ${props => props.theme.COLORS.purple400};
-
+  padding: 16px;
+  box-shadow: 0px 0px 0.7em 0px rgba(0, 0, 0, 0.19);
+  top: 25%;
+  left: 33%;
+  z-index: 1001;
 
 
   @media (${breakpoints.tablet}px){
@@ -49,7 +77,7 @@ export const IIcon = styled.i<CustomModalProps>`
   font-family: 'Material Symbols Outlined', sans-serif;
   font-weight: normal;
   font-style: normal;
-  font-size: 8vw;
+  font-size: 6vw;
   display: inline-block;
   vertical-align: middle;
   

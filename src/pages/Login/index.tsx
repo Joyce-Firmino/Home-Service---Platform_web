@@ -1,12 +1,13 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CPButtonG } from '../../componentes/Buttons/CPButtonG';
-import { CPInput02 } from '../../componentes/Inputs/CPInput02';
 import { CPInput03 } from '../../componentes/Inputs/CPInput03';
 import { CPInputEyePassword } from '../../componentes/Inputs/CPInputEyePassword';
 import { CPImagemLogin } from '../../componentes/Others/CPImagemLogin';
-import { DivContainer, DivInferior, DivInput, DivLateral, DivTitulo, H1Titulo, PDescricao } from './styled';
+import { DivContainer, DivConteudo, DivImagem, DivInferior, DivInput, DivLateral, DivTitulo, H1Titulo, PDescricao } from './styled';
 import { AuthContext } from '../../context/authContext';
 import { useNavigate } from 'react-router';
+import { CPModalConfirm } from '../../componentes/Modals/CPModalConfirmacao';
+
 
 export function Login() {
 
@@ -14,52 +15,64 @@ export function Login() {
 
   const navigate = useNavigate();
 
-  const chamarSigIn = async () => {
-    try {
-      const retorno = await authContext.signIn(email, password);
-    } catch (error) {
-
-    }
-    finally {
-      navigate(`/teste`);
-    }
-  }
+  useEffect(() => {
+    // authContext.setAuthData(undefined);
+  }, []);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
 
+  //FAZER ALGUMA LÓGICA PARA ZERAR O AUTHCONTEXT
+
+  const chamarSigIn = async () => {
+    try {
+      const retorno = await authContext.signIn(email, password);
+      navigate(`/teste`);
+
+
+
+    } catch (error) {
+
+    }
+  }
 
   return (
-
     <DivContainer>
-      <CPImagemLogin></CPImagemLogin>
+      {authContext.authData?.token && <p> token</p>}
+      {authContext.error && <CPModalConfirm icone='error' titulo='Erro' menssagem='Usuário ou senha inválidos!' variant='erro'></CPModalConfirm>}
+
+
+
+      <CPImagemLogin />
       <DivLateral>
-        <DivTitulo>
-          <H1Titulo>Login</H1Titulo>
-          <PDescricao>Preencha os dados para fazer o login</PDescricao>
-        </DivTitulo>
-        <DivInferior>
-          <DivInput>
-            <CPInput03
-              titulo='Email'
-              placeholder='Digite aqui seu email'
-              variantSize='grande'
-              onChange={setEmail}
+        <DivConteudo>
+          <DivTitulo>
+            <H1Titulo>Login</H1Titulo>
+            <PDescricao>Preencha os dados para fazer o login</PDescricao>
+          </DivTitulo>
+          <DivInferior>
+            <DivInput>
+              <CPInput03
+                titulo='Email'
+                placeholder='Digite aqui seu email'
+                variantSize='grande'
+                onChange={setEmail}
+              />
+              <CPInputEyePassword
+                titulo='Senha'
+                placeholder='Digite sua senha'
+                variantSize='grande'
+                onChange={setPassword}
+              />
+            </DivInput>
+            <CPButtonG
+              title="Login"
+              onClick={chamarSigIn}
+              variantType='primario'
             />
-            <CPInputEyePassword
-              titulo='Senha'
-              placeholder='Digite sua senha'
-              variantSize='grande'
-              onChange={setPassword}
-            />
-          </DivInput>
-          <CPButtonG
-            title="Login"
-            onClick={chamarSigIn}
-            variantType='primario'
-          />
-        </DivInferior>
+          </DivInferior>
+        </DivConteudo>
       </DivLateral>
 
     </DivContainer>
