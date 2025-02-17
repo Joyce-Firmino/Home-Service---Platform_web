@@ -1,40 +1,54 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 
-import App from './App.tsx'
+import App from "./App.tsx";
 
-import { createBrowserRouter, RouterProvider } from 'react-router'
-import { Home } from './pages/Home/index.tsx'
-import { Login } from './pages/Login/index.tsx'
-import { Category } from './pages/Category/index.tsx'
-import { ThemeProvider } from 'styled-components'
-import { defaultTheme } from './styles/theme.ts'
-import { GlobalStyle } from './global.ts'
-import { AuthProvider } from './context/authContext.tsx'
-import { PrivateRoutes } from './styles/routes/PrivateRoutes.tsx'
-import { Teste } from './pages/Teste/index.tsx'
+import { createBrowserRouter, RouterProvider } from "react-router";
+import { Home } from "./pages/Home/index.tsx";
+import { Login } from "./pages/Login/index.tsx";
+import { Category } from "./pages/Category/index.tsx";
+import { ThemeProvider } from "styled-components";
+import { defaultTheme } from "./styles/theme.ts";
+import { GlobalStyle } from "./global.ts";
+import { AuthProvider } from "./context/authContext.tsx";
+import { PrivateRoutes } from "./styles/routes/PrivateRoutes.tsx";
+import { Teste } from "./pages/Teste/index.tsx";
+import { Anuncio } from "./pages/Anuncio/index.tsx";
+import { CriarAnuncio } from "./pages/CriarAnuncio/index.tsx";
 // import { AuthProvider } from './context/authContext.tsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />
+    element: <Home />,
   },
   {
     path: "/login",
-    element: <Login />
+    element: <Login />,
+  },
+  {
+    path: "/anuncios",
+    element: <Anuncio />,
+  },
+  {
+    path: "/criarAnuncio",
+    element: <CriarAnuncio />,
   },
   {
     path: "/teste",
-    element: <PrivateRoutes><Teste /></PrivateRoutes>
+    element: (
+      <PrivateRoutes>
+        <Teste />
+      </PrivateRoutes>
+    ),
   },
   {
     path: "/category",
-    element: <Category category='remover depois' />
+    element: <Category category="remover depois" />,
   },
-])
+]);
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <AuthProvider>
       <ThemeProvider theme={defaultTheme}>
@@ -42,5 +56,5 @@ createRoot(document.getElementById('root')!).render(
         <RouterProvider router={router} />
       </ThemeProvider>
     </AuthProvider>
-  </StrictMode>,
-)
+  </StrictMode>
+);

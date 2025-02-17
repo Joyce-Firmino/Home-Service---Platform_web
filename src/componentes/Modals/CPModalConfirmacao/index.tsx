@@ -1,18 +1,29 @@
 import { CPButtonG } from "../../Buttons/CPButtonG";
-import { DivContainer, DivSubcontainer, IIcon, DivText, PTitulo, PMsg, DivButtonContainer } from './styled';
+import {
+  DivContainer,
+  DivSubcontainer,
+  IIcon,
+  DivText,
+  PTitulo,
+  PMsg,
+  DivButtonContainer,
+} from "./styled";
 
 type CustomModalProps = {
   icone: string;
   titulo: string;
   menssagem: string;
   variant: "sucesso" | "erro";
+  onClick: () => void;
 };
 
-function clickado() {
-  alert("Clicado");
-}
-
-export function CPModalConfirm({ icone, titulo, menssagem, variant }: CustomModalProps) {
+export function CPModalConfirm({
+  icone,
+  titulo,
+  menssagem,
+  variant,
+  onClick,
+}: CustomModalProps) {
   return (
     <DivContainer>
       <DivSubcontainer>
@@ -21,8 +32,11 @@ export function CPModalConfirm({ icone, titulo, menssagem, variant }: CustomModa
           <PTitulo>{titulo}</PTitulo>
           <PMsg>{menssagem}</PMsg>
           <DivButtonContainer>
-            <CPButtonG title='Confirmar' variantType='primario' onClick={clickado}></CPButtonG>
-
+            <CPButtonG
+              title="Confirmar"
+              variantType="primario"
+              onClick={onClick}
+            ></CPButtonG>
           </DivButtonContainer>
         </DivText>
       </DivSubcontainer>

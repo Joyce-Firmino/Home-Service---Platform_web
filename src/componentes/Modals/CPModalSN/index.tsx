@@ -1,17 +1,29 @@
 import { CPButtonP } from "../../Buttons/CPButtonP";
-import { DivContainer, DivSubcontainer, IIcon, DivText, PTitulo, PMsg, DivButtonContainer } from './styled';
+import {
+  DivContainer,
+  DivSubcontainer,
+  IIcon,
+  DivText,
+  PTitulo,
+  PMsg,
+  DivButtonContainer,
+} from "./styled";
 
 type CustomModalProps = {
   icone: string;
   titulo: string;
   menssagem: string;
+  botaoNao: () => void;
+  botaoSim: () => void;
 };
 
-function clickado() {
-  alert("Clicado");
-}
-
-export function CPModalSN({ icone, titulo, menssagem }: CustomModalProps) {
+export function CPModalSN({
+  icone,
+  titulo,
+  menssagem,
+  botaoNao,
+  botaoSim,
+}: CustomModalProps) {
   return (
     <DivContainer>
       <DivSubcontainer>
@@ -21,16 +33,16 @@ export function CPModalSN({ icone, titulo, menssagem }: CustomModalProps) {
           <PMsg>{menssagem}</PMsg>
           <DivButtonContainer>
             <CPButtonP
-            onClick={clickado}
-            title="Não"
-            variantType="primario"
-            key={1}
+              onClick={botaoNao}
+              title="Não"
+              variantType="primario"
+              key={1}
             />
             <CPButtonP
-            onClick={clickado}
-            title="Sim"
-            variantType="secundario"
-            key={1}
+              onClick={botaoSim}
+              title="Sim"
+              variantType="secundario"
+              key={1}
             />
           </DivButtonContainer>
         </DivText>
