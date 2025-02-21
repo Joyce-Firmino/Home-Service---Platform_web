@@ -1,6 +1,7 @@
 import { Children, createContext, useState } from "react";
 import { UsuarioLogin } from "../dto/usuarioLoginDTO";
 import { api } from "../api/axios";
+import { useCookies } from "react-cookie";
 
 export const AuthContext = createContext<AuthContextDTO>({} as AuthContextDTO);
 
@@ -26,7 +27,8 @@ interface AuthContextDTO {
 export function AuthProvider({ children }: Iprops) {
     const [authData, setAuthData] = useState<AuthData>();
     const [error, setError] = useState(false);
-    
+
+    const [cookies, setCookie, removeCookie] = useCookies(["authToken"]);    
 
     async function signIn(email: string, senha: string): Promise<AuthData | undefined> {
         const usuario: UsuarioLogin = {
@@ -39,9 +41,9 @@ export function AuthProvider({ children }: Iprops) {
             const data = response.data as AuthData;
 
             // Salvando no estado e no AsyncStorage
+            setCookie("authToken", data.token, { httpOnly: true });
             setAuthData(data);
             setError(false)
-
             return data;
         }
         catch (error: any) {
@@ -53,6 +55,7 @@ export function AuthProvider({ children }: Iprops) {
 
     async function logOut(): Promise<void> {
         setAuthData(undefined);
+        removeCookie('authToken');
     }
 
 

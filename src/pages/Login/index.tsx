@@ -7,11 +7,17 @@ import { DivContainer, DivConteudo, DivImagem, DivInferior, DivInput, DivLateral
 import { AuthContext } from '../../context/authContext';
 import { useNavigate } from 'react-router';
 import { CPModalConfirm } from '../../componentes/Modals/CPModalConfirmacao';
+import { useCookies } from 'react-cookie';
+
 
 
 export function Login() {
 
   const authContext = useContext(AuthContext);
+
+  const [cookies, setCookie] = useCookies(['cookieName']);
+
+
 
   const navigate = useNavigate();
 
@@ -28,9 +34,10 @@ export function Login() {
   const chamarSigIn = async () => {
     try {
       const retorno = await authContext.signIn(email, password);
+      setCookie('cookieName', authContext.authData?.token);
+
+      console.log(cookies.cookieName + " Token do cookie!");
       navigate(`/teste`);
-
-
 
     } catch (error) {
 

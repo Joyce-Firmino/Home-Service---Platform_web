@@ -52,9 +52,10 @@ export function Home() {
 
   const navigate = useNavigate();
 
-  function navegarParaPaginaCategory() {
-    navigate(`/category`);
+  function navegarParaPaginaCategory(id: string): void {
+    navigate(`/anunciosCategoria/${id}`);
   }
+
   function navegarParaPaginaHome() {
     navigate(`/`);
   }
@@ -117,9 +118,9 @@ export function Home() {
       <CPCarrossel settings={settings} >
         {dadosCategoria.map((dado) => (
           <SwiperSlide key={dado.id}>
-            <a onClick={navegarParaPaginaCategory} href=''>
+            <button onClick={() => navegarParaPaginaCategory(dado.id)}>
               <CPCardCategory categoria={dado.servico} uriFoto={dado.icone} />
-            </a>
+            </button>
           </SwiperSlide>
         ))}
       </CPCarrossel>
@@ -130,7 +131,7 @@ export function Home() {
             <H1Titulo>Encontre o serviço que você procura!</H1Titulo>
             <PDescricao>Aqui você descobre prestadores de serviço qualificados para resolver qualquer necessidade, seja ela grande ou pequena. Acesse as categorias e encontre o o serviço ideal para você!</PDescricao>
           </DivTextos>
-          <CPButtonG title='Encontrar prestador' variantType='primario' onClick={navegarParaPaginaCategory}></CPButtonG>
+          <CPButtonG title='Encontrar prestador' variantType='primario' onClick={() => console.log('d')}></CPButtonG>
         </DivDescricao>
         <ImgTrabalhador src={trabalhador} alt="Homem com roupa de trabalho" />
       </DivMediana>
