@@ -7,17 +7,22 @@ interface CustomProfileProps {
 
 export const DivContainer = styled.div<CustomProfileProps>`
   background-color: ${({ variantType, theme }) =>
-    variantType === "primario" ? theme.COLORS.purple700 : theme.COLORS.white};
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
+    variantType === "primario" ? theme.COLORS.purple600 : theme.COLORS.white};
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  @media (${breakpoints.mobile}px) {
-    width: 110px;
-    height: 110px;
+  @media (${breakpoints.tablet}px) {
+    width: 130px;
+    height: 130px;
+  }
+  
+  @media (${breakpoints.mobile}px)  {
+    width: 100px;
+    height: 100px;
   }
 `;
 

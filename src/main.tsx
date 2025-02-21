@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import App from "./App.tsx";
+
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import { Home } from './pages/Home/index.tsx'
 import { Login } from './pages/Login/index.tsx'
@@ -10,18 +11,19 @@ import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './styles/theme.ts'
 import { GlobalStyle } from './global.ts'
 import { AuthProvider } from './context/authContext.tsx'
-import { Cadastro } from './pages/Cadastro/index.tsx'
 import { EncontrarPrestador } from './pages/EncontrarPrestadores/index.tsx'
-import { PrivateRoutes } from "./styles/routes/PrivateRoutes.tsx";
+import { PrivateRoutes } from './routes/PrivateRoutes.tsx'
 import { Teste } from "./pages/Teste/index.tsx";
 import { Anuncio } from "./pages/Anuncio/index.tsx";
+import { Cadastro } from "./pages/Cadastro/index.tsx";
+import { Profile } from "./pages/Profile/index.tsx";
 import { CookiesProvider } from "react-cookie";
 // import { AuthProvider } from './context/authContext.tsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />
+    element: <PrivateRoutes><Home /></PrivateRoutes>
   },
   {
     path: "/login",
@@ -33,7 +35,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/teste",
-    element: <PrivateRoutes> <EncontrarPrestador /> </PrivateRoutes>
+    element: <PrivateRoutes> <Home /> </PrivateRoutes>
+  },
+  {
+    path: "/cadastro",
+    element:  <Cadastro />
+  },
+  {
+    path: "/perfil",
+    element:  <PrivateRoutes> <Profile /> </PrivateRoutes>
   },
   {
     path: "/category",

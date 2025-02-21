@@ -6,7 +6,7 @@ interface CustomProfileProps {
     variantType: "primario" | "secundario";
 }
 
-export function CPProfileP({ name = "", variantType }: CustomProfileProps) {
+export function CPProfileM({ name = "", variantType }: CustomProfileProps) {
     const [letrasIniciais, setLetrasIniciais] = useState("");
 
     useEffect(() => {

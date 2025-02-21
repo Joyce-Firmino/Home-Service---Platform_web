@@ -15,6 +15,10 @@ export function Login() {
 
   const authContext = useContext(AuthContext);
 
+  function navegarParaLogin() {
+    navigate(`/login`);
+}
+
   const [cookies, setCookie] = useCookies(['cookieName']);
 
 
@@ -47,7 +51,7 @@ export function Login() {
   return (
     <DivContainer>
       {authContext.authData?.token && <p> token</p>}
-      {authContext.error && <CPModalConfirm icone='error' titulo='Erro' menssagem='Usuário ou senha inválidos!' variant='erro'></CPModalConfirm>}
+      {authContext.error && <CPModalConfirm icone='error' titulo='Erro' menssagem='Usuário ou senha inválidos!' variant='erro' onClose={navegarParaLogin}></CPModalConfirm>}
 
 
 

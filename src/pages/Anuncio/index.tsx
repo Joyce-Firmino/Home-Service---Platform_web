@@ -12,6 +12,7 @@ import {
   DivDireita,
   ModalBackground,
 } from "./styled";
+import { useNavigate } from "react-router";
 
 const anuncios = [
   {
@@ -40,18 +41,20 @@ const anuncios = [
     prestador: "Danilo",
     servico: "Eletricista",
     descricao: "Instalações elétricas e manutenção preventiva.",
-    preco: "R$ 100,00 por hora",
-  },
+    preco: "R$ 100,00 por hora",
+  },
 ];
 
 export function Anuncio() {
+  const navigate = useNavigate();
+
   const [visibilidadeModal, setVisibilidadeModal] = useState<boolean>(false);
   return (
     <>
       <DivContainer>
         <CPHeader1
-          iniciais={"MC"}
-          name={"Clara"}
+          iniciais={"D"}
+          name={"Danrlei"}
           variantType="primario"
         ></CPHeader1>
         <DivMediana>
@@ -76,7 +79,7 @@ export function Anuncio() {
             <CPButtonG
               title="Criar anúncios"
               variantType="primario"
-              onClick={() => console.log("clique")}
+              onClick={() => navigate("/criarAnuncio")}
             ></CPButtonG>
           </DivDireita>
         </DivMediana>
