@@ -24,6 +24,7 @@ export function Category({ category }: CustomCategoryProps) {
   const [dadosAnuncios, setDadosAnuncios] = useState<AnuncioCompletoDTO[]>([]);
   const [carregando, setCarregando] = useState<boolean>(false);
   const [erroCarregarDados, setErroCarregarDados] = useState<boolean>(false);
+  
 
   const buscarAnuncios = async () => {
     try {
@@ -51,7 +52,7 @@ export function Category({ category }: CustomCategoryProps) {
     <DivContainer>
       {carregando ? (
         <DivRender>
-          <CPHeader1 iniciais='JV' name='Jose Vieira' variantType='primario'></CPHeader1>
+          <CPHeader1  name='Jose Vieira' variantType='primario'></CPHeader1>
 
           <DivConteudo>
             <Loader></Loader>
@@ -63,7 +64,7 @@ export function Category({ category }: CustomCategoryProps) {
         : erroCarregarDados ? (
 
           <DivRender>
-            <CPHeader1 iniciais='JV' name='Jose Vieira' variantType='primario'></CPHeader1>
+            <CPHeader1 name='Jose Vieira' variantType='primario'></CPHeader1>
 
             <DivConteudo>
               <CPModalConfirm icone='close' menssagem='Erro ao carregar anúncios' titulo='Erro' variant='erro'></CPModalConfirm>
@@ -77,7 +78,7 @@ export function Category({ category }: CustomCategoryProps) {
 
 
           < DivRender >
-            <CPHeader1 iniciais='JV' name='Jose Vieira' variantType='primario'></CPHeader1>
+            <CPHeader1 name='Jose Vieira' variantType='primario'></CPHeader1>
 
 
             <DivTextos>

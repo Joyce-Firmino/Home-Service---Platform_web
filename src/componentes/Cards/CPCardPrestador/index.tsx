@@ -1,23 +1,27 @@
+import { useEffect, useState } from 'react';
 import foto from '../../../assets/pedreiro.webp';
 import { DivBloco, ImgImage, DivContainer, IIcon, DivIconText, PService, DivInfo, DivGlobal, H1Title, PText, HrLiinha } from './styled';
+import { CPProfileG } from '../../Profiles/CPProfileG';
+import { CPProfileM } from '../../Profiles/CPProfileM';
 
 interface CustomCardProps {
   uriFoto: string;
   prestador: string;
-  servico: string;
   city: string;
   telefone: string;
   email: string;
+  nome:string
 }
 
-export function CPCardPrestador({ prestador, servico, city, telefone, email }: CustomCardProps) {
+
+
+export function CPCardPrestador({ prestador, city, telefone, email, nome }: CustomCardProps) {
   return (
     <DivContainer>
-      <ImgImage src={foto} alt="Foto perfil" />
+      <CPProfileM name={nome} variantType='primario'></CPProfileM>
       <DivGlobal>
         <DivInfo>
           <H1Title>{prestador}</H1Title>
-          <PService>{servico}</PService>
         </DivInfo>
         <HrLiinha>
         </HrLiinha>

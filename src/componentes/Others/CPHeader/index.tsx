@@ -3,17 +3,18 @@ import foto from "../../../assets/logoBranca.png";
 import { CPProfileP } from "../../Profiles/CPProfileP";
 
 import { DivBloco, DivContainer, DivLogo, ImgLogo, H1Title, DivCategorias, PCategoria, PWelcome, PCabecalho, HamburgerMenu, MobileMenu, CloseButton, Backdrop, CPProfileWrapper, DivMenu, IIcon, AClick } from "./styled";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiFillEdit, AiOutlineClose, AiOutlineHome, AiOutlineLogin, AiOutlineProfile } from "react-icons/ai"; // Ícone de fechar
 
 interface CustomHeaderProps {
-    name: string;
+    name?: string;
     variantType: "primario" | "secundario";
-    iniciais: string;
+    
 }
 
-export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
+export function CPHeader1({ name, variantType }: CustomHeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -22,6 +23,7 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
     const clicado = () => {
         alert("Clicado")
     }
+
 
     const navigate = useNavigate();
 
@@ -65,11 +67,11 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
                         <>
                             <AClick onClick={navegarParaPaginaPerfil} href="">
                                 <PWelcome>
-                                    <PCabecalho>Bem vindo</PCabecalho>
+                                    <PCabecalho>Bem vindo (a) </PCabecalho>
                                     <PCabecalho>{name}</PCabecalho>
                                 </PWelcome>
                                 <CPProfileWrapper>
-                                    <CPProfileP variantType="secundario" iniciais={iniciais} />
+                                    <CPProfileP variantType="secundario" name = {name} />
                                 </CPProfileWrapper>
                             </AClick>
                         </>
@@ -115,7 +117,7 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
                                 <PCabecalho>Bem vindo</PCabecalho>
                                 <PCabecalho>{name}</PCabecalho>
                             </PWelcome>
-                            <CPProfileP variantType="secundario" iniciais={iniciais} />
+                            <CPProfileP variantType="secundario" name= {name} />
                         </>
                     )}
                 </MobileMenu>

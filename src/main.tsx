@@ -10,11 +10,12 @@ import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './styles/theme.ts'
 import { GlobalStyle } from './global.ts'
 import { AuthProvider } from './context/authContext.tsx'
-import { Cadastro } from './pages/Cadastro/index.tsx'
 import { EncontrarPrestador } from './pages/EncontrarPrestadores/index.tsx'
-import { PrivateRoutes } from "./routes/PrivateRoutes.tsx"; 
+import { PrivateRoutes } from "./routes/PrivateRoutes.tsx";
 import { Teste } from "./pages/Teste/index.tsx";
 import { Anuncio } from "./pages/Anuncio/index.tsx";
+import { Cadastro } from "./pages/Cadastro/index.tsx";
+import { Profile } from "./pages/Profile/index.tsx";
 // import { AuthProvider } from './context/authContext.tsx'
 
 const router = createBrowserRouter([
@@ -32,7 +33,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/teste",
-    element: <PrivateRoutes> <EncontrarPrestador /> </PrivateRoutes>
+    element: <PrivateRoutes> <Home /> </PrivateRoutes>
+  },
+  {
+    path: "/cadastro",
+    element:  <Cadastro />
+  },
+  {
+    path: "/perfil",
+    element:  <PrivateRoutes> <Profile /> </PrivateRoutes>
   },
   {
     path: "/category",

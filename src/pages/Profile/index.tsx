@@ -6,90 +6,55 @@ import { DivBloco, DivCabecalho, DivContainer, DivCXAreia, DivFoto, DivInfo, Div
 import { PrestadorDTO } from "../../dto/GetPrestadorDTO";
 import { api } from "../../api/axios";
 import { AuthContext } from "../../context/authContext";
-
-
-// const [teste, setTeste] = useState(
-//     {
-//         nome: "",
-//         cpf: "",
-//         fone:""
-//     }
-// );
-
-// const user = {
-//     nome: "joanina",
-//     cpf: "523.365.636-77",
-//     fone:"(83) 96954-5669"
-// }
-
-
-
-// const [dadosPrestador, setPrestador] = useState<PrestadorDTO>({}as PrestadorDTO);
-
-// useEffect(() => {
-//     const dadosUsuario = {
-//         id: "1",
-//         nome: "Roselene Silva",
-//         email: "rose@gmail.com",
-//         telefone: "(83) 99638-7412",
-//         foto: "lala",
-//         prestador: {
-//             cnpj: "12.369.235/0001-25",
-//             horarioDisponibilidade: "08h às 18h",
-//             latitude: 5336655254,
-//             longitude: 535412369
-//         }
-//     } as PrestadorDTO;
-
-//     setTeste(user);
-
-//     setPrestador(dadosUsuario);
-// }, []); // O array vazio faz com que execute apenas na montagem do componente
-
-
+import { ProfilePrestadorDTO } from "../../dto/ProfilePrestadorDTO";
 
 
 export function Profile() {
 
-    const [dadosPrestador, setDadosPrestador] = useState<PrestadorDTO>({} as PrestadorDTO);
+    const [dadosPrestador, setDadosPrestador] = useState<ProfilePrestadorDTO>({} as ProfilePrestadorDTO);
     const authData = useContext(AuthContext);
+
+
+    useEffect(() => {
+        console.log("Novo estado de dadosPrestador:", dadosPrestador);
+    }, [dadosPrestador]); // Executa sempre que `dadosPrestador` mudar
+
+
 
     const buscarPrestador = async () => {
         try {
-            const response = await api.get<PrestadorDTO>('/prestadorPerfil', {
+            const response = await api.get<ProfilePrestadorDTO>('/prestadorPerfil', {
                 headers: {
                     Authorization: `Bearer ${authData.authData?.token}`,
                     email: authData.authData?.email
                 }
             });
-            setDadosPrestador(response.data)
-            console.log(dadosPrestador);
-        } catch (error) {
-            console.log("erro")
-        }
-    }
 
+            console.log("Dados recebidos da API:", response.data); // Verifique o formato dos dados
+
+            if (response.data) {
+                setDadosPrestador(response.data);
+            }
+
+        } catch (error) {
+            console.error("Erro ao buscar prestador:", error);
+        }
+    };
     useEffect(() => {
         buscarPrestador();
-        const interval = setInterval(() => {
-          buscarPrestador();
-        }, 30000); // Atualiza a cada 30 segundos
-    
-        return () => clearInterval(interval);
-      }, []);
+    }, []);
 
     return (
         <DivContainer>
             <CPHeader1
-                iniciais="JV"
-                name={dadosPrestador.nome}
+                name={dadosPrestador.name}
                 variantType="secundario"
             />
             <DivSubContainer>
                 <DivBloco>
                     <DivFoto>
                         <CPProfileG
-                            iniciais="JV"
+                            name= {dadosPrestador.name}
                             variantType="primario" />
                         <PAlterarFt> Alterar foto</PAlterarFt>
                     </DivFoto>
@@ -107,7 +72,7 @@ export function Profile() {
                                 <DivCXAreia>
                                     <DivText>
                                         <PDescricao>Nome</PDescricao>
-                                        <PResposta>{dadosPrestador.nome}</PResposta>
+                                        <PResposta>{dadosPrestador.name}</PResposta>
                                     </DivText>
                                     <DivText>
                                         <PDescricao>Telefone</PDescricao>
@@ -124,11 +89,11 @@ export function Profile() {
                                 <DivCXAreia>
                                     <DivText>
                                         <PDescricao>CNPJ</PDescricao>
-                                        <PResposta> {dadosPrestador.prestador?.cnpj}</PResposta>
+                                        <PResposta> {dadosPrestador.cnpj}</PResposta>
                                     </DivText>
                                     <DivText>
                                         <PDescricao>Horário de Disponibildade</PDescricao>
-                                        <PResposta>{dadosPrestador.prestador?.horarioDisponibilidade}</PResposta>
+                                        <PResposta>{dadosPrestador.horarioDisponibilidade}</PResposta>
                                     </DivText>
                                 </DivCXAreia>
                             </DivSeparacao>

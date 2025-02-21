@@ -112,7 +112,7 @@ export function Home() {
   return (
     <DivContainer>
 
-      <CPHeader1 iniciais={usuario.iniciais} name={usuario.name} variantType='primario'></CPHeader1>
+      <CPHeader1 name={usuario.name} variantType='primario'></CPHeader1>
 
       <CPCarrossel settings={settings} >
         {dadosCategoria.map((dado) => (
