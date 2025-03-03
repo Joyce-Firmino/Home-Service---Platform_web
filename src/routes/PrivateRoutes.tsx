@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import { Navigate } from "react-router";
 
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../context/authContext";
 import { useCookies } from "react-cookie";
 
 interface Iprops {
