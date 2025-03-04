@@ -49,7 +49,11 @@ const router = createBrowserRouter([
   {
     path: "/perfil",
     element: <PrivateRoutes> <Profile /> </PrivateRoutes>
-  }
+  },
+  {
+    path: "/anuncios",
+    element: <PrivateRoutes> <Anuncio />{" "} </PrivateRoutes>
+  }
 ]);
 
 createRoot(document.getElementById("root")!).render(
