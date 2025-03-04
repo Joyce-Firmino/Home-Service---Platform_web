@@ -94,6 +94,9 @@ export const ModalBackground = styled.div`
   bottom: 0;
 `;
 
-export const TextoVazio = styled.p`
-  text-align: center;
+export const Formulario = styled.form`
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 748px;
 `;

@@ -1,42 +1,38 @@
 import { useForm } from "react-hook-form";
+import { useContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { api } from "../../../api/axios";
+import { AnuncioCompletoDTO } from "../../../dto/AnuncioCompletoDTO";
 import { Formulario, GrupoBotao, ModalBackground } from "./styled";
 import { CPButtonG } from "../../Buttons/CPButtonG";
 import { CPInput04 } from "../../Inputs/CPInput04";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { CPSelect } from "../../Inputs/CPSelect";
-import { useState } from "react";
 import { CPModalConfirm } from "../../Modals/CPModalConfirmacao";
 import { useNavigate } from "react-router";
-
-function validaPreco(preco: string): boolean {
-  const formatoPreco = /^R\$ ?\d+(,\d{1,2})?$/;
-  return formatoPreco.test(preco);
-}
+import { CategoriaDTO } from "../../../dto/CategoriaDTO";
+import { AuthContext } from "../../../context/authContext";
 
 const schema = z.object({
-  titulo: z
-    .string({ required_error: "Título é obrigatório" })
-    .trim()
-    .min(3, "O título deve ter no mínimo 3 caracteres"),
-  descricao: z
-    .string({ required_error: "Descrição é obrigatória" })
-    .trim()
-    .min(1, "Descrição é obrigatória"),
-  preco: z
-    .string({ required_error: "O preço não pode estar vazio" })
-    .trim()
-    .min(1, "O preço não pode estar vazio")
-    .refine((value) => validaPreco(value), {
-      message: "O preço deve estar no formato de moeda real (R$ 10,00).",
-    }),
-  categoria: z
-    .string({ required_error: "Categoria é obrigatória" })
-    .trim()
-    .min(1, "Categoria é obrigatória"),
+  titulo: z.string().trim().min(3, "O título deve ter no mínimo 3 caracteres"),
+  descricao: z.string().trim().min(1, "Descrição é obrigatória"),
+  preco: z.string().trim().min(1, "O preço não pode estar vazio"),
+  categoriaId: z.string().trim().min(1, "Categoria é obrigatória"),
 });
 
 export function CPForm() {
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+
+  const query = useQuery();
+  const id = query.get("id");
+  const navigate = useNavigate();
+  const [visibilidadeModal, setVisibilidadeModal] = useState(false);
+  const [anuncio, setAnuncio] = useState<AnuncioCompletoDTO>();
+  const [categorias, setCategorias] = useState<CategoriaDTO[]>([]);
+
   const {
     register,
     handleSubmit,
@@ -46,12 +42,85 @@ export function CPForm() {
     resolver: zodResolver(schema),
   });
 
-  const [visibilidadeModal, setVisibilidadeModal] = useState<boolean>(false);
+  const { authData } = useContext(AuthContext);
 
-  const navigate = useNavigate();
+  const token = authData?.token;
+  const email = authData?.email;
 
-  function onSubmit(data: unknown) {
-    console.log("Dados enviados:", data);
+  useEffect(() => {
+    async function carregarCategorias() {
+      if (!token || !email) {
+        console.error("Token ou email não encontrado");
+        return;
+      }
+
+      try {
+        const response = await api.get<CategoriaDTO[]>("/listCategorias", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            email,
+          },
+        });
+        setCategorias(response.data);
+      } catch (error) {
+        console.error("Erro ao carregar categorias:", error);
+      }
+    }
+
+    carregarCategorias();
+  }, []);
+
+  useEffect(() => {
+    if (id) {
+      api
+        .get<AnuncioCompletoDTO[]>("/anuncios", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            email,
+          },
+        })
+        .then((response) => {
+          const anuncioEncontrado = response.data.find(
+            (anuncio) => anuncio.id === id
+          );
+          if (anuncioEncontrado) {
+            setAnuncio(anuncioEncontrado);
+            setValue("titulo", anuncioEncontrado.titulo);
+            setValue("preco", anuncioEncontrado.preco);
+            setValue("descricao", anuncioEncontrado.descricao);
+            setValue("categoriaId", anuncioEncontrado.categoria.id);
+          } else {
+            console.error("Anúncio não encontrado");
+          }
+        })
+        .catch((error) => console.error("Erro ao carregar anúncios:", error));
+    }
+  }, [id, token, email, setValue]);
+
+  async function onSubmit(data: any) {
+    try {
+      if (id) {
+        await api.put(`/anuncios/${id}`, data, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            email,
+          },
+        });
+        console.log("Anúncio atualizado com sucesso!");
+      } else {
+        console.log(data, token, email);
+        await api.post("/anuncio", data, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            email,
+          },
+        });
+        console.log("Anúncio criado com sucesso!");
+      }
+      setVisibilidadeModal(true);
+    } catch (error) {
+      console.error("Erro ao salvar anúncio:", error);
+    }
   }
 
   return (
@@ -59,7 +128,7 @@ export function CPForm() {
       <Formulario onSubmit={handleSubmit(onSubmit)}>
         <CPInput04
           titulo="Título"
-          placeholder="Título"
+          placeholder={anuncio?.titulo || "Título"}
           variantSize="grande"
           register={register("titulo")}
           errorMessage={errors.titulo?.message}
@@ -67,7 +136,7 @@ export function CPForm() {
 
         <CPInput04
           titulo="Preço"
-          placeholder="Preço"
+          placeholder={anuncio?.preco || "Preço"}
           variantSize="grande"
           register={register("preco")}
           errorMessage={errors.preco?.message}
@@ -75,7 +144,7 @@ export function CPForm() {
 
         <CPInput04
           titulo="Descrição"
-          placeholder="Descrição"
+          placeholder={anuncio?.descricao || "Descrição"}
           variantSize="grande"
           register={register("descricao")}
           errorMessage={errors.descricao?.message}
@@ -85,31 +154,31 @@ export function CPForm() {
           titulo="Categoria"
           variantSize="grande"
           setValue={setValue}
-          register={register("categoria")}
-          errorMessage={errors.categoria?.message}
-          options={["Babá", "Eletricista", "Pedreiro", "Encanador"]}
+          register={register("categoriaId")}
+          errorMessage={errors.categoriaId?.message}
+          options={categorias}
         />
-
         <GrupoBotao>
           <CPButtonG
-            onClick={() => setVisibilidadeModal(true)}
-            title="Criar anúncio"
+            title={id ? "Salvar alterações" : "Criar anúncio"}
+            onClick={() => console.log("clicado!")}
             variantType="primario"
           />
         </GrupoBotao>
       </Formulario>
+
       {visibilidadeModal && (
         <ModalBackground>
           <CPModalConfirm
             icone="check_circle"
-            menssagem="Redirecionando para a página de anúncios..."
-            titulo="Sucesso ao criar anúncio"
+            menssagem={id ? "Anúncio atualizado!" : "Anúncio criado!"}
+            titulo="Sucesso"
             variant="sucesso"
-            onClick={() => {
+            onClose={() => {
               setVisibilidadeModal(false);
               navigate("/anuncios");
             }}
-          ></CPModalConfirm>
+          />
         </ModalBackground>
       )}
     </>

@@ -10,18 +10,19 @@ import {
   MensagemErro,
 } from "./styled";
 import { UseFormSetValue } from "react-hook-form";
+import { CategoriaDTO } from "../../../dto/CategoriaDTO";
 
 interface CustomModalProps {
   titulo: string;
   variantSize: "pequeno" | "grande";
-  options: string[];
+  options: CategoriaDTO[];
   register: any;
   errorMessage?: string;
   setValue: UseFormSetValue<{
     titulo: string;
     descricao: string;
     preco: string;
-    categoria: string;
+    categoriaId: string;
   }>;
 }
 
@@ -37,9 +38,9 @@ export function CPSelect({
     useState<boolean>(false);
   const [selectState, setSelectState] = useState<string>("");
 
-  function handleSelect(option: string) {
-    setSelectState(option);
-    setValue("categoria", option);
+  function handleSelect(option: CategoriaDTO) {
+    setSelectState(option.servico);
+    setValue("categoriaId", option.id);
     setVisibilidadeDropdown(false);
   }
 
@@ -57,8 +58,11 @@ export function CPSelect({
         {visibilidadeDropdown && (
           <SelectDropdown>
             {options.map((option) => (
-              <SelectOption key={option} onClick={() => handleSelect(option)}>
-                {option}
+              <SelectOption
+                key={option.id}
+                onClick={() => handleSelect(option)}
+              >
+                {option.servico}
               </SelectOption>
             ))}
           </SelectDropdown>
