@@ -67,7 +67,7 @@ export function Category({ category }: CustomCategoryProps) {
             <CPHeader1 name='Jose Vieira' variantType='primario'></CPHeader1>
 
             <DivConteudo>
-              <CPModalConfirm icone='close' menssagem='Erro ao carregar anúncios' titulo='Erro' variant='erro'></CPModalConfirm>
+              <CPModalConfirm icone='close' menssagem='Erro ao carregar anúncios' titulo='Erro' variant='erro' onClose={clickado}></CPModalConfirm>
             </DivConteudo>
 
             <CPFooter></CPFooter>

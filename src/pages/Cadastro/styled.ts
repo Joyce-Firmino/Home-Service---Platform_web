@@ -76,6 +76,12 @@ export const H1Titulo = styled.h1`
   }
 `;
 
+export const LabelError = styled.label`
+  font-size: 14px;
+  color: red;
+  margin: 5px;
+`;
+
 export const DivInfo = styled.div`
       display: flex;
       flex-direction: column;
@@ -157,4 +163,13 @@ export const DivButton = styled.div`
       @media (${breakpoints.mobile}px) {
       padding-top: 30px;
   }
+`;
+
+export const DivErro = styled.div`
+      
+`;
+
+export const DivInput = styled.div`
+      display: flex;
+      flex-direction: column;
 `;
