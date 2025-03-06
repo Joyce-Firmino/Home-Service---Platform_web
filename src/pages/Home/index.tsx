@@ -13,11 +13,15 @@ import { SwiperProps, SwiperSlide } from 'swiper/react';
 
 
 import './style.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CategoriaDTO } from '../../dto/CategoriaDTO';
 import { api } from '../../api/axios';
 import { PrestadorDTO } from '../../dto/GetPrestadorDTO';
 import { useNavigate } from 'react-router';
+import { ProfilePrestadorDTO } from '../../dto/ProfilePrestadorDTO';
+import { AuthContext } from '../../context/authContext';
+import { PrestadorContext } from '../../context/prestadorConntext';
+import { Loader } from '../../componentes/Others/CPLoader';
 
 
 export function Home() {
@@ -47,8 +51,10 @@ export function Home() {
   };
 
   const [dadosCategoria, setDadosCategoria] = useState<CategoriaDTO[]>([]);
-  const [dadosPrestador, setDadosPrestador] = useState<PrestadorDTO[]>([]);
   const [carregando, setCarregando] = useState<boolean>(false);
+
+  const authData = useContext(AuthContext);
+  const prestadorContext = useContext(PrestadorContext);
 
   const navigate = useNavigate();
 
@@ -56,40 +62,18 @@ export function Home() {
     navigate(`/anunciosCategoria/${id}`);
   }
 
-  function navegarParaPaginaHome() {
-    navigate(`/`);
+  function navegarParaPaginaEncontrarPrestador() {
+    navigate(`/prestadores/`);
   }
+
 
   const buscarCategoria = async () => {
     try {
-      console.log("response");
       setCarregando(true);
       const response = await api.get<CategoriaDTO[]>('/listCategorias');
-
-      console.log(response.data);
-
       setDadosCategoria(response.data);
     } catch (error) {
       console.error('Erro ao carregar categorias:', error);
-      // Alert.alert('Erro', 'Não foi possível carregar os anúncios');
-    } finally {
-      setCarregando(false);
-    }
-  };
-
-  const buscarPrestador = async () => {
-    try {
-      const response = await api.get<PrestadorDTO[]>('/prestadorPerfil', {
-        // headers: {
-        //     Authorization: `Bearer ${authData.authData?.token}`,
-        //     email: authData.authData?.email
-        // }
-      });
-      console.log(response.data);
-      setDadosPrestador(response.data);
-    } catch (error) {
-      console.error('Erro ao carregar prestador:', error);
-      // Alert.alert('Erro', 'Não foi possível carregar os anúncios');
     } finally {
       setCarregando(false);
     }
@@ -99,11 +83,10 @@ export function Home() {
     buscarCategoria();
     const interval = setInterval(() => {
       buscarCategoria();
-    }, 30000); // Atualiza a cada 30 segundos
+    }, 300000); // Atualiza a cada 30 segundos
 
     return () => clearInterval(interval);
   }, []);
-
 
 
   const usuario = {
@@ -116,13 +99,15 @@ export function Home() {
       <CPHeader1 name={usuario.name} variantType='primario'></CPHeader1>
 
       <CPCarrossel settings={settings} >
-        {dadosCategoria.map((dado) => (
+        {carregando ? (<Loader></Loader>) : (<div>{dadosCategoria.map((dado) => (
           <SwiperSlide key={dado.id}>
             <button onClick={() => navegarParaPaginaCategory(dado.id)}>
               <CPCardCategory categoria={dado.servico} uriFoto={dado.icone} />
             </button>
           </SwiperSlide>
-        ))}
+        ))}</div>)
+        }
+
       </CPCarrossel>
 
       <DivMediana>
@@ -131,7 +116,7 @@ export function Home() {
             <H1Titulo>Encontre o serviço que você procura!</H1Titulo>
             <PDescricao>Aqui você descobre prestadores de serviço qualificados para resolver qualquer necessidade, seja ela grande ou pequena. Acesse as categorias e encontre o o serviço ideal para você!</PDescricao>
           </DivTextos>
-          <CPButtonG title='Encontrar prestador' variantType='primario' onClick={() => console.log('d')}></CPButtonG>
+          <CPButtonG title='Encontrar prestador' variantType='primario' onClick={navegarParaPaginaEncontrarPrestador}></CPButtonG>
         </DivDescricao>
         <ImgTrabalhador src={trabalhador} alt="Homem com roupa de trabalho" />
       </DivMediana>

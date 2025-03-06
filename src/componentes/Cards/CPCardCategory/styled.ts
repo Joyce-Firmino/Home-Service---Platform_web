@@ -1,5 +1,3 @@
-
-  // color: ${props => props.theme.COLORS.purple700};
   import styled from 'styled-components';
   import breakpoints from '../../../breakPoints';
 

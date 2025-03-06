@@ -9,12 +9,12 @@ import { AiFillEdit, AiOutlineClose, AiOutlineHome, AiOutlineLogin, AiOutlinePro
 interface CustomHeaderProps {
     name?: string;
     variantType: "primario" | "secundario";
-    
+
 }
 
 export function CPHeader1({ name, variantType }: CustomHeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    
+
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -71,7 +71,7 @@ export function CPHeader1({ name, variantType }: CustomHeaderProps) {
                                     <PCabecalho>{name}</PCabecalho>
                                 </PWelcome>
                                 <CPProfileWrapper>
-                                    <CPProfileP variantType="secundario" name = {name} />
+                                    <CPProfileP variantType="secundario" name={name} />
                                 </CPProfileWrapper>
                             </AClick>
                         </>
@@ -96,28 +96,36 @@ export function CPHeader1({ name, variantType }: CustomHeaderProps) {
                         <AiOutlineClose size={24} />
                     </CloseButton>
                     <DivMenu>
-                        <IIcon>home</IIcon>
-                        <PCategoria>Home</PCategoria>
+                        <AClick onClick={navegarParaPaginaHome} href="">
+                            <IIcon>home</IIcon>
+                            <PCategoria>Home</PCategoria>
+                        </AClick>
                     </DivMenu>
                     {variantType === "primario" && (
                         <>
                             <DivMenu>
-                                <IIcon>person</IIcon>
-                                <PCategoria>Cadastro</PCategoria>
+                                <AClick onClick={navegarParaPaginaCadastro} href="">
+                                    <IIcon>person</IIcon>
+                                    <PCategoria>Cadastro</PCategoria>
+                                </AClick>
                             </DivMenu>
                             <DivMenu>
-                                <IIcon>login</IIcon>
-                                <PCategoria>Fazer Login</PCategoria>
+                                <AClick onClick={navegarParaPaginaLogin} href="">
+                                    <IIcon>login</IIcon>
+                                    <PCategoria>Fazer Login</PCategoria>
+                                </AClick>
                             </DivMenu>
                         </>
                     )}
                     {variantType === "secundario" && (
                         <>
                             <PWelcome>
-                                <PCabecalho>Bem vindo</PCabecalho>
-                                <PCabecalho>{name}</PCabecalho>
+                                <AClick onClick={navegarParaPaginaPerfil} href="">
+                                    <PCabecalho>Bem vindo</PCabecalho>
+                                    <PCabecalho>{name}</PCabecalho>
+                                </AClick>
                             </PWelcome>
-                            <CPProfileP variantType="secundario" name= {name} />
+                            <CPProfileP variantType="secundario" name={name} />
                         </>
                     )}
                 </MobileMenu>

@@ -17,7 +17,7 @@ interface AuthContextDTO {
     logOut: () => Promise<void>;
     error: boolean;
     setError: React.Dispatch<React.SetStateAction<boolean>>;
-    // setAuthData: React.Dispatch<React.SetStateAction<AuthData | undefined>>
+    setAuthData: React.Dispatch<React.SetStateAction<AuthDataDTO | undefined>>
 }
 
 export function AuthProvider({ children }: IpropsDTO) {
@@ -41,15 +41,17 @@ export function AuthProvider({ children }: IpropsDTO) {
             api.defaults.headers.common.Authorization= `Bearer ${userAutenticated.token}`;
             api.defaults.headers.common["Email"] = userAutenticated.email;
 
-            setCookieToken("token", userAutenticated.token, { httpOnly: true });
-            setCookieEmail("email", userAutenticated.email, { httpOnly: true });
+            console.log(userAutenticated.token + "OLa");
+            
 
-            setAuthData(authData);
+            setCookieToken("token", userAutenticated.token);
+            setCookieEmail("email", userAutenticated.email);
+
+            setAuthData(userAutenticated);
 
             setError(false);
         }
         catch (error: any) {
-            alert('Erro err');
             setError(true)
             return undefined;
         }
@@ -57,8 +59,8 @@ export function AuthProvider({ children }: IpropsDTO) {
 
     async function logOut(): Promise<void> {
         setAuthData(undefined);
-        removeCookieToken('token');
-        removeCookieEmail('email');
+        removeCookieToken("token");
+        removeCookieEmail("email");
     }
 
     useEffect(() => {
@@ -72,12 +74,12 @@ export function AuthProvider({ children }: IpropsDTO) {
 
             setAuthData(authData);
         }
-    }, []);
+    }, [cookieToken, cookieEmail]);
 
 
 
     return (
-        <AuthContext.Provider value={{ signIn, logOut, error, setError, authData }}>
+        <AuthContext.Provider value={{ signIn, logOut, error, setError, authData, setAuthData }}>
             {children}
         </AuthContext.Provider>
     )

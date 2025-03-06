@@ -121,6 +121,7 @@ export const AClick = styled.a`
   flex-direction: row;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 
 `;
 

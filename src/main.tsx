@@ -1,5 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import { Home } from './pages/Home/index.tsx'
 import { Login } from './pages/Login/index.tsx'
@@ -18,13 +19,16 @@ import { PrestadorProvider } from "./context/prestadorConntext.tsx";
 import { CriarAnuncio } from "./pages/CriarAnuncio/index.tsx";
 
 const router = createBrowserRouter([
+
   {
     path: "/",
     element: <Home />
   },
   {
     path: `/telaInicialPrestador`,
-    element: <PrivateRoutes><Anuncio /></PrivateRoutes>
+    element: <PrivateRoutes>
+                <Anuncio />
+             </PrivateRoutes>
   },
   {
     path: "/cadastro",
@@ -50,21 +54,20 @@ const router = createBrowserRouter([
     path: "/perfil",
     element: <PrivateRoutes> <Profile /> </PrivateRoutes>
   }
-]);
+]
+);
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+createRoot(document.getElementById("root")! as HTMLElement).render(
+  <ThemeProvider theme={defaultTheme}>
     <CookiesProvider>
       <AuthProvider>
         <PrestadorProvider>
-          <ThemeProvider theme={defaultTheme}>
+          <StrictMode>
             <GlobalStyle />
             <RouterProvider router={router} />
-          </ThemeProvider>
+          </StrictMode>
         </PrestadorProvider>
       </AuthProvider>
     </CookiesProvider>
-  </StrictMode>
+  </ThemeProvider>
 );
-
-// remover cookiesprovider daqui

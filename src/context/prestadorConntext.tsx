@@ -3,30 +3,40 @@ import { IpropsDTO } from "../dto/IpropsDTO";
 import { ProfilePrestadorDTO } from "../dto/ProfilePrestadorDTO";
 import { api } from "../api/axios";
 
-export const PrestadorContext = createContext<ProfileContextDTO>({} as ProfileContextDTO)
-
 interface ProfileContextDTO {
     prestadorData?: ProfilePrestadorDTO;
-    buscarDadosPrestador: () =>  Promise<void>;
-    removerDadosPrestador: () =>  Promise<void>;
+    buscarDadosPrestador: () => Promise<void>;
+    removerDadosPrestador: () => void; // Não precisa ser async, pois só altera o estado local
 }
 
-export function PrestadorProvider ({ children }: IpropsDTO) {
+export const PrestadorContext = createContext<ProfileContextDTO>({} as ProfileContextDTO);
+
+export function PrestadorProvider({ children }: IpropsDTO) {
     const [prestadorData, setPrestadorData] = useState<ProfilePrestadorDTO>();
 
-    async function buscarDadosPrestador () {
-        const response = await api.get("/prestadorPerfil");
-        const dadosPrestador = response.data as ProfilePrestadorDTO;
-        setPrestadorData(dadosPrestador);
+    async function buscarDadosPrestador() {
+        try {
+            const response = await api.get("/prestadorPerfil");
+            const dadosPrestador = response.data as ProfilePrestadorDTO;
+            setPrestadorData(dadosPrestador);
+            console.log("Dados do prestador carregados:", dadosPrestador);
+        } catch (error) {
+            console.error("Erro ao buscar dados do prestador:", error);
+        }
     }
 
-    async function removerDadosPrestador () {
+    function removerDadosPrestador() {
         setPrestadorData(undefined);
     }
 
+    // Se quiser carregar os dados automaticamente quando o contexto for montado
+    useEffect(() => {
+        buscarDadosPrestador();
+    }, []);
+
     return (
-        <PrestadorContext.Provider value={ { prestadorData, buscarDadosPrestador, removerDadosPrestador } }>
+        <PrestadorContext.Provider value={{ prestadorData, buscarDadosPrestador, removerDadosPrestador }}>
             {children}
         </PrestadorContext.Provider>
-    )
+    );
 }

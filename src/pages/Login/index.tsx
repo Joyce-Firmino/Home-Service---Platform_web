@@ -3,57 +3,57 @@ import { CPButtonG } from '../../componentes/Buttons/CPButtonG';
 import { CPInput03 } from '../../componentes/Inputs/CPInput03';
 import { CPInputEyePassword } from '../../componentes/Inputs/CPInputEyePassword';
 import { CPImagemLogin } from '../../componentes/Others/CPImagemLogin';
-import { DivContainer, DivConteudo, DivImagem, DivInferior, DivInput, DivLateral, DivTitulo, H1Titulo, PDescricao } from './styled';
+import { DivContainer, DivConteudo, DivInferior, DivInput, DivLateral, DivTitulo, H1Titulo, PDescricao } from './styled';
 import { AuthContext } from '../../context/authContext';
 import { useNavigate } from 'react-router';
 import { CPModalConfirm } from '../../componentes/Modals/CPModalConfirmacao';
 import { useCookies } from 'react-cookie';
-
+import { PrestadorContext } from '../../context/prestadorConntext';
 
 
 export function Login() {
 
+  const prestadorContext = useContext(PrestadorContext);
   const authContext = useContext(AuthContext);
 
-  function navegarParaLogin() {
-    navigate(`/login`);
-}
-
-  const [cookies, setCookie] = useCookies(['cookieName']);
-
-
-
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // authContext.setAuthData(undefined);
-  }, []);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  function navegarParaLogin() {
+    navigate(`/login`);
+  }
 
-  //FAZER ALGUMA LÓGICA PARA ZERAR O AUTHCONTEXT
+  function setErro() {
+    authContext.setError(false);
+  }
+
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  useEffect(() => {
+    authContext.logOut(); // Limpa os dados sempre que entrar na tela de login
+  }, []);
+
+  useEffect(() => {
+    if (authContext.authData && isLoggingIn) {
+      navigate(`/telaInicialPrestador`);
+    }
+  }, [authContext.authData, isLoggingIn, navigate]);
 
   const chamarSigIn = async () => {
-    try {
-      const retorno = await authContext.signIn(email, password);
-      setCookie('cookieName', authContext.authData?.token);
-
-      console.log(cookies.cookieName + " Token do cookie!");
-      navigate(`/teste`);
-
-    } catch (error) {
-
+    if (!email || !password) {
+      alert("Preencha os campos!");
+      return;
     }
-  }
+    setIsLoggingIn(true); // Indica que o login está sendo feito
+    await authContext.signIn(email, password);
+  };
 
   return (
     <DivContainer>
-      {authContext.authData?.token && <p> token</p>}
-      {authContext.error && <CPModalConfirm icone='error' titulo='Erro' menssagem='Usuário ou senha inválidos!' variant='erro' onClose={navegarParaLogin}></CPModalConfirm>}
 
-
+      {authContext.error && <CPModalConfirm icone='error' titulo='Erro' menssagem='Usuário ou senha inválidos!' variant='erro' onClose={setErro}></CPModalConfirm>}
 
       <CPImagemLogin />
       <DivLateral>
