@@ -54,8 +54,7 @@ const router = createBrowserRouter([
     path: "/perfil",
     element: <PrivateRoutes> <Profile /> </PrivateRoutes>
   }
-]
-);
+]);
 
 createRoot(document.getElementById("root")! as HTMLElement).render(
   <ThemeProvider theme={defaultTheme}>

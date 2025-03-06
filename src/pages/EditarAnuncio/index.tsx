@@ -3,7 +3,7 @@ import { CPForm } from "../../componentes/Others/CPForm";
 import { CPHeader1 } from "../../componentes/Others/CPHeader";
 import { DivContainer, DivMediana, H1Titulo } from "./styled";
 
-export function CriarAnuncio() {
+export function EditarAnuncio() {
   return (
     <DivContainer>
       <CPHeader1 name={"Danrlei"} variantType="primario"></CPHeader1>

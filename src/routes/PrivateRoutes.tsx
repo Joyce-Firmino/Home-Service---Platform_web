@@ -7,12 +7,12 @@ import { useCookies } from "react-cookie";
 import { PrestadorProvider } from "../context/prestadorConntext";
 
 interface Iprops {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export function PrivateRoutes({ children }: Iprops) {
-    const { authData } = useContext(AuthContext);
-    const [cookies] = useCookies(["authToken"]);
+  const { authData } = useContext(AuthContext);
+  const [cookies] = useCookies(["authToken"]);
 
 
     console.log(authData?.token + 'token privateroutes');
