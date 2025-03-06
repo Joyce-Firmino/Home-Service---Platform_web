@@ -31,8 +31,6 @@ export const UserSchemaRegisterCadastro = z.object({
   horarioDisponibilidade: z
     .string({ required_error: "Horário de disponibilidade é obrigatório" })
     .nonempty("Horário de disponibilidade é obrigatório"),
-  latitude: z.number({ required_error: "Latitude é obrigatória" }),
-  longitude: z.number({ required_error: "Longitude é obrigatória" }),
 });
 
 export type UserSchemaRegisterCadastroType = z.infer<typeof UserSchemaRegisterCadastro>;
