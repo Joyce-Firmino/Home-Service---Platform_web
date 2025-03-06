@@ -3,17 +3,18 @@ import foto from "../../../assets/logoBranca.png";
 import { CPProfileP } from "../../Profiles/CPProfileP";
 
 import { DivBloco, DivContainer, DivLogo, ImgLogo, H1Title, DivCategorias, PCategoria, PWelcome, PCabecalho, HamburgerMenu, MobileMenu, CloseButton, Backdrop, CPProfileWrapper, DivMenu, IIcon, AClick } from "./styled";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiFillEdit, AiOutlineClose, AiOutlineHome, AiOutlineLogin, AiOutlineProfile } from "react-icons/ai"; // Ícone de fechar
 
 interface CustomHeaderProps {
-    name: string;
+    name?: string;
     variantType: "primario" | "secundario";
-    iniciais: string;
+
 }
 
-export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
+export function CPHeader1({ name, variantType }: CustomHeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -22,6 +23,7 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
     const clicado = () => {
         alert("Clicado")
     }
+
 
     const navigate = useNavigate();
 
@@ -32,7 +34,7 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
         navigate(`/perfil`);
     }
     function navegarParaPaginaCadastro() {
-        navigate(`/cadastrar`);
+        navigate(`/cadastro`);
     }
     function navegarParaPaginaLogin() {
         navigate(`/login`);
@@ -65,11 +67,11 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
                         <>
                             <AClick onClick={navegarParaPaginaPerfil} href="">
                                 <PWelcome>
-                                    <PCabecalho>Bem vindo</PCabecalho>
+                                    <PCabecalho>Bem vindo (a) </PCabecalho>
                                     <PCabecalho>{name}</PCabecalho>
                                 </PWelcome>
                                 <CPProfileWrapper>
-                                    <CPProfileP variantType="secundario" iniciais={iniciais} />
+                                    <CPProfileP variantType="secundario" name={name} />
                                 </CPProfileWrapper>
                             </AClick>
                         </>
@@ -94,28 +96,36 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
                         <AiOutlineClose size={24} />
                     </CloseButton>
                     <DivMenu>
-                        <IIcon>home</IIcon>
-                        <PCategoria>Home</PCategoria>
+                        <AClick onClick={navegarParaPaginaHome} href="">
+                            <IIcon>home</IIcon>
+                            <PCategoria>Home</PCategoria>
+                        </AClick>
                     </DivMenu>
                     {variantType === "primario" && (
                         <>
                             <DivMenu>
-                                <IIcon>person</IIcon>
-                                <PCategoria>Cadastro</PCategoria>
+                                <AClick onClick={navegarParaPaginaCadastro} href="">
+                                    <IIcon>person</IIcon>
+                                    <PCategoria>Cadastro</PCategoria>
+                                </AClick>
                             </DivMenu>
                             <DivMenu>
-                                <IIcon>login</IIcon>
-                                <PCategoria>Fazer Login</PCategoria>
+                                <AClick onClick={navegarParaPaginaLogin} href="">
+                                    <IIcon>login</IIcon>
+                                    <PCategoria>Fazer Login</PCategoria>
+                                </AClick>
                             </DivMenu>
                         </>
                     )}
                     {variantType === "secundario" && (
                         <>
                             <PWelcome>
-                                <PCabecalho>Bem vindo</PCabecalho>
-                                <PCabecalho>{name}</PCabecalho>
+                                <AClick onClick={navegarParaPaginaPerfil} href="">
+                                    <PCabecalho>Bem vindo</PCabecalho>
+                                    <PCabecalho>{name}</PCabecalho>
+                                </AClick>
                             </PWelcome>
-                            <CPProfileP variantType="secundario" iniciais={iniciais} />
+                            <CPProfileP variantType="secundario" name={name} />
                         </>
                     )}
                 </MobileMenu>
@@ -123,98 +133,3 @@ export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
         </DivContainer>
     );
 }
-
-
-
-
-
-
-
-
-
-// /// esse e o codigo recente
-// import foto from "../../../assets/logoBranca.png";
-// import { CPProfile } from "../CPProfile";
-
-
-// import { DivBloco, DivContainer, DivLogo, ImgLogo, H1Title, DivCategorias, PCategoria, PWelcome, PCabecalho, HamburgerMenu, MobileMenu, CloseButton } from "./styled";
-// import { useState } from "react";
-// import { AiOutlineClose } from "react-icons/ai"; // Ícone de fechar
-
-// interface CustomHeaderProps {
-//   name: string;
-//   variantType: "primario" | "secundario";
-//   iniciais: string;
-// }
-
-// export function CPHeader1({ name, variantType, iniciais }: CustomHeaderProps) {
-//   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-//   const toggleMenu = () => {
-//     setIsMenuOpen(!isMenuOpen);
-//   };
-
-//   return (
-//     <DivContainer>
-//       <DivBloco>
-//         <DivLogo>
-//           <ImgLogo src={foto} alt="Logomarca" />
-//           <H1Title>Home Service</H1Title>
-//         </DivLogo>
-
-//         {/* Categorias Desktop */}
-//         <DivCategorias>
-//           <PCategoria>Home</PCategoria>
-//           {variantType === "primario" && (
-//             <>
-//               <PCategoria>Cadastro</PCategoria>
-//               <PCategoria>Fazer Login</PCategoria>
-//             </>
-//           )}
-//           {variantType === "secundario" && (
-//             <>
-//               <PWelcome>
-//                 <PCabecalho>Bem vindo</PCabecalho>
-//                 <PCabecalho>{name}</PCabecalho>
-//               </PWelcome>
-//               <CPProfile variantType="secundario" iniciais={iniciais} />
-//             </>
-//           )}
-//         </DivCategorias>
-
-//         {/* Menu Hamburguer Mobile */}
-//         <HamburgerMenu onClick={toggleMenu}>
-//           <span />
-//           <span />
-//           <span />
-//         </HamburgerMenu>
-//       </DivBloco>
-
-//       {/* Menu Mobile Aberto */}
-//       {isMenuOpen && (
-//         <MobileMenu>
-//           <CloseButton onClick={toggleMenu}>
-//             <AiOutlineClose size={24} />
-//           </CloseButton>
-//           <PCategoria>Home</PCategoria>
-//           {variantType === "primario" && (
-//             <>
-//               <PCategoria>Cadastro</PCategoria>
-//               <PCategoria>Fazer Login</PCategoria>
-//             </>
-//           )}
-//           {variantType === "secundario" && (
-//             <>
-//               <PWelcome>
-//                 <PCabecalho>Bem vindo</PCabecalho>
-//                 <PCabecalho>{name}</PCabecalho>
-//               </PWelcome>
-//               <CPProfile variantType="secundario" iniciais={iniciais} />
-//             </>
-//           )}
-//         </MobileMenu>
-//       )}
-//     </DivContainer>
-//   );
-// }
-

@@ -9,15 +9,11 @@ export const DivContainer = styled.div`
     background-color: ${props => props.theme.COLORS.purple200};
     width: 100%;
     height: 100vh;
-    gap: 100px;
-    padding: 0 65px 0 0;
 
     @media (${breakpoints.tablet}px) {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 0px;
-    gap: 0;
   }
 
     @media (${breakpoints.mobile}px) {
@@ -31,51 +27,67 @@ export const DivContainer = styled.div`
   }
 `;
 
-export const DivSubContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-  justify-content: center;
-  gap: 40px;
+export const DivGlobal = styled.div`
+    width: 100%;
+    height: 100%;
+`;
 
-  @media (${breakpoints.tablet}px) {
+export const DivSubGlobal = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 50px 32px;
-  }
-  
-  @media (${breakpoints.mobile}px) {
-    display: flex;
+    height: 100%;
+    padding: 100px;
+    justify-content: center;
+
+    @media (${breakpoints.tablet}px){
+      display: flex;
       flex-direction: column;
-      padding: 0 32px;
       width: 100%;
-      height: 100%; 
-      gap: 32px;     
-  }
+      padding: 34px;
+      justify-content: center;
+    }
+
+    @media (${breakpoints.mobile}px) {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      padding: 0 34px;
+    }
 `;
 export const H1Titulo = styled.h1`
     color: ${props => props.theme.COLORS.purple700};
     font-size: ${props => props.theme.FONTSIZE.g1}px;
     font-weight: bold;
+    width: 100%;
+    padding: 0 12px 15px 12px;
+   
 
 
     @media (${breakpoints.tablet}px) {
       width: 100%;
-      margin: 20px;
+      padding: 0 12px 15px 12px;
   }
 
     @media (${breakpoints.mobile}px) {
       width: 100%;
-      margin: 5px;
+      
   }
+`;
+
+export const LabelError = styled.label`
+  font-size: 14px;
+  color: red;
+  margin: 5px;
 `;
 
 export const DivInfo = styled.div`
       display: flex;
       flex-direction: column;
+      width: 100%;
       gap: 32px;
+      
 
       @media (${breakpoints.mobile}px) {
       width: 100%;      
@@ -86,6 +98,13 @@ export const DivDPessoais = styled.div`
     display: flex;
     flex-direction: column;
     gap: 23px;
+    width: 100%;
+    padding: 0 12px;
+
+    @media (${breakpoints.tablet}px) {
+      width: 100%;
+      padding: 0 12px;
+    }
 
     @media (${breakpoints.mobile}px) {
       width: 100%;
@@ -96,6 +115,8 @@ export const DivDProfissionais = styled.div`
     display: flex;
     flex-direction: column;
     gap: 23px;
+    width: 100%;
+    padding: 0 12px;
 
     @media (${breakpoints.mobile}px) {
       width: 100%;
@@ -108,12 +129,10 @@ export const PDescricao = styled.p`
 
       @media (${breakpoints.tablet}px) {
       width: 100%;
-      margin: 0 20px;
   }
       
       @media (${breakpoints.mobile}px) {
       width: 100%;
-      margin: 5px;
   }
 `;
 
@@ -123,7 +142,7 @@ export const DivInputs1 = styled.div`
       gap: 12px;
 
     @media (${breakpoints.tablet}px) {
-    justify-content: center;
+    
     align-items: center;
     width: 100%;
   }
@@ -138,11 +157,19 @@ export const DivInputs1 = styled.div`
 `;
 export const DivButton = styled.div`
       display : flex ;
-      align-items: center;
+      padding-top: 40px;
       justify-content: center;
-      padding-top: 10px;
 
       @media (${breakpoints.mobile}px) {
-      padding-top: 0px;
+      padding-top: 30px;
   }
+`;
+
+export const DivErro = styled.div`
+      
+`;
+
+export const DivInput = styled.div`
+      display: flex;
+      flex-direction: column;
 `;

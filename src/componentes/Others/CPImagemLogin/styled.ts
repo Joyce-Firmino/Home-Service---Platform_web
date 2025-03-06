@@ -1,13 +1,14 @@
 import styled from 'styled-components'
-import foto from "../../../assets/imagemLateralLogin.png"
+import foto from "../../../assets/imagemLateralLogin.webp"
 import breakpoints from '../../../breakPoints';
 
 
 export const DivImagem = styled.div`
   position: relative;
-  width: 100%;
+  width: 70%;
   height: 100%;
   background-image: url(${foto});
+  background-color: ${props => props.theme.COLORS.purple700};;
   background-size: cover;
   background-position: center;  
 

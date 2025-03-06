@@ -1,60 +1,87 @@
-import { Children, createContext, useState } from "react";
-import { UsuarioLogin } from "../dto/usuarioLoginDTO";
+import { createContext, useEffect, useState } from "react";
+import { UsuarioLoginDTO } from "../dto/usuarioLoginDTO";
 import { api } from "../api/axios";
+import { useCookies } from "react-cookie";
+import { IpropsDTO } from "../dto/IpropsDTO";
 
 export const AuthContext = createContext<AuthContextDTO>({} as AuthContextDTO);
 
-interface Iprops {
-    children: React.ReactNode;
-}
-
-interface AuthData {
+interface AuthDataDTO {
     token: string;
     email: string;
-    papel: number;
 }
 
 interface AuthContextDTO {
-    authData?: AuthData;
-    signIn: (email: string, senha: string) => Promise<AuthData | undefined>;
+    authData?: AuthDataDTO;
+    signIn: (email: string, senha: string) => Promise<AuthDataDTO | undefined>;
     logOut: () => Promise<void>;
+    error: boolean;
+    setError: React.Dispatch<React.SetStateAction<boolean>>;
+    setAuthData: React.Dispatch<React.SetStateAction<AuthDataDTO | undefined>>
 }
 
-export function AuthProvider({ children }: Iprops) {
-    const [authData, setAuthData] = useState<AuthData>();
+export function AuthProvider({ children }: IpropsDTO) {
+    const [authData, setAuthData] = useState<AuthDataDTO>();
+    const [error, setError] = useState(false);
 
-    async function signIn(email: string, senha: string): Promise<AuthData | undefined> {
-        const usuario: UsuarioLogin = {
+    const [cookieToken, setCookieToken, removeCookieToken] = useCookies(["token"]);
+    const [cookieEmail, setCookieEmail, removeCookieEmail] = useCookies(["email"]);
+
+
+    async function signIn(email: string, senha: string): Promise<AuthDataDTO | undefined> {
+        const usuario: UsuarioLoginDTO = {
             email: email,
             senha: senha
         }
         try {
             const response = await api.post('/login', usuario);
 
-            const data = response.data as AuthData;
+            const userAutenticated = response.data as AuthDataDTO;
 
-            // Salvando no estado e no AsyncStorage
-            setAuthData(data);
+            api.defaults.headers.common.Authorization= `Bearer ${userAutenticated.token}`;
+            api.defaults.headers.common["Email"] = userAutenticated.email;
+
+            console.log(userAutenticated.token + "OLa");
             
-            return data;
+
+            setCookieToken("token", userAutenticated.token);
+            setCookieEmail("email", userAutenticated.email);
+
+            setAuthData(userAutenticated);
+
+            setError(false);
         }
         catch (error: any) {
-            // Alert.alert('Erro 123', error.response?.data?.error || 'Erro');
+            setError(true)
             return undefined;
         }
     }
 
     async function logOut(): Promise<void> {
         setAuthData(undefined);
+        removeCookieToken("token");
+        removeCookieEmail("email");
     }
+
+    useEffect(() => {
+        if (cookieToken.token && cookieEmail.email) {
+            const authData: AuthDataDTO = {
+                token: cookieToken.token,
+                email: cookieEmail.email
+            }
+            api.defaults.headers.common.Authorization= `Bearer ${cookieToken.token}`;
+            api.defaults.headers.common["Email"] = cookieEmail.email;
+
+            setAuthData(authData);
+        }
+    }, [cookieToken, cookieEmail]);
 
 
 
     return (
-        <AuthContext.Provider value={{ authData, signIn, logOut }}>
+        <AuthContext.Provider value={{ signIn, logOut, error, setError, authData, setAuthData }}>
             {children}
         </AuthContext.Provider>
     )
 
 }
-
