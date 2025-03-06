@@ -7,7 +7,6 @@ export const DivContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
     background-color: ${props => props.theme.COLORS.purple200};
-    width: 100%;
     height: 100vh;
 
     @media (${breakpoints.tablet}px) {
@@ -17,7 +16,6 @@ export const DivContainer = styled.div`
   }
 
     @media (${breakpoints.mobile}px) {
-    padding: 0;
     justify-content: center;
     align-items: center;
     height: 100%;
@@ -28,17 +26,21 @@ export const DivContainer = styled.div`
 `;
 
 export const DivGlobal = styled.div`
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const DivSubGlobal = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
     height: 100%;
-    padding: 100px;
     justify-content: center;
+    align-items: center;
+
 
     @media (${breakpoints.tablet}px){
       display: flex;
@@ -61,7 +63,7 @@ export const H1Titulo = styled.h1`
     font-size: ${props => props.theme.FONTSIZE.g1}px;
     font-weight: bold;
     width: 100%;
-    padding: 0 12px 15px 12px;
+    padding: 0 12px 15px 0px;
    
 
 
@@ -79,14 +81,14 @@ export const H1Titulo = styled.h1`
 export const LabelError = styled.label`
   font-size: 14px;
   color: red;
-  margin: 5px;
+  margin-top: 5px;
 `;
 
 export const DivInfo = styled.div`
       display: flex;
       flex-direction: column;
       width: 100%;
-      gap: 32px;
+      gap: 25px;
       
 
       @media (${breakpoints.mobile}px) {
@@ -97,9 +99,8 @@ export const DivInfo = styled.div`
 export const DivDPessoais = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 23px;
+    gap: 12px;
     width: 100%;
-    padding: 0 12px;
 
     @media (${breakpoints.tablet}px) {
       width: 100%;
@@ -114,9 +115,8 @@ export const DivDPessoais = styled.div`
 export const DivDProfissionais = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 23px;
+    gap: 12px;
     width: 100%;
-    padding: 0 12px;
 
     @media (${breakpoints.mobile}px) {
       width: 100%;
@@ -139,7 +139,7 @@ export const PDescricao = styled.p`
 export const DivInputs1 = styled.div`
       display : flex ;
       flex-direction: row;
-      gap: 12px;
+      gap: 18px;
 
     @media (${breakpoints.tablet}px) {
     
@@ -157,16 +157,12 @@ export const DivInputs1 = styled.div`
 `;
 export const DivButton = styled.div`
       display : flex ;
-      padding-top: 40px;
+      padding-top: 30px;
       justify-content: center;
 
       @media (${breakpoints.mobile}px) {
       padding-top: 30px;
   }
-`;
-
-export const DivErro = styled.div`
-      
 `;
 
 export const DivInput = styled.div`

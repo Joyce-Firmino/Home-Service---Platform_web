@@ -5,7 +5,7 @@ import breakpoints from '../../../breakPoints';
 
 export const DivImagem = styled.div`
   position: relative;
-  width: 70%;
+  width: 62%;
   height: 100%;
   background-image: url(${foto});
   background-color: ${props => props.theme.COLORS.purple700};;
@@ -27,7 +27,7 @@ export const PBemvindo = styled.p`
   font-weight: bold;
   color: ${props => props.theme.COLORS.white};
   top: 50%;
-  left: 52%;
+  left: 58%;
   transform: translate(-50%, -50%);
   width: 450px;
 
