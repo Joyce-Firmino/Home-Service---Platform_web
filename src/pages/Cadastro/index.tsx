@@ -165,7 +165,7 @@ export function Cadastro() {
         <CPModalConfirm
           icone="✅"
           titulo="Sucesso"
-          menssagem="Prestador cadastrado com sucesso!"
+          menssagem="Prestador cadastrado com sucesso! Faça login para continuar!"
           variant="sucesso"
           onClose={() => {
             setMostrarModal(false);
