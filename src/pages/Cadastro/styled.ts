@@ -2,12 +2,12 @@ import { styled } from "styled-components";
 import breakpoints from "../../breakPoints";
 
 
-export const DivContainer = styled.div`
+export const DivContainer = styled.div` 
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     background-color: ${props => props.theme.COLORS.purple200};
-    height: 100vh;
+    height: 100%;
+    flex-direction: row;
 
     @media (${breakpoints.tablet}px) {
     display: flex;
@@ -25,10 +25,14 @@ export const DivContainer = styled.div`
   }
 `;
 
+export const DivImagem = styled.div`
+`;
+
 export const DivGlobal = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    padding: 40px 0;
+    width: 57%;
     height: 100%;
     justify-content: center;
     align-items: center;

@@ -96,7 +96,7 @@ export function Anuncio() {
   return (
     <>
       <DivContainer>
-        <CPHeader1 name={"Danrlei"} variantType="primario"></CPHeader1>
+        <CPHeader1 name={"Danrlei"} variantType="secundario"></CPHeader1>
         <DivMediana>
           <H1Titulo>Meus Anúncios</H1Titulo>
 

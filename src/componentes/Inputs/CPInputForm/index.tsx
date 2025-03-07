@@ -16,11 +16,12 @@ export const CPInputForm = forwardRef<HTMLInputElement, CustomFormInputProps>(
     ({ titulo, placeholder, variantSize, onChange, ...rest }, ref) => {
         return (
             <DivContainer variantComponent={variantSize}>
-                <PTitulo>{titulo}</PTitulo>
+                <PTitulo htmlFor='name'>{titulo}</PTitulo>
                 <Input 
                     placeholder={placeholder} 
                     variantComponent={variantSize} 
                     onChange={onChange} 
+                    id='name'
                     ref={ref} // <-- Agora o `ref` é passado corretamente
                     {...rest}
                 />

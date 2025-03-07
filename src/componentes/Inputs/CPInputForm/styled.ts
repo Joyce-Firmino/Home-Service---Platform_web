@@ -57,7 +57,7 @@ export const Input = styled.input<CustomInputProps>`
   }
 `;
 
-export const PTitulo = styled.p`
+export const PTitulo = styled.label`
   font-weight: normal;
   font-style: normal;
   font-size: ${props => props.theme.FONTSIZE.pp}px;
