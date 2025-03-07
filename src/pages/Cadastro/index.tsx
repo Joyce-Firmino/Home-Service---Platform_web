@@ -8,7 +8,7 @@ import { CPModalConfirm } from "../../componentes/Modals/CPModalConfirmacao";
 import { UserSchemaRegisterCadastro, UserSchemaRegisterCadastroType,} from "../../validacoes/validacaoCadastro";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { CPInputForm } from "../../componentes/Inputs/CPInputForm";
+import { CPInput03 } from "../../componentes/Inputs/CPInput03";
 import { CPButtonG } from "../../componentes/Buttons/CPButtonG";
 
 export function Cadastro() {
@@ -70,11 +70,11 @@ export function Cadastro() {
                 <PDescricao>Dados Pessoais</PDescricao>
                 <DivInputs1>
                   <DivInput>
-                    <CPInputForm
+                    <CPInput03
                       titulo="Nome"
                       placeholder="Informe seu nome"
                       variantSize="pequeno"
-                      {...register("nome")}
+                      register={register("nome")}
                     />
                     {errors.nome && (
                       <LabelError>{errors.nome.message}</LabelError>
@@ -82,11 +82,11 @@ export function Cadastro() {
                   </DivInput>
 
                   <DivInput>
-                    <CPInputForm
+                    <CPInput03
                       titulo="Telefone"
                       placeholder="Informe seu telefone"
                       variantSize="pequeno"
-                      {...register("telefone")}
+                      register={register("telefone")}
                     />
                     {errors.telefone && (
                       <LabelError>{errors.telefone.message}</LabelError>
@@ -95,11 +95,11 @@ export function Cadastro() {
                 </DivInputs1>
                 <DivInputs1>
                   <DivInput>
-                    <CPInputForm
+                    <CPInput03
                       titulo="Email"
                       placeholder="Informe seu email"
                       variantSize="pequeno"
-                      {...register("email")}
+                      register={register("email")}
                     />
                     {errors.email && (
                       <LabelError>{errors.email.message}</LabelError>
@@ -107,11 +107,11 @@ export function Cadastro() {
                   </DivInput>
 
                   <DivInput>
-                    <CPInputForm
+                    <CPInput03
                       titulo="Senha"
                       placeholder="Informe sua senha"
                       variantSize="pequeno"
-                      {...register("senha")}
+                      register={register("senha")}
                     />
                     {errors.senha && (
                       <LabelError>{errors.senha.message}</LabelError>
@@ -123,11 +123,11 @@ export function Cadastro() {
                 <PDescricao>Dados Profissionais</PDescricao>
                 <DivInputs1>
                   <DivInput>
-                    <CPInputForm
+                    <CPInput03
                       titulo="CNPJ"
                       placeholder="Informe seu CNPJ"
                       variantSize="pequeno"
-                      {...register("cnpj")}
+                      register={register("cnpj")}
                     />
                     {errors.cnpj && (
                       <LabelError>{errors.cnpj.message}</LabelError>
@@ -135,11 +135,11 @@ export function Cadastro() {
                   </DivInput>
 
                   <DivInput>
-                    <CPInputForm
+                    <CPInput03
                       titulo="Horário de Disponibilidade"
                       placeholder="Informe sua disponibilidade"
                       variantSize="pequeno"
-                      {...register("horarioDisponibilidade")}
+                      register={register("horarioDisponibilidade")}
                     />
                     {errors.horarioDisponibilidade && (
                       <LabelError>

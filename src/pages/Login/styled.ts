@@ -82,6 +82,11 @@ export const DivInferior = styled.div`
   }
   `;
 
+  export const LabelError = styled.label`
+    font-size: 14px;
+    color: red;
+  `;
+
 export const H1Titulo = styled.h1`
   font-size: ${props => props.theme.FONTSIZE.exg}px;
   color: ${props => props.theme.COLORS.purple700};
