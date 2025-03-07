@@ -2,7 +2,7 @@
   import breakpoints from '../../../breakPoints';
 
 
-  export const DivContainer = styled.div`
+  export const DivContainer = styled.button`
     background-color: ${props => props.theme.COLORS.white};
     width: 174px;
     height: 121px;
@@ -15,6 +15,7 @@
     justify-content: center;
     gap: 12px;
     border: 2px solid ${props => props.theme.COLORS.purple700};
+    cursor: pointer;
 
   
     @media (${breakpoints.tablet}px) {

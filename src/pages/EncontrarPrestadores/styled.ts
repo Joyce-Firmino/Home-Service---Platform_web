@@ -62,6 +62,11 @@ export const DivCards = styled.div`
     align-items: center;
     padding-bottom: 80px;
 
+    @media (max-width: 1500px) {
+    grid-template-columns: repeat(3, minmax(330px, 0fr)); //joyce deve colocar aqui o width do componente dela que é 330px
+    gap: 30px;
+    }
+    
     @media (${breakpoints.tablet}px) {
       display: grid;
       grid-template-columns: repeat(2, minmax(300px, 0fr));

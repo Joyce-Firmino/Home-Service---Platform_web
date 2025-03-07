@@ -13,7 +13,6 @@ export const DivContainer = styled.div<CustomInputProps>`
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  margin: 5px;
 
   ::placeholder {
     color: ${props => props.theme.COLORS.purple400}; /* Cor do placeholder */
@@ -58,7 +57,7 @@ export const Input = styled.input<CustomInputProps>`
   }
 `;
 
-export const PTitulo = styled.p`
+export const PTitulo = styled.label`
   font-weight: normal;
   font-style: normal;
   font-size: ${props => props.theme.FONTSIZE.pp}px;

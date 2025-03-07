@@ -26,21 +26,10 @@ export const DivContainer = styled.div`
       
 `;
 
-// export const DivImagem = styled.div`
-
-  
-// @media (${breakpoints.tablet}px) {
-//   width: 100%;
-//   height: 61%;
-//   padding: 0;
-//   }
-// `;
-
 export const DivLateral = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 100px;
   width: 100%;
   height: 100%;
   @media (${breakpoints.tablet}px) {

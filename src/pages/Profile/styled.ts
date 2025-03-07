@@ -142,6 +142,7 @@ export const DivMetodos = styled.div`
 export const PClick = styled.p`
     color: ${props => props.theme.COLORS.purple400};
     font-size: ${props => props.theme.FONTSIZE.m}px;
+    cursor: pointer;
 
     @media (${breakpoints.mobile}px) {
         font-size: ${props => props.theme.FONTSIZE.p}px;

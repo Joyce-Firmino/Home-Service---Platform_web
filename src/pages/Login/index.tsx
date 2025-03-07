@@ -1,25 +1,36 @@
-import { useContext, useEffect, useState } from 'react';
-import { CPButtonG } from '../../componentes/Buttons/CPButtonG';
-import { CPInput03 } from '../../componentes/Inputs/CPInput03';
-import { CPInputEyePassword } from '../../componentes/Inputs/CPInputEyePassword';
-import { CPImagemLogin } from '../../componentes/Others/CPImagemLogin';
-import { DivContainer, DivConteudo, DivInferior, DivInput, DivLateral, DivTitulo, H1Titulo, PDescricao } from './styled';
-import { AuthContext } from '../../context/authContext';
-import { useNavigate } from 'react-router';
-import { CPModalConfirm } from '../../componentes/Modals/CPModalConfirmacao';
-import { useCookies } from 'react-cookie';
-import { PrestadorContext } from '../../context/prestadorConntext';
-
+import { useContext, useEffect, useState } from "react";
+import { CPButtonG } from "../../componentes/Buttons/CPButtonG";
+import { CPInput03 } from "../../componentes/Inputs/CPInput03";
+import { CPInputEyePassword } from "../../componentes/Inputs/CPInputEyePassword";
+import { CPImagemLogin } from "../../componentes/Others/CPImagemLogin";
+import {
+  DivContainer,
+  DivConteudo,
+  DivInferior,
+  DivInput,
+  DivLateral,
+  DivTitulo,
+  H1Titulo,
+  PDescricao,
+} from "./styled";
+import { AuthContext } from "../../context/authContext";
+import { useNavigate } from "react-router";
+import { CPModalConfirm } from "../../componentes/Modals/CPModalConfirmacao";
+import { useCookies } from "react-cookie";
+import { PrestadorContext } from "../../context/prestadorConntext";
+import {
+  UserSchemaLogin,
+  UserSchemaLoginType,
+} from "../../validacoes/validacaoLogin";
 
 export function Login() {
-
   const prestadorContext = useContext(PrestadorContext);
   const authContext = useContext(AuthContext);
 
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function navegarParaLogin() {
     navigate(`/login`);
@@ -35,11 +46,10 @@ export function Login() {
     authContext.logOut(); // Limpa os dados sempre que entrar na tela de login
   }, []);
 
-  useEffect(() => {
-    if (authContext.authData && isLoggingIn) {
-      navigate(`/telaInicialPrestador`);
-    }
-  }, [authContext.authData, isLoggingIn, navigate]);
+  // useEffect(() => {
+  //   if (authContext.authData && isLoggingIn) {
+  //   }
+  // }, [authContext.authData, isLoggingIn, navigate]);
 
   const chamarSigIn = async () => {
     if (!email || !password) {
@@ -48,12 +58,20 @@ export function Login() {
     }
     setIsLoggingIn(true); // Indica que o login está sendo feito
     await authContext.signIn(email, password);
+    navigate(`/`);
   };
 
   return (
     <DivContainer>
-
-      {authContext.error && <CPModalConfirm icone='error' titulo='Erro' menssagem='Usuário ou senha inválidos!' variant='erro' onClose={setErro}></CPModalConfirm>}
+      {authContext.error && (
+        <CPModalConfirm
+          icone="error"
+          titulo="Erro"
+          menssagem="Usuário ou senha inválidos!"
+          variant="erro"
+          onClose={setErro}
+        ></CPModalConfirm>
+      )}
 
       <CPImagemLogin />
       <DivLateral>
@@ -65,30 +83,26 @@ export function Login() {
           <DivInferior>
             <DivInput>
               <CPInput03
-                titulo='Email'
-                placeholder='Digite aqui seu email'
-                variantSize='grande'
+                titulo="Email"
+                placeholder="Digite aqui seu email"
+                variantSize="grande"
                 onChange={setEmail}
               />
               <CPInputEyePassword
-                titulo='Senha'
-                placeholder='Digite sua senha'
-                variantSize='grande'
+                titulo="Senha"
+                placeholder="Digite sua senha"
+                variantSize="grande"
                 onChange={setPassword}
               />
             </DivInput>
             <CPButtonG
               title="Login"
               onClick={chamarSigIn}
-              variantType='primario'
+              variantType="primario"
             />
           </DivInferior>
         </DivConteudo>
       </DivLateral>
-
     </DivContainer>
-
   );
-
-
 }

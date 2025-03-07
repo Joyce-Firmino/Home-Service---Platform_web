@@ -5,17 +5,24 @@ import { CPProfileG } from "../../componentes/Profiles/CPProfileG";
 import { DivBloco, DivCabecalho, DivContainer, DivCXAreia, DivFoto, DivInfo, DivMedia, DivMetodos, DivSeparacao, DivSubContainer, DivText, H1Tittle, PAlterarFt, PClick, PDescricao, PResposta } from "./styled";
 import { AuthContext } from "../../context/authContext";
 import { PrestadorContext } from "../../context/prestadorConntext";
+import { useNavigate } from 'react-router';
 
 export function Profile() {
 
     const authData = useContext(AuthContext);
     const prestadorContext = useContext(PrestadorContext);
+    const navigate = useNavigate();
+
+    const fazerLogout = () => {
+        authData.logOut();
+        navigate(`/`);
+    }
 
     const buscarDadosPrestador = async () => {
         try {
-            const retorno = await prestadorContext.buscarDadosPrestador();
+            prestadorContext.buscarDadosPrestador();
         } catch (error) {
-    
+
         }
       }
 
@@ -23,31 +30,7 @@ export function Profile() {
         if (!prestadorContext.prestadorData) {
             buscarDadosPrestador();
         }
-    }, []); // Executa sempre que `dadosPrestador` mudar
-
-    // const buscarPrestador = async () => {
-    //     try {
-    //         const response = await api.get<ProfilePrestadorDTO>('/prestadorPerfil', {
-    //             headers: {
-    //                 Authorization: `Bearer ${authData.authData?.token}`,
-    //                 email: authData.authData?.email
-    //             }
-    //         });
-
-    //         console.log("Dados recebidos da API:", response.data); // Verifique o formato dos dados
-
-    //         if (response.data) {
-    //             setDadosPrestador(response.data);
-    //         }
-
-    //     } catch (error) {
-    //         console.error("Erro ao buscar prestador:", error);
-    //     }
-    // };
-    // useEffect(() => {
-    //     buscarPrestador();
-    // }, []);
-
+    }, []);
     return (
         <DivContainer>
             <CPHeader1
@@ -60,14 +43,14 @@ export function Profile() {
                         <CPProfileG
                             name= {prestadorContext.prestadorData?.name}
                             variantType="primario" />
-                        <PAlterarFt> Alterar foto</PAlterarFt>
+                        {/* <PAlterarFt> Alterar foto</PAlterarFt> */}
                     </DivFoto>
                     <DivInfo>
                         <DivCabecalho>
                             <H1Tittle>Meu Perfil</H1Tittle>
                             <DivMetodos>
-                                <PClick>editar</PClick>
-                                <PClick>sair</PClick>
+                                <PClick onClick={fazerLogout}>editar</PClick>
+                                <PClick onClick={fazerLogout}>sair</PClick>
                             </DivMetodos>
                         </DivCabecalho>
                         <DivMedia>

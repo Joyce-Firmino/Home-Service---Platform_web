@@ -33,6 +33,9 @@ export function CPHeader1({ name, variantType }: CustomHeaderProps) {
     function navegarParaPaginaPerfil() {
         navigate(`/perfil`);
     }
+    function navegarParaPaginaTelaInicialPrestador() {
+        navigate(`/perfil`);
+    }
     function navegarParaPaginaCadastro() {
         navigate(`/cadastro`);
     }

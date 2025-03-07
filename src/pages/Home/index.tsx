@@ -101,9 +101,9 @@ export function Home() {
       <CPCarrossel settings={settings} >
         {carregando ? (<Loader></Loader>) : (<div>{dadosCategoria.map((dado) => (
           <SwiperSlide key={dado.id}>
-            <button onClick={() => navegarParaPaginaCategory(dado.id)}>
+            <a onClick={() => navegarParaPaginaCategory(dado.id)}>
               <CPCardCategory categoria={dado.servico} uriFoto={dado.icone} />
-            </button>
+            </a>
           </SwiperSlide>
         ))}</div>)
         }
