@@ -12,16 +12,16 @@ interface AuthDataDTO {
 }
 
 interface AuthContextDTO {
-    authData?: AuthDataDTO;
+    authData?: AuthDataDTO | null;
     signIn: (email: string, senha: string) => Promise<AuthDataDTO | undefined>;
-    logOut: () => Promise<void>;
+    logOut: () => void;
     error: boolean;
     setError: React.Dispatch<React.SetStateAction<boolean>>;
-    setAuthData: React.Dispatch<React.SetStateAction<AuthDataDTO | undefined>>
+    setAuthData: React.Dispatch<React.SetStateAction<AuthDataDTO | null>>
 }
 
 export function AuthProvider({ children }: IpropsDTO) {
-    const [authData, setAuthData] = useState<AuthDataDTO>();
+    const [authData, setAuthData] = useState<AuthDataDTO | null>(null);
     const [error, setError] = useState(false);
 
     const [cookieToken, setCookieToken, removeCookieToken] = useCookies(["token"]);
@@ -57,8 +57,8 @@ export function AuthProvider({ children }: IpropsDTO) {
         }
     }
 
-    async function logOut(): Promise<void> {
-        setAuthData(undefined);
+    function logOut() {
+        setAuthData(null);
         removeCookieToken("token");
         removeCookieEmail("email");
     }

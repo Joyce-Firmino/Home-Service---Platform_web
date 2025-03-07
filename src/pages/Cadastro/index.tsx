@@ -179,22 +179,20 @@ export function Cadastro() {
           </DivSubGlobal>
         </DivGlobal>
 
-
-
-        {/* Modal de Confirmação */}
-        {mostrarModal && (
-          <CPModalConfirm
-            icone="✅"
-            titulo="Sucesso"
-            menssagem="Prestador cadastrado com sucesso! Faça login para continuar!"
-            variant="sucesso"
-            onClose={() => {
-              setMostrarModal(false);
-              navigate(`/`);
-            }}
-          />
-        )}
-      </DivContainer>
+      {/* Modal de Confirmação */}
+      {mostrarModal && (
+        <CPModalConfirm
+          icone="✅"
+          titulo="Sucesso"
+          menssagem="Prestador cadastrado com sucesso! Faça login para continuar!"
+          variant="sucesso"
+          onClose={() => {
+            setMostrarModal(false);
+            navigate(`/`);
+          }}
+        />
+      )}
+    </DivContainer>
     </form>
   );
 }

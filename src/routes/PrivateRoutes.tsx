@@ -26,6 +26,6 @@ export function PrivateRoutes({ children }: Iprops) {
                 </PrestadorProvider>
             </AuthProvider>
             :
-            <Navigate to="/login"></Navigate>
+            <Navigate to="/"></Navigate>
     )
 }
