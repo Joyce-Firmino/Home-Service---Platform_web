@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { CPImagemLogin } from "../../componentes/Others/CPImagemLogin";
-import { DivContainer, DivDPessoais, DivDProfissionais, DivGlobal, DivInfo, DivInputs1, DivSubGlobal, H1Titulo, LabelError, PDescricao,DivButton,DivInput} from "./styled";
+import { DivContainer, DivDPessoais, DivDProfissionais, DivGlobal, DivInfo, DivInputs1, DivSubGlobal, H1Titulo, LabelError, PDescricao, DivButton, DivInput } from "./styled";
 import { PostPrestadorDTO } from "../../dto/PostPrestadorDTO";
 import { api } from "../../api/axios";
 import { useNavigate } from "react-router";
 import { CPModalConfirm } from "../../componentes/Modals/CPModalConfirmacao";
-import { UserSchemaRegisterCadastro, UserSchemaRegisterCadastroType,} from "../../validacoes/validacaoCadastro";
+import { UserSchemaRegisterCadastro, UserSchemaRegisterCadastroType, } from "../../validacoes/validacaoCadastro";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { CPInput03 } from "../../componentes/Inputs/CPInput03";
 import { CPButtonG } from "../../componentes/Buttons/CPButtonG";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import "leaflet/dist/leaflet.css"
+import "./cadastro.css"
 
 export function Cadastro() {
   const navigate = useNavigate();
@@ -38,7 +41,7 @@ export function Cadastro() {
       };
 
       console.log("Dados recebidos no submit:", data);
-    
+
 
       const response = await api.post<PostPrestadorDTO>(
         "/prestador",
@@ -52,17 +55,20 @@ export function Cadastro() {
       }
     } catch (error: any) {
       console.error("Error details:", error);
-    }finally{
-        console.log("oi to")
+    } finally {
+      console.log("oi to")
     }
   };
 
   return (
     <form onSubmit={handleSubmit(criarPrestador)}>
-    <DivContainer>
-      <CPImagemLogin />
-      <DivGlobal>
-         {/* Verifique se está no form correto */}
+
+      <DivContainer>
+        <div>
+          <CPImagemLogin />
+        </div>
+        <DivGlobal>
+          {/* Verifique se está no form correto */}
           <DivSubGlobal>
             <H1Titulo>Cadastro</H1Titulo>
             <DivInfo>
@@ -149,6 +155,19 @@ export function Cadastro() {
                   </DivInput>
                 </DivInputs1>
               </DivDProfissionais>
+              <div>
+                <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+                  <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  <Marker position={[51.505, -0.09]}>
+                    <Popup>
+                      A pretty CSS3 popup. <br /> Easily customizable.
+                    </Popup>
+                  </Marker>
+                </MapContainer>
+              </div>
             </DivInfo>
             <DivButton>
               <CPButtonG
@@ -158,7 +177,7 @@ export function Cadastro() {
               />
             </DivButton>
           </DivSubGlobal>
-      </DivGlobal>
+        </DivGlobal>
 
       {/* Modal de Confirmação */}
       {mostrarModal && (

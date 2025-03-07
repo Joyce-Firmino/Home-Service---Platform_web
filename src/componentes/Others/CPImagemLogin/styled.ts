@@ -4,8 +4,8 @@ import breakpoints from '../../../breakPoints';
 
 
 export const DivImagem = styled.div`
-  position: relative;
-  width: 62%;
+  position: fixed;
+  width: 42%;
   height: 100%;
   background-image: url(${foto});
   background-color: ${props => props.theme.COLORS.purple700};;

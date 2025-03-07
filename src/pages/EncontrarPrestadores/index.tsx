@@ -7,18 +7,13 @@ import { AuthContext } from "../../context/authContext";
 import { PrestadorDTO } from "../../dto/GetPrestadorDTO";
 import { api } from "../../api/axios";
 
-
-
-
 export function EncontrarPrestador() {
 
     const [prestadores, setPrestadores] = useState<PrestadorDTO[]>([]);
     const [carregando, setCarregando] = useState<boolean>(false);
     const [erroCarregarDados, setErroCarregarDados] = useState<boolean>(false);
 
-    useEffect(() => {
-        console.log("Novo estado de dadosPrestador:", prestadores);
-    }, [prestadores]);
+    const context = useContext(AuthContext);
 
     const buscarPrestadores = async () => {
         try {
@@ -36,11 +31,10 @@ export function EncontrarPrestador() {
         buscarPrestadores();
     }, []);
 
+    useEffect(() => {
+        console.log("Novo estado de dadosPrestador:", prestadores);
+    }, [prestadores]);
 
-
-    const context = useContext(AuthContext)
-
-    console.log(context.authData?.token);
     return (
         <DivContainer>
             <DivSubcontainer>
