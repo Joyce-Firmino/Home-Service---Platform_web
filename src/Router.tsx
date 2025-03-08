@@ -20,7 +20,7 @@ export function Router() {
         <Route path="/" >
           <Route path="/" element={<Home />} />
           <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/category" element={<Category category="" />} />
+          <Route path="/anunciosCategoria/:categoria/:id" element={<Category category="" />} />
           <Route path="/prestadores" element={<EncontrarPrestador />} />
           <Route path="/login" element={<Login />} />
         </Route>

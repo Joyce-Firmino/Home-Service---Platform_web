@@ -58,8 +58,8 @@ export function Home() {
 
   const navigate = useNavigate();
 
-  function navegarParaPaginaCategory(id: string): void {
-    navigate(`/anunciosCategoria/${id}`);
+  function navegarParaPaginaCategory(id: string, categoria: string): void {
+    navigate(`/anunciosCategoria/${categoria}/${id}`);
   }
 
   function navegarParaPaginaEncontrarPrestador() {
@@ -101,7 +101,7 @@ export function Home() {
       <CPCarrossel settings={settings} >
         {carregando ? (<Loader></Loader>) : (<div>{dadosCategoria.map((dado) => (
           <SwiperSlide key={dado.id}>
-            <a onClick={() => navegarParaPaginaCategory(dado.id)}>
+            <a onClick={() => navegarParaPaginaCategory(dado.id, dado.servico )}>
               <CPCardCategory categoria={dado.servico} uriFoto={dado.icone} />
             </a>
           </SwiperSlide>

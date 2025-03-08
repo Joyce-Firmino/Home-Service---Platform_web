@@ -10,6 +10,7 @@ import { AnuncioCompletoDTO } from '../../dto/AnuncioCompletoDTO';
 import { api } from '../../api/axios';
 import { Loader } from '../../componentes/Others/CPLoader';
 import { CPModalConfirm } from '../../componentes/Modals/CPModalConfirmacao';
+import { useParams } from 'react-router';
 
 interface CustomCategoryProps {
   category: string;
@@ -24,13 +25,15 @@ export function Category({ category }: CustomCategoryProps) {
   const [dadosAnuncios, setDadosAnuncios] = useState<AnuncioCompletoDTO[]>([]);
   const [carregando, setCarregando] = useState<boolean>(false);
   const [erroCarregarDados, setErroCarregarDados] = useState<boolean>(false);
-  
+
+  const { id, categoria } = useParams();
+
 
   const buscarAnuncios = async () => {
     try {
       console.log("response");
       setCarregando(true);
-      const response = await api.get<AnuncioCompletoDTO[]>('/anuncios');
+      const response = await api.get<AnuncioCompletoDTO[]>(`/anunciosCategoria/${id}`);
 
       console.log(response.data);
 
@@ -52,7 +55,7 @@ export function Category({ category }: CustomCategoryProps) {
     <DivContainer>
       {carregando ? (
         <DivRender>
-          <CPHeader1  name='Jose Vieira' variantType='primario'></CPHeader1>
+          <CPHeader1 name='Jose Vieira' variantType='primario'></CPHeader1>
 
           <DivConteudo>
             <Loader></Loader>
@@ -82,7 +85,7 @@ export function Category({ category }: CustomCategoryProps) {
 
 
             <DivTextos>
-              <H1Titulo>{category}</H1Titulo>
+              <H1Titulo>{categoria}</H1Titulo>
               <PDescricao>Encontre abaixo todos os profissionais dessa categoria</PDescricao>
             </DivTextos>
             <DivConteudo>
