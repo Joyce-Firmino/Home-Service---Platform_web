@@ -38,5 +38,6 @@ export const PBemvindo = styled.p`
   @media (${breakpoints.tablet}px) {
     font-size: 65px;
     width: 420px;
+    left: 50%;
   }
 `;

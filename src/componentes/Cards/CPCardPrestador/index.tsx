@@ -1,34 +1,35 @@
 import { useEffect, useState } from 'react';
-import foto from '../../../assets/pedreiro.webp';
 import { DivBloco, ImgImage, DivContainer, IIcon, DivIconText, PService, DivInfo, DivGlobal, H1Title, PText, HrLiinha } from './styled';
-import { CPProfileG } from '../../Profiles/CPProfileG';
 import { CPProfileM } from '../../Profiles/CPProfileM';
 
 interface CustomCardProps {
   uriFoto: string;
   prestador: string;
-  city: string;
+  city: Promise<string>;
   telefone: string;
   email: string;
-  nome:string
+  nome: string;
 }
 
-
-
 export function CPCardPrestador({ prestador, city, telefone, email, nome }: CustomCardProps) {
+  const [cidade, setCidade] = useState<string>("Carregando...");
+
+  useEffect(() => {
+    city.then(setCidade).catch(() => setCidade("Erro ao carregar"));
+  }, [city]);
+
   return (
     <DivContainer>
-      <CPProfileM name={nome} variantType='primario'></CPProfileM>
+      <CPProfileM name={nome} variantType="primario"></CPProfileM>
       <DivGlobal>
         <DivInfo>
           <H1Title>{prestador}</H1Title>
         </DivInfo>
-        <HrLiinha>
-        </HrLiinha>
+        <HrLiinha />
         <DivBloco>
           <DivIconText>
             <IIcon>location_on</IIcon>
-            <PText>{city}</PText>
+            <PText>{cidade}</PText>
           </DivIconText>
           <DivIconText>
             <IIcon>call</IIcon>

@@ -13,7 +13,6 @@ export const DivContainer = styled.div<CustomInputProps>`
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  margin: 5px;
 
   ::placeholder {
     color: ${props => props.theme.COLORS.purple400}; /* Cor do placeholder */

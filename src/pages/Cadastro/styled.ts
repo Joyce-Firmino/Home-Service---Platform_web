@@ -1,6 +1,12 @@
 import { styled } from "styled-components";
 import breakpoints from "../../breakPoints";
 
+export const DivLoader = styled.div`
+display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+`;
 
 export const DivContainer = styled.div` 
     display: flex;
@@ -17,7 +23,6 @@ export const DivContainer = styled.div`
   }
 
     @media (${breakpoints.mobile}px) {
-    
     height: 100%;
     gap: 0;
     padding: 65px 0;
@@ -69,7 +74,8 @@ export const DivSubGlobal = styled.div`
     @media (${breakpoints.mobile}px) {
       display: flex;
       flex-direction: column;
-      width: 100%;
+      width: 345px;
+      padding: 0;
       justify-content: center;
     }
 `;
@@ -121,6 +127,7 @@ export const DivDPessoais = styled.div`
     flex-direction: column;
     gap: 12px;
     width: 100%;
+    
 
     @media (${breakpoints.tablet}px) {
       width: 100%;

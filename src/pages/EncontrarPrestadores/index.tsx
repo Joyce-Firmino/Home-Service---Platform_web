@@ -6,6 +6,7 @@ import { DivCards, DivContainer, DivMedia, DivSubcontainer, DivTitulo, H1Titulo,
 import { AuthContext } from "../../context/authContext";
 import { PrestadorDTO } from "../../dto/GetPrestadorDTO";
 import { api } from "../../api/axios";
+import { fetchAddress } from "../../util/converterEndereco";
 
 export function EncontrarPrestador() {
 
@@ -30,10 +31,11 @@ export function EncontrarPrestador() {
     useEffect(() => {
         buscarPrestadores();
     }, []);
+    
 
     useEffect(() => {
         console.log("Novo estado de dadosPrestador:", prestadores);
-    }, [prestadores]);
+    }, [prestadores]);  
 
     return (
         <DivContainer>
@@ -48,7 +50,7 @@ export function EncontrarPrestador() {
                 <DivCards>{
                     prestadores.map((prestador) => (
                         <CPCardPrestador
-                        city="São José de Piranhas - PB"
+                        city={fetchAddress(prestador.prestador.latitude, prestador.prestador.longitude)}
                         email={prestador.email}
                         prestador={prestador.nome}
                         telefone={prestador.telefone}

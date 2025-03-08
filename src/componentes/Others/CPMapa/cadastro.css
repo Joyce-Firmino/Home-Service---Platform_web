@@ -1,0 +1,12 @@
+.leaflet-container{
+    height: 300px;
+    width: 708px;
+    border-radius: 10px;
+    border: 2px solid #9089cb;
+}
+
+@media (max-width: 500px) {
+    .leaflet-container {
+        width: 345px;
+    }
+  }
