@@ -6,21 +6,22 @@ export const DivContainer = styled.div`
     display: flex;
     justify-content: space-between;
     background-color: ${props => props.theme.COLORS.purple200};
-    height: 100%;
+    height: 100vh;
     flex-direction: row;
 
     @media (${breakpoints.tablet}px) {
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
   }
 
     @media (${breakpoints.mobile}px) {
-    justify-content: center;
-    align-items: center;
+    
     height: 100%;
     gap: 0;
     padding: 65px 0;
+    margin-top: 0;
 
   }
 `;
@@ -36,6 +37,18 @@ export const DivGlobal = styled.div`
     height: 100%;
     justify-content: center;
     align-items: center;
+
+    @media (${breakpoints.tablet}px) {
+      width: 100%;
+      padding: 40px 0 60px 0;
+      margin-top: 500px;
+    }
+
+    @media (${breakpoints.mobile}px) {
+      width: 100%;
+      padding: 0;
+      margin-top: 0;
+    }
 `;
 
 export const DivSubGlobal = styled.div`
@@ -49,8 +62,7 @@ export const DivSubGlobal = styled.div`
     @media (${breakpoints.tablet}px){
       display: flex;
       flex-direction: column;
-      width: 100%;
-      padding: 34px;
+      padding: 0 34px;
       justify-content: center;
     }
 
@@ -59,7 +71,6 @@ export const DivSubGlobal = styled.div`
       flex-direction: column;
       width: 100%;
       justify-content: center;
-      padding: 0 34px;
     }
 `;
 export const H1Titulo = styled.h1`
@@ -67,17 +78,16 @@ export const H1Titulo = styled.h1`
     font-size: ${props => props.theme.FONTSIZE.g1}px;
     font-weight: bold;
     width: 100%;
-    padding: 0 12px 15px 0px;
+    padding: 0 0 15px 0px;
    
 
 
     @media (${breakpoints.tablet}px) {
       width: 100%;
-      padding: 0 12px 15px 12px;
+      /* padding: 0 0 12px; */
   }
 
-    @media (${breakpoints.mobile}px) {
-      width: 100%;
+    @media (${breakpoints.mobile}px) {  
       
   }
 `;
@@ -94,9 +104,15 @@ export const DivInfo = styled.div`
       width: 100%;
       gap: 25px;
       
+      @media (${breakpoints.tablet}px) {
+        
+      }
 
       @media (${breakpoints.mobile}px) {
-      width: 100%;      
+      width: 100%; 
+      padding: 0;
+      align-items: center;
+      justify-content: center;
     }
 `;
 
@@ -108,11 +124,12 @@ export const DivDPessoais = styled.div`
 
     @media (${breakpoints.tablet}px) {
       width: 100%;
-      padding: 0 12px;
+      padding: 0;
     }
 
     @media (${breakpoints.mobile}px) {
       width: 100%;
+      padding: 0;
   }
        
 `;
@@ -172,4 +189,8 @@ export const DivButton = styled.div`
 export const DivInput = styled.div`
       display: flex;
       flex-direction: column;
+
+      @media (${breakpoints.mobile}px) {
+        width: 100%;
+      }
 `;

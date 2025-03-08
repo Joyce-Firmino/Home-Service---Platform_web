@@ -13,8 +13,12 @@ export const DivImagem = styled.div`
   background-position: center;  
 
   @media (${breakpoints.tablet}px) {
-    height: 70% ;
-  }
+  width: 100%; /* Ocupar toda a largura */
+  height: 40%; /* Definir 40% da altura */
+  position: absolute; /* Ajustar a posição corretamente */
+  top: 0; /* Garantir que fique no topo */
+  left: 0;
+}
   
   @media (${breakpoints.mobile}px) {
     display: none;

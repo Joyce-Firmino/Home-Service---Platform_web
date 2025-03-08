@@ -14,23 +14,44 @@ const validaTelefone = (telefone: string): boolean => {
 
 // Esquema de validação do prestador
 export const UserSchemaRegisterCadastro = z.object({
-  nome: z.string({ required_error: "Nome é obrigatório" }).trim().min(3, "O nome deve ter no mínimo 3 caracteres"),
-  email: z.string({ required_error: "E-mail é obrigatório" }).trim().email("E-mail inválido"),
-  senha: z.string({ required_error: "Senha é obrigatória" }).trim().min(6, "A senha deve ter pelo menos 6 caracteres"),
+  nome: z
+    .string()
+    .trim()
+    .min(1, "Nome é obrigatório")
+    .min(3, "O nome deve ter no mínimo 3 caracteres"),
+  
+  email: z
+    .string()
+    .trim()
+    .min(1, "E-mail é obrigatório")
+    .email("E-mail inválido"),
+  
+  senha: z
+    .string()
+    .trim()
+    .min(1, "Senha é obrigatória")
+    .min(6, "A senha deve ter pelo menos 6 caracteres"),
+  
   telefone: z
-    .string({ required_error: "Telefone é obrigatório" })
+    .string()
+    .trim()
+    .min(1, "Telefone é obrigatório")
     .refine((value) => validaTelefone(value), {
       message: "Telefone incorreto: digite no padrão (XX) XXXX-XXXX.",
     }),
+  
   cnpj: z
-    .string({ required_error: "CNPJ é obrigatório" })
+    .string()
     .trim()
+    .min(1, "CNPJ é obrigatório")
     .refine((value) => validaCnpj(value), {
       message: "CNPJ incorreto: digite no padrão XX.XXX.XXX/XXXX-XX.",
     }),
+  
   horarioDisponibilidade: z
-    .string({ required_error: "Horário de disponibilidade é obrigatório" })
-    .nonempty("Horário de disponibilidade é obrigatório"),
+    .string()
+    .trim()
+    .min(1, "Horário de disponibilidade é obrigatório"),
 });
 
 export type UserSchemaRegisterCadastroType = z.infer<typeof UserSchemaRegisterCadastro>;

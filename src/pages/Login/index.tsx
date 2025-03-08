@@ -1,30 +1,21 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { CPButtonG } from "../../componentes/Buttons/CPButtonG";
 import { CPInputEyePassword } from "../../componentes/Inputs/CPInputEyePassword";
 import { CPInput03 } from "../../componentes/Inputs/CPInput03";
 import { CPImagemLogin } from "../../componentes/Others/CPImagemLogin";
-import { DivContainer, DivConteudo, DivInferior, DivInput, LabelError, DivLateral, DivTitulo, H1Titulo, PDescricao} from "./styled";
+import { DivGlobal, DivImage, DivContainer, DivConteudo, DivInferior, DivInput, LabelError, DivLateral, DivTitulo, H1Titulo, PDescricao} from "./styled";
 import { AuthContext } from "../../context/authContext";
 import { useNavigate } from "react-router";
 import { CPModalConfirm } from "../../componentes/Modals/CPModalConfirmacao";
-import { PrestadorContext } from "../../context/prestadorConntext";
 import { UserSchemaLogin, UserSchemaLoginType} from "../../validacoes/validacaoLogin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 
 export function Login() {
-  const prestadorContext = useContext(PrestadorContext);
   const authContext = useContext(AuthContext);
 
   const navigate = useNavigate();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  // function navegarParaLogin() {
-  //   navigate(`/login`);
-  // }
 
   const {
       register,
@@ -39,24 +30,7 @@ export function Login() {
     authContext.setError(false);
   }
 
-  // const [isLoggingIn, setIsLoggingIn] = useState(false);
-
-  // useEffect(() => {
-  //   authContext.logOut(); // Limpa os dados sempre que entrar na tela de login
-  // }, []);
-
-  // useEffect(() => {
-  //   if (authContext.authData && isLoggingIn) {
-  //   }
-  // }, [authContext.authData, isLoggingIn, navigate]);
-
   const chamarSigIn = async (data: UserSchemaLoginType) => {
-    // if (!email || !password) {
-    //   alert("Preencha os campos!");
-    //   return;
-    // }
-    // setIsLoggingIn(true); // Indica que o login está sendo feito
-
     console.log(data);
     
     await authContext.signIn(data.email, data.senha);
@@ -76,7 +50,10 @@ export function Login() {
         ></CPModalConfirm>
       )}
 
-      <CPImagemLogin />
+        <DivImage>
+          <CPImagemLogin />
+        </DivImage>
+        <DivGlobal>
       <DivLateral>
         <DivConteudo>
           <DivTitulo>
@@ -112,6 +89,7 @@ export function Login() {
           </DivInferior>
         </DivConteudo>
       </DivLateral>
+      </DivGlobal>
     </DivContainer>
     </form>
   );
