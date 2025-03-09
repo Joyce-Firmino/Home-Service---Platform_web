@@ -68,7 +68,7 @@ export function CPForm() {
     }
 
     carregarCategorias();
-  }, []);
+  }, [token, email]);
 
   useEffect(() => {
     if (id) {
@@ -162,6 +162,7 @@ export function CPForm() {
           <CPButtonG
             title={id ? "Salvar alterações" : "Criar anúncio"}
             onClick={() => console.log("clicado!")}
+            type="submit"
             variantType="primario"
           />
         </GrupoBotao>
@@ -176,7 +177,7 @@ export function CPForm() {
             variant="sucesso"
             onClose={() => {
               setVisibilidadeModal(false);
-              navigate("/anuncios");
+              navigate("/");
             }}
           />
         </ModalBackground>

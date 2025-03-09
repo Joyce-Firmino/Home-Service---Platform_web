@@ -97,3 +97,16 @@ export const ModalBackground = styled.div`
 export const TextoVazio = styled.p`
   text-align: center;
 `;
+
+export const DivConteudo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  background-color: ${(props) => props.theme.COLORS.purple200};
+  @media (${breakpoints.tablet}px) {
+  }
+
+  @media (${breakpoints.mobile}px) {
+  }
+`;

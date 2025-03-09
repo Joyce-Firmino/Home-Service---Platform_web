@@ -12,11 +12,14 @@ import {
   DivDireita,
   ModalBackground,
   TextoVazio,
+  DivConteudo,
 } from "./styled";
 import { useNavigate } from "react-router";
 import { api } from "../../api/axios";
 import { AnuncioCompletoDTO } from "../../dto/AnuncioCompletoDTO";
 import { AuthContext } from "../../context/authContext";
+import { Loader } from "../../componentes/Others/CPLoader";
+import { PrestadorContext } from "../../context/prestadorConntext";
 
 export function Anuncio() {
   const navigate = useNavigate();
@@ -26,11 +29,42 @@ export function Anuncio() {
   const [anuncioParaExcluir, setAnuncioParaExcluir] = useState<string | null>(
     null
   );
+  const [isLoading, setIsLoading] = useState(false);
 
   const { authData } = useContext(AuthContext);
+  const prestadorContext = useContext(PrestadorContext);
 
   const token = authData?.token;
   const email = authData?.email;
+
+  const buscarDadosPrestador = async () => {
+    try {
+      prestadorContext.buscarDadosPrestador();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const buscarAnuncios = async () => {
+    try {
+      setIsLoading(true);
+      const response = await api.get<AnuncioCompletoDTO[]>(
+        "/anunciosPrestador",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            email,
+          },
+        }
+      );
+      console.log(response.data);
+      setAnuncios(response.data);
+    } catch (error) {
+      console.error("Erro ao carregar anúncios:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (!token || !email) {
@@ -38,27 +72,12 @@ export function Anuncio() {
       return;
     }
 
-    const buscarAnuncios = async () => {
-      try {
-        console.log("response");
-        const response = await api.get<AnuncioCompletoDTO[]>(
-          "/anunciosPrestador",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              email,
-            },
-          }
-        );
-        console.log(response.data);
-        setAnuncios(response.data);
-      } catch (error) {
-        console.error("Erro ao carregar anúncios:", error);
-      }
-    };
+    if (!prestadorContext.prestadorData) {
+      buscarDadosPrestador();
+    }
 
     buscarAnuncios();
-  }, [anuncios, token, email]);
+  }, [token, email]);
 
   function handleExcluir(id: string) {
     console.log(id);
@@ -79,15 +98,18 @@ export function Anuncio() {
     }
 
     try {
-      const response = await api.delete(`/anuncio/${id}`, {
+      await api.delete(`/anuncio/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           email,
         },
       });
-      console.log("Anúncio excluído com sucesso:", response.data);
+
+      setAnuncios((prev) => prev.filter((anuncio) => anuncio.id !== id));
+
+      await buscarAnuncios();
+
       setVisibilidadeModal(false);
-      navigate("/anuncios");
     } catch (error) {
       console.error("Erro ao excluir o anúncio:", error);
     }
@@ -96,11 +118,16 @@ export function Anuncio() {
   return (
     <>
       <DivContainer>
-        <CPHeader1 name={"Danrlei"} variantType="secundario"></CPHeader1>
+        <CPHeader1
+          name={prestadorContext.prestadorData?.name}
+          variantType="secundario"
+        />
         <DivMediana>
           <H1Titulo>Meus Anúncios</H1Titulo>
 
-          {anuncios.length > 0 ? (
+          {isLoading ? (
+            <Loader />
+          ) : anuncios.length > 0 ? (
             <DivGridContainer>
               {anuncios.map((anuncio) => {
                 return (
@@ -114,19 +141,24 @@ export function Anuncio() {
                       navigate(`/editarAnuncio?id=${anuncio.id}`)
                     }
                     excluir={() => handleExcluir(anuncio.id)}
-                    uriFoto="test"
+                    uriFoto={anuncio.categoria.icone}
                   />
                 );
               })}
             </DivGridContainer>
           ) : (
-            <TextoVazio>Prestador não possui nenhum anúncio!</TextoVazio>
+            <DivConteudo>
+              <TextoVazio>
+                Não foi possível achar nenhum anúncio criado pelo prestador!
+              </TextoVazio>
+            </DivConteudo>
           )}
 
           <DivDireita>
             <CPButtonG
               title="Criar anúncios"
               variantType="primario"
+              type="button"
               onClick={() => navigate("/criarAnuncio")}
             ></CPButtonG>
           </DivDireita>
