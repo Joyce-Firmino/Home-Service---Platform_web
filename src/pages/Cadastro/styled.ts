@@ -12,7 +12,7 @@ export const DivContainer = styled.div`
     display: flex;
     justify-content: space-between;
     background-color: ${props => props.theme.COLORS.purple200};
-    height: 100vh;
+    height: 100%;
     flex-direction: row;
 
     @media (${breakpoints.tablet}px) {
@@ -32,6 +32,7 @@ export const DivContainer = styled.div`
 `;
 
 export const DivImagem = styled.div`
+    height: 100%;
 `;
 
 export const DivGlobal = styled.div`
