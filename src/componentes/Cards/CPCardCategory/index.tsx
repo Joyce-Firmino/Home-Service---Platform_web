@@ -1,5 +1,4 @@
 import { ImgImage, DivContainer, PService } from './styled';
-import foto from "../../../assets/cozinhar-comida-em-uma-cacarola-quente.png"
 
 interface CustomCardProps {
   uriFoto: string;

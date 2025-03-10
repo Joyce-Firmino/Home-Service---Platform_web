@@ -12,7 +12,6 @@ export const DivContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  margin: 5px;
 
 
   ::placeholder {

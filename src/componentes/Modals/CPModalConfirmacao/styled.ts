@@ -11,18 +11,9 @@ export const DivSombra = styled.div`
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.5); /* Transparência */
     z-index: 1000; /* Camada abaixo do menu */  
-
-  @media (${breakpoints.tablet}px) {
-    margin-top: 2vh;
-  }
-
-  @media (${breakpoints.mobile}px)  {
-    margin-top: 2vh;
-    height: 9%;
-  }
 `;
 
 export const DivContainer = styled.div`
@@ -38,19 +29,22 @@ export const DivContainer = styled.div`
   border-radius: 20px;
   padding: 16px;
   box-shadow: 0px 0px 0.7em 0px rgba(0, 0, 0, 0.19);
-  top: 25%;
-  left: 33%;
+  top: 30%;
+  left: 36%;
   z-index: 1001;
-
 
   @media (${breakpoints.tablet}px){
     padding: 1rem;
     max-width: 380px;
+    left: 28%;
+    top: 35%;
   }
 
   @media (${breakpoints.mobile}px) {
     padding: 0.8rem;
-    width: 250px;
+    width: 300px;
+    left: 16%;
+
   }
 `;
 
@@ -88,11 +82,11 @@ export const IIcon = styled.i<CustomModalProps>`
   
 
   @media (${breakpoints.tablet}px) {
-    font-size: 8vw;
+    font-size: 10vw;
   }
 
   @media (${breakpoints.mobile}px)  {
-    font-size: 10vw;
+    font-size: 16vw;
   }
 `;
 

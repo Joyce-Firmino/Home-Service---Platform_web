@@ -137,7 +137,6 @@ export const DivTextos = styled.div`
   export const ImgImage = styled.img`
     width: 100px;
     height: 100px;
-    object-fit: cover;
   
     @media (${breakpoints.mobile}px) {
       width: 130px;

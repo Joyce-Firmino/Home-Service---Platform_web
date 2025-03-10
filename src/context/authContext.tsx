@@ -40,10 +40,7 @@ export function AuthProvider({ children }: IpropsDTO) {
 
             api.defaults.headers.common.Authorization= `Bearer ${userAutenticated.token}`;
             api.defaults.headers.common["Email"] = userAutenticated.email;
-
-            console.log(userAutenticated.token + "OLa");
-            
-
+          
             setCookieToken("token", userAutenticated.token);
             setCookieEmail("email", userAutenticated.email);
 

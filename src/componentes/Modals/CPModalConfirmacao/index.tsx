@@ -28,10 +28,11 @@ export function CPModalConfirm({ icone, titulo, menssagem, variant, onClose }: C
             <PTitulo>{titulo}</PTitulo>
             <PMsg>{menssagem}</PMsg>
             <DivButtonContainer>
-              <CPButtonG 
-                title='Confirmar' 
-                variantType='primario' 
-                onClick={clickado} 
+              <CPButtonG
+                type="button"
+                title='Confirmar'
+                variantType='primario'
+                onClick={clickado}
               />
             </DivButtonContainer>
           </DivText>

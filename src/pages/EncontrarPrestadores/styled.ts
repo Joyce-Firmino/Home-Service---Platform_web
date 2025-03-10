@@ -6,7 +6,7 @@ export const DivContainer = styled.div`
     background-color: ${props => props.theme.COLORS.purple200};
     display: flex;
     flex-direction: column;
-    gap: 65px;
+    gap: 45px;
     
 `;
 
@@ -45,6 +45,8 @@ export const H1Titulo = styled.h1`
 export const PDescricao = styled.p`
     color: ${props => props.theme.COLORS.purple700};
     font-size: ${props => props.theme.FONTSIZE.g}px;
+    width: 80%;
+    text-align: center;
 
     @media (${breakpoints.tablet}px) {
     font-size: 1.1rem;
@@ -61,6 +63,8 @@ export const DivCards = styled.div`
     justify-content: center;
     align-items: center;
     padding-bottom: 80px;
+    min-height: 80vh;
+
 
     @media (max-width: 1500px) {
     grid-template-columns: repeat(3, minmax(330px, 0fr)); //joyce deve colocar aqui o width do componente dela que é 330px

@@ -6,15 +6,18 @@ import { DivBloco, DivCabecalho, DivContainer, DivCXAreia, DivFoto, DivInfo, Div
 import { AuthContext } from "../../context/authContext";
 import { PrestadorContext } from "../../context/prestadorConntext";
 import { navegarParaPaginaHome } from "../../util/navigation";
+import { useNavigate } from "react-router";
 
 export function Profile() {
+
+    const navigate = useNavigate();
 
     const authData = useContext(AuthContext);
     const prestadorContext = useContext(PrestadorContext);
 
     const fazerLogout = () => {
         authData.logOut();
-        navegarParaPaginaHome();
+        navegarParaPaginaHome(navigate);
     }
 
     const buscarDadosPrestador = async () => {

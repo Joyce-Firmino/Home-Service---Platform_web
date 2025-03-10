@@ -10,6 +10,9 @@ import { PrestadorProvider } from "./context/prestadorConntext.tsx";
 
 import { AuthProvider } from "./context/authContext";
 
+
+import './global.css'
+
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>

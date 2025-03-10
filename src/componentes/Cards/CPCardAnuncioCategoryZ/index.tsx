@@ -1,4 +1,3 @@
-import foto from '../../../assets/cozinhar-comida-em-uma-cacarola-quenteBranca.png';
 import { DivBloco, ImgImage, DivContainer, IIcon, DivIconText, PService, DivImagem, H1Title, PText, DivInferior, DivTextos, HrLiinha } from './styled';
 
 interface CustomCardProps {
@@ -10,11 +9,11 @@ interface CustomCardProps {
   email: string;
 }
 
-export function CPCardAnuncioCategory({ prestador, servico, city, telefone, email }: CustomCardProps) {
+export function CPCardAnuncioCategory({ prestador, servico, city, telefone, email, uriFoto }: CustomCardProps) {
   return (
     <DivContainer>
       <DivImagem>
-        <ImgImage src={foto} alt="Foto perfil" />
+        <ImgImage src={uriFoto} alt="Foto perfil" />
       </DivImagem>
       <DivInferior>
         <DivTextos>

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CPButtonG } from "../../componentes/Buttons/CPButtonG";
 import { CPInputEyePassword } from "../../componentes/Inputs/CPInputEyePassword";
 import { CPInput03 } from "../../componentes/Inputs/CPInput03";
@@ -9,7 +9,7 @@ import { CPModalConfirm } from "../../componentes/Modals/CPModalConfirmacao";
 import { UserSchemaLogin, UserSchemaLoginType } from "../../validacoes/validacaoLogin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { navegarParaPaginaHome } from "../../util/navigation";
+import { navegarParaPaginaHome, navegarParaPaginaLogin } from "../../util/navigation";
 import { useNavigate } from "react-router-dom";
 
 
@@ -18,13 +18,12 @@ export function Login() {
 
   const navigate = useNavigate();
 
+  const [mostrarModal, setMostrarModal] = useState(false);
+
+
   const { register, handleSubmit, formState: { errors }, reset } = useForm<UserSchemaLoginType>({
     resolver: zodResolver(UserSchemaLogin),
   });
-
-  function setErro() {
-    authContext.setError(false);
-  }
 
   const chamarSigIn = async (data: UserSchemaLoginType) => {
     await authContext.signIn(data.email, data.senha);
@@ -40,7 +39,10 @@ export function Login() {
             titulo="Erro"
             menssagem="Usuário ou senha inválidos!"
             variant="erro"
-            onClose={setErro}
+            onClose={() => {
+              authContext.setError(false);
+              navegarParaPaginaLogin(navigate);
+            }}
           ></CPModalConfirm>
         )}
 

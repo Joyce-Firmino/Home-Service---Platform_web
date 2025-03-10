@@ -8,20 +8,20 @@ import { AnuncioCompletoDTO } from '../../dto/AnuncioCompletoDTO';
 import { api } from '../../api/axios';
 import { Loader } from '../../componentes/Others/CPLoader';
 import { CPModalConfirm } from '../../componentes/Modals/CPModalConfirmacao';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import './style.css';
+import { navegarParaPaginaHome } from '../../util/navigation';
 
 export function Category() {
-  
-  function clickado() {
-    alert('Clicado!');
-  }
 
   const [dadosAnuncios, setDadosAnuncios] = useState<AnuncioCompletoDTO[]>([]);
   const [carregando, setCarregando] = useState<boolean>(false);
   const [erroCarregarDados, setErroCarregarDados] = useState<boolean>(false);
+  const [mostrarModal, setMostrarModal] = useState(false);
 
   const { id, categoria } = useParams();
+
+  const navigate = useNavigate();
 
   const buscarAnuncios = async () => {
     try {
@@ -61,10 +61,13 @@ export function Category() {
         : erroCarregarDados ? (
 
           <DivRender>
-            <CPHeader1 name='Jose Vieira' variantType='primario'></CPHeader1>
+            <CPHeader1 variantType='primario'></CPHeader1>
 
             <DivConteudo>
-              <CPModalConfirm icone='close' menssagem='Erro ao carregar anúncios' titulo='Erro' variant='erro' onClose={clickado}></CPModalConfirm>
+              <CPModalConfirm icone='close' menssagem='Erro ao carregar anúncios' titulo='Erro' variant='erro' onClose={() => {
+                setMostrarModal(false);
+                navegarParaPaginaHome(navigate);
+              }}></CPModalConfirm>
             </DivConteudo>
 
             <CPFooter></CPFooter>
@@ -75,7 +78,7 @@ export function Category() {
 
 
           < DivRender >
-            <CPHeader1 name='Jose Vieira' variantType='primario'></CPHeader1>
+            <CPHeader1 variantType='primario'></CPHeader1>
 
 
             <DivTextos>
@@ -108,8 +111,4 @@ export function Category() {
   );
 
 
-}
-
-function useFocusEffect(arg0: any) {
-  throw new Error('Function not implemented.');
 }
