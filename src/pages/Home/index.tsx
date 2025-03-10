@@ -66,15 +66,10 @@ export function Home() {
     return () => clearInterval(interval);
   }, []);
 
-
-  const usuario = {
-    id: 1, iniciais: "JV", name: "José Vieira"
-  }
-
   return (
     <DivContainer>
 
-      <CPHeader1 name={usuario.name} variantType='primario'></CPHeader1>
+      <CPHeader1 variantType='primario'></CPHeader1>
 
       <CPCarrossel settings={settings} >
         {carregando ? (<Loader></Loader>) : (<div>{dadosCategoria.map((dado) => (

@@ -190,3 +190,5 @@ export const HrLiinha = styled.hr`
       max-width: 60%; /* Defina um limite para evitar ocupar toda a tela */
     }
   `;
+
+
