@@ -11,11 +11,13 @@ import breakpoints from '../../../breakPoints';
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    padding-top: 30px;
 
   
     @media (${breakpoints.tablet}px) {
       width: 290px;
       padding: 15px;
+      padding-top: 30px;
     }
   
     @media (${breakpoints.mobile}px) {
@@ -23,7 +25,7 @@ import breakpoints from '../../../breakPoints';
       width: 80vw;
       height: 166px;
       padding: 10px;
-      padding-left: 50px;
+      padding-left: 30px;
       flex-direction: row;
       justify-content: center;
       justify-content: flex-start;
@@ -37,7 +39,14 @@ import breakpoints from '../../../breakPoints';
     font-size: 1.5rem;
     font-family: var(--font-family-bold);
     color: ${props => props.theme.COLORS.purple700};
-    /* margin-top: 15px; */
+    text-align: center;
+    width: 100%;/* Ajuste conforme necessário */
+    max-width: 60%;/* Defina um limite para evitar ocupar toda a tela */
+    white-space: nowrap; /* Impede quebra de linha */
+    overflow: hidden; /* Esconde o texto que ultrapassa o limite */
+    text-overflow: ellipsis; /* Adiciona os "..." */
+    
+
   
     @media (${breakpoints.tablet}px) {
       font-size: 1.2rem;
@@ -45,6 +54,8 @@ import breakpoints from '../../../breakPoints';
   
     @media (${breakpoints.mobile}px)  {
       font-size: 1rem;
+      text-align: start;
+      
     }
   `;
   
@@ -84,6 +95,7 @@ import breakpoints from '../../../breakPoints';
     flex-direction: column;
     gap: 5px;
     align-items: center;
+    width: 100%;
 
     @media (${breakpoints.mobile}px)  {
       align-items: flex-start;
@@ -94,9 +106,11 @@ import breakpoints from '../../../breakPoints';
     display: flex;
     flex-direction: column;
     gap: 8px;
+    width: 90%;
 
     @media (${breakpoints.mobile}px)  {
       display: flex;
+      width: 60%;
       flex-direction: column;   
       align-items: flex-start; }
   `;
@@ -118,11 +132,15 @@ export const HrLiinha = styled.hr`
   export const DivBloco = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     gap: 10px;
 
     @media (${breakpoints.mobile}px)  {
       align-items: flex-start;
       gap: 1px;
+      width: 100%;
     }
   `;
   
@@ -130,11 +148,15 @@ export const HrLiinha = styled.hr`
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     gap: 5px;
     flex-wrap: wrap;
   
     @media (${breakpoints.mobile}px)  {
       gap: 3px;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 100%;
     }
   `;
   
@@ -150,12 +172,23 @@ export const HrLiinha = styled.hr`
     color: ${props => props.theme.COLORS.purple700};
     margin: 5px;
     font-size: 0.9rem;
+    width: 100%;/* Ajuste conforme necessário */
+    max-width: 60%;/* Defina um limite para evitar ocupar toda a tela */
+    white-space: nowrap; /* Impede quebra de linha */
+    overflow: hidden; /* Esconde o texto que ultrapassa o limite */
+    text-overflow: ellipsis; /* Adiciona os "..." */
+    
+
   
     @media (${breakpoints.tablet}px) {
       font-size: 0.8rem;
+      max-width: 60%; /* Defina um limite para evitar ocupar toda a tela */
     }
   
     @media (${breakpoints.mobile}px) {
       font-size: 0.7rem;
+      max-width: 60%; /* Defina um limite para evitar ocupar toda a tela */
     }
   `;
+
+

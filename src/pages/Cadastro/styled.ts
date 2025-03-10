@@ -12,7 +12,7 @@ export const DivContainer = styled.div`
     display: flex;
     justify-content: space-between;
     background-color: ${props => props.theme.COLORS.purple200};
-    height: 100%;
+    min-height: 100vh;
     flex-direction: row;
 
     @media (${breakpoints.tablet}px) {
@@ -43,11 +43,11 @@ export const DivGlobal = styled.div`
     height: 100%;
     justify-content: center;
     align-items: center;
-
+    
     @media (${breakpoints.tablet}px) {
       width: 100%;
       padding: 40px 0 60px 0;
-      margin-top: 500px;
+      padding-top: 45vh; 
     }
 
     @media (${breakpoints.mobile}px) {
