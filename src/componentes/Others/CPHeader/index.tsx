@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import foto from "../../../assets/logoBranca.png";
+import { navegarParaPaginaCadastro, navegarParaPaginaHome, navegarParaPaginaLogin, navegarParaPaginaPerfil } from "../../../util/navigation";
 import { CPProfileP } from "../../Profiles/CPProfileP";
-
 import { DivBloco, DivContainer, DivLogo, ImgLogo, H1Title, DivCategorias, PCategoria, PWelcome, PCabecalho, HamburgerMenu, MobileMenu, CloseButton, Backdrop, CPProfileWrapper, DivMenu, IIcon, AClick } from "./styled";
-import { useEffect, useState } from "react";
-import { AiFillEdit, AiOutlineClose, AiOutlineHome, AiOutlineLogin, AiOutlineProfile } from "react-icons/ai"; // Ícone de fechar
+import { useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 
 interface CustomHeaderProps {
     name?: string;
@@ -15,39 +15,16 @@ interface CustomHeaderProps {
 export function CPHeader1({ name, variantType }: CustomHeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const clicado = () => {
-        alert("Clicado")
-    }
-
-
-    const navigate = useNavigate();
-
-    function navegarParaPaginaHome() {
-        navigate(`/`);
-    }
-    function navegarParaPaginaPerfil() {
-        navigate(`/perfil`);
-    }
-    function navegarParaPaginaTelaInicialPrestador() {
-        navigate(`/perfil`);
-    }
-    function navegarParaPaginaCadastro() {
-        navigate(`/cadastro`);
-    }
-    function navegarParaPaginaLogin() {
-        navigate(`/login`);
-    }
-
-
     return (
         <DivContainer>
             <DivBloco>
-                <AClick onClick={navegarParaPaginaHome} href="">
+                <AClick onClick={() => navegarParaPaginaHome(navigate)} href="">
                     <DivLogo>
                         <ImgLogo src={foto} alt="Logomarca" />
                         <H1Title>Home Service</H1Title>
@@ -58,17 +35,17 @@ export function CPHeader1({ name, variantType }: CustomHeaderProps) {
                 <DivCategorias variantType={variantType} >
                     {variantType === "primario" && (
                         <>
-                            <AClick onClick={navegarParaPaginaCadastro} href="">
+                            <AClick onClick={() => navegarParaPaginaCadastro(navigate)} href="">
                                 <PCategoria>Cadastro</PCategoria>
                             </AClick>
-                            <AClick onClick={navegarParaPaginaLogin} href="">
+                            <AClick onClick={() => navegarParaPaginaLogin(navigate)} href="">
                                 <PCategoria>Fazer Login</PCategoria>
                             </AClick>
                         </>
                     )}
                     {variantType === "secundario" && (
                         <>
-                            <AClick onClick={navegarParaPaginaPerfil} href="">
+                            <AClick onClick={() => navegarParaPaginaPerfil(navigate)} href="">
                                 <PWelcome>
                                     <PCabecalho>Bem vindo (a) </PCabecalho>
                                     <PCabecalho>{name}</PCabecalho>
@@ -99,7 +76,7 @@ export function CPHeader1({ name, variantType }: CustomHeaderProps) {
                         <AiOutlineClose size={24} />
                     </CloseButton>
                     <DivMenu>
-                        <AClick onClick={navegarParaPaginaHome} href="">
+                        <AClick onClick={() => navegarParaPaginaHome(navigate)} href="">
                             <IIcon>home</IIcon>
                             <PCategoria>Home</PCategoria>
                         </AClick>
@@ -107,13 +84,13 @@ export function CPHeader1({ name, variantType }: CustomHeaderProps) {
                     {variantType === "primario" && (
                         <>
                             <DivMenu>
-                                <AClick onClick={navegarParaPaginaCadastro} href="">
+                                <AClick onClick={() => navegarParaPaginaCadastro(navigate)} href="">
                                     <IIcon>person</IIcon>
                                     <PCategoria>Cadastro</PCategoria>
                                 </AClick>
                             </DivMenu>
                             <DivMenu>
-                                <AClick onClick={navegarParaPaginaLogin} href="">
+                                <AClick onClick={() => navegarParaPaginaLogin(navigate)} href="">
                                     <IIcon>login</IIcon>
                                     <PCategoria>Fazer Login</PCategoria>
                                 </AClick>
@@ -123,7 +100,7 @@ export function CPHeader1({ name, variantType }: CustomHeaderProps) {
                     {variantType === "secundario" && (
                         <>
                             <PWelcome>
-                                <AClick onClick={navegarParaPaginaPerfil} href="">
+                                <AClick onClick={() => navegarParaPaginaPerfil(navigate)} href="">
                                     <PCabecalho>Bem vindo</PCabecalho>
                                     <PCabecalho>{name}</PCabecalho>
                                 </AClick>

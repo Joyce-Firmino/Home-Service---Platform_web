@@ -2,22 +2,17 @@ import { CPHeader1 } from '../../componentes/Others/CPHeader';
 import { DivContainer, DivConteudo, DivGridContainer, DivRender, DivTextos, H1Titulo } from './styled';
 import { PDescricao } from '../Home/styled';
 import { CPFooter } from '../../componentes/Others/CPFooter';
-
-import './style.css';
 import { CPCardAnuncioCategory } from '../../componentes/Cards/CPCardAnuncioCategoryZ';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnuncioCompletoDTO } from '../../dto/AnuncioCompletoDTO';
 import { api } from '../../api/axios';
 import { Loader } from '../../componentes/Others/CPLoader';
 import { CPModalConfirm } from '../../componentes/Modals/CPModalConfirmacao';
 import { useParams } from 'react-router';
+import './style.css';
 
-interface CustomCategoryProps {
-  category: string;
-}
-
-
-export function Category({ category }: CustomCategoryProps) {
+export function Category() {
+  
   function clickado() {
     alert('Clicado!');
   }
@@ -27,7 +22,6 @@ export function Category({ category }: CustomCategoryProps) {
   const [erroCarregarDados, setErroCarregarDados] = useState<boolean>(false);
 
   const { id, categoria } = useParams();
-
 
   const buscarAnuncios = async () => {
     try {
@@ -55,7 +49,7 @@ export function Category({ category }: CustomCategoryProps) {
     <DivContainer>
       {carregando ? (
         <DivRender>
-          <CPHeader1 name='Jose Vieira' variantType='primario'></CPHeader1>
+          <CPHeader1 variantType='primario'></CPHeader1>
 
           <DivConteudo>
             <Loader></Loader>

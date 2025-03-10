@@ -5,17 +5,16 @@ import { CPProfileG } from "../../componentes/Profiles/CPProfileG";
 import { DivBloco, DivCabecalho, DivContainer, DivCXAreia, DivFoto, DivInfo, DivMedia, DivMetodos, DivSeparacao, DivSubContainer, DivText, H1Tittle, PAlterarFt, PClick, PDescricao, PResposta } from "./styled";
 import { AuthContext } from "../../context/authContext";
 import { PrestadorContext } from "../../context/prestadorConntext";
-import { useNavigate } from 'react-router';
+import { navegarParaPaginaHome } from "../../util/navigation";
 
 export function Profile() {
 
     const authData = useContext(AuthContext);
     const prestadorContext = useContext(PrestadorContext);
-    const navigate = useNavigate();
 
     const fazerLogout = () => {
         authData.logOut();
-        navigate(`/`);
+        navegarParaPaginaHome();
     }
 
     const buscarDadosPrestador = async () => {
@@ -31,6 +30,7 @@ export function Profile() {
             buscarDadosPrestador();
         }
     }, []);
+    
     return (
         <DivContainer>
             <CPHeader1
