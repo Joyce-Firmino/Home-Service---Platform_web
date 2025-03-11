@@ -28,7 +28,7 @@ export function CriarAnuncio() {
         variantType="secundario"
       />
       <DivMediana>
-        <H1Titulo>Editar Anúncio</H1Titulo>
+        <H1Titulo>Criar Anúncio</H1Titulo>
         <CPForm />
       </DivMediana>
       <CPFooter></CPFooter>

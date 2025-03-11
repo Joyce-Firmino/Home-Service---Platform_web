@@ -60,6 +60,7 @@ export const DivGridContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-bottom: 80px;
+  min-height: 60vh;
 
   @media (${breakpoints.tablet}px) {
     grid-template-columns: repeat(2, minmax(250px, 1fr));
