@@ -35,7 +35,7 @@ export function Cadastro() {
           nome: data.nome,
           email: data.email,
           senha: data.senha,
-          telefone: data.telefone,
+          telefone: data.telefone, 
           cnpj: data.cnpj,
           horarioDisponibilidade: data.horarioDisponibilidade,
           latitude: latitude,

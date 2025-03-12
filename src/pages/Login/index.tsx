@@ -25,9 +25,18 @@ export function Login() {
     resolver: zodResolver(UserSchemaLogin),
   });
 
+  // const chamarSigIn = async (data: UserSchemaLoginType) => {
+  //   await authContext.signIn(data.email, data.senha);
+  //   navegarParaPaginaHome(navigate);
+  // };
+
   const chamarSigIn = async (data: UserSchemaLoginType) => {
-    await authContext.signIn(data.email, data.senha);
-    navegarParaPaginaHome(navigate);
+    try {
+      await authContext.signIn(data.email, data.senha);
+      navegarParaPaginaHome(navigate);
+    } catch (error) {
+      authContext.setError(true);
+    }
   };
 
   return (
@@ -40,6 +49,8 @@ export function Login() {
             menssagem="Usuário ou senha inválidos!"
             variant="erro"
             onClose={() => {
+              console.log("cheguei aqui");
+              
               authContext.setError(false);
               navegarParaPaginaLogin(navigate);
             }}

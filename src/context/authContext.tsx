@@ -50,7 +50,7 @@ export function AuthProvider({ children }: IpropsDTO) {
         }
         catch (error: any) {
             setError(true)
-            return undefined;
+            return error;
         }
     }
 

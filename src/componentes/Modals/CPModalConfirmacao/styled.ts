@@ -5,7 +5,7 @@ type CustomModalProps = {
   variantComponent: string;
 }
 
-export const DivSombra = styled.div`
+export const DivSombra = styled.button`
     display: flex;
     position: fixed;
     top: 0;
@@ -29,22 +29,19 @@ export const DivContainer = styled.div`
   border-radius: 20px;
   padding: 16px;
   box-shadow: 0px 0px 0.7em 0px rgba(0, 0, 0, 0.19);
-  top: 30%;
-  left: 36%;
+  top: 50%; // Coloca o modal na metade da tela
+  left: 50%;
+  transform: translate(-50%, -50%); // Centraliza o modal
   z-index: 1001;
+  position: absolute;
 
   @media (${breakpoints.tablet}px){
     padding: 1rem;
     max-width: 380px;
-    left: 28%;
-    top: 35%;
   }
 
   @media (${breakpoints.mobile}px) {
-    padding: 0.8rem;
-    width: 300px;
-    left: 16%;
-
+    padding: 0.7rem;
   }
 `;
 

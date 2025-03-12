@@ -176,7 +176,7 @@ export const HrLiinha = styled.hr`
     max-width: 60%;/* Defina um limite para evitar ocupar toda a tela */
     white-space: nowrap; /* Impede quebra de linha */
     overflow: hidden; /* Esconde o texto que ultrapassa o limite */
-    text-overflow: ellipsis; /* Adiciona os "..." */
+    text-overflow: ellipsis; /* Adiciona os "..." */ 
     
 
   

@@ -21,6 +21,8 @@ export const DivSubContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+      min-height: 100vh;
+
     padding: 140px 0;
 
     @media (${breakpoints.tablet}px) {
@@ -126,6 +128,10 @@ export const H1Tittle = styled.h1`
     color: ${props => props.theme.COLORS.purple700};
     font-size: ${props => props.theme.FONTSIZE.g3}px;
     font-weight: bold;
+
+    @media (${breakpoints.tablet}px) {
+        font-size: ${props => props.theme.FONTSIZE.g1}px; 
+    }
 
     @media (${breakpoints.mobile}px) {
         font-size: ${props => props.theme.FONTSIZE.m2}px; 

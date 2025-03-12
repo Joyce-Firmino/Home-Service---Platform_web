@@ -7,6 +7,7 @@ import { AuthContext } from "../../context/authContext";
 import { PrestadorContext } from "../../context/prestadorConntext";
 import { navegarParaPaginaHome } from "../../util/navigation";
 import { useNavigate } from "react-router";
+import { EditDialog } from "../../componentes/Others/Dialog";
 
 export function Profile() {
 
@@ -24,7 +25,7 @@ export function Profile() {
         try {
             prestadorContext.buscarDadosPrestador();
         } catch (error) {
-
+            console.log(error);
         }
       }
 
@@ -46,13 +47,12 @@ export function Profile() {
                         <CPProfileG
                             name= {prestadorContext.prestadorData?.name}
                             variantType="primario" />
-                        {/* <PAlterarFt> Alterar foto</PAlterarFt> */}
                     </DivFoto>
                     <DivInfo>
                         <DivCabecalho>
                             <H1Tittle>Meu Perfil</H1Tittle>
                             <DivMetodos>
-                                <PClick onClick={fazerLogout}>editar</PClick>
+                                <EditDialog></EditDialog>
                                 <PClick onClick={fazerLogout}>sair</PClick>
                             </DivMetodos>
                         </DivCabecalho>

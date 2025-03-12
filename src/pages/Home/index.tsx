@@ -10,7 +10,7 @@ import { CPButtonG } from '../../componentes/Buttons/CPButtonG';
 import { CPFooter } from '../../componentes/Others/CPFooter';
 import CPCarrossel from '../../componentes/Others/CPCarrossel';
 import { SwiperProps, SwiperSlide } from 'swiper/react';
-import './style.css';
+
 import { useEffect, useState } from 'react';
 import { CategoriaDTO } from '../../dto/CategoriaDTO';
 import { api } from '../../api/axios';

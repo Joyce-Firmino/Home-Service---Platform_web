@@ -9,8 +9,8 @@ import { api } from '../../api/axios';
 import { Loader } from '../../componentes/Others/CPLoader';
 import { CPModalConfirm } from '../../componentes/Modals/CPModalConfirmacao';
 import { useNavigate, useParams } from 'react-router';
-import './style.css';
 import { navegarParaPaginaHome } from '../../util/navigation';
+import { fetchAddress } from '../../util/converterEndereco';
 
 export function Category() {
 
@@ -90,7 +90,7 @@ export function Category() {
                 dadosAnuncios.map((anuncio) => (
                   <CPCardAnuncioCategory
                     key={anuncio.id}
-                    city={anuncio.prestador.cnpj}
+                    city={fetchAddress(anuncio.prestador.latitude, anuncio.prestador.longitude)}
                     prestador={anuncio.prestador.usuario.nome}
                     email={anuncio.prestador.usuario.email}
                     servico={anuncio.titulo}
