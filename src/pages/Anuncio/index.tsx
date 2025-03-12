@@ -156,7 +156,7 @@ export function Anuncio() {
 
           <DivDireita>
             <CPButtonG
-              title="Criar anúncios"
+              title="Criar anúncio"
               variantType="primario"
               type="button"
               onClick={() => navigate("/criarAnuncio")}
