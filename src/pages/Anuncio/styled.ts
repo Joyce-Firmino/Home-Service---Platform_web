@@ -32,6 +32,7 @@ export const H1Titulo = styled.h1`
 
   @media (${breakpoints.mobile}px) {
     width: 300px;
+    text-align: center;
   }
 `;
 
@@ -103,7 +104,7 @@ export const DivConteudo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 50vh;
+  min-height: 60vh;
   background-color: ${(props) => props.theme.COLORS.purple200};
   @media (${breakpoints.tablet}px) {
   }

@@ -11,12 +11,14 @@ export const DivMediana = styled.div`
   gap: 45px;
   align-items: center;
   padding: 40px 0;
+  min-height: 75vh;
 
   @media (${breakpoints.tablet}px) {
     gap: 10px;
   }
 
   @media (${breakpoints.mobile}px) {
+    min-height: 60vh;
     flex-direction: column;
     align-items: center;
   }
@@ -25,6 +27,7 @@ export const DivMediana = styled.div`
 export const H1Titulo = styled.h1`
   font-size: ${(props) => props.theme.FONTSIZE.gg}px;
   color: ${(props) => props.theme.COLORS.purple700};
+  text-align: center;
 
   @media (${breakpoints.tablet}px) {
     font-size: ${(props) => props.theme.FONTSIZE.g}px;
