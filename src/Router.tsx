@@ -10,7 +10,6 @@ import { EncontrarPrestador } from "./pages/EncontrarPrestadores";
 import { Login } from "./pages/Login";
 import { CriarAnuncio } from "./pages/CriarAnuncio";
 import { Profile } from "./pages/Profile";
-import { EditarAnuncio } from "./pages/EditarAnuncio";
 
 export function Router() {
   const { authData } = useContext(AuthContext);
@@ -30,7 +29,6 @@ export function Router() {
           <Route path="/" element={<Anuncio />} />
           <Route path="/criarAnuncio" element={<CriarAnuncio />} />
           <Route path="/perfil" element={<Profile />} />
-          <Route path ="/editarAnuncio" element={<EditarAnuncio />} />
         </Route>
       )}
     </Routes>
