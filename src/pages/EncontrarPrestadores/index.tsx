@@ -11,10 +11,7 @@ import { fetchAddress } from "../../util/converterEndereco";
 export function EncontrarPrestador() {
 
     const [prestadores, setPrestadores] = useState<PrestadorDTO[]>([]);
-    const [carregando, setCarregando] = useState<boolean>(false);
-    const [erroCarregarDados, setErroCarregarDados] = useState<boolean>(false);
 
-    const context = useContext(AuthContext);
 
     const buscarPrestadores = async () => {
         try {
@@ -22,9 +19,6 @@ export function EncontrarPrestador() {
             setPrestadores(response.data);
         } catch (error) {
             console.error('Erro ao carregar anúncios:', error);
-            setErroCarregarDados(true);
-        } finally {
-            setCarregando(false);
         }
     }
 
@@ -63,5 +57,4 @@ export function EncontrarPrestador() {
             </DivMedia>
         </DivContainer>
     );
-
 }

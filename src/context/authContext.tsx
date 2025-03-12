@@ -30,10 +30,6 @@ export function AuthProvider({ children }: IpropsDTO) {
 
 
     async function signIn(email: string, senha: string): Promise<AuthDataDTO | undefined> {
-
-        const timeout = (ms: number) =>
-            new Promise((_, reject) => setTimeout(() => reject(new Error("Tempo limite atingido")), ms));
-
         const usuario: UsuarioLoginDTO = {
             email: email,
             senha: senha

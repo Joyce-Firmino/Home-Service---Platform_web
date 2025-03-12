@@ -218,9 +218,18 @@ export const PDescricao = styled.p`
 export const PResposta = styled.p`
     color: ${props => props.theme.COLORS.purple400};
     font-size: ${props => props.theme.FONTSIZE.m}px;
-    /* white-space: nowrap; // Impede a quebra de linha 
-    overflow: hidden; // Oculta o texto que ultrapassar a largura 
-    text-overflow: ellipsis; // Adiciona os "..." no final 
-    max-width: 153px; // Defina um tamanho máximo para o elemento  */
+`;
 
+export const ModalBackground = styled.div`
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #1c1b1f80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;

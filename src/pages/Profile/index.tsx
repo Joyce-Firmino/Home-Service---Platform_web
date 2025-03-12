@@ -1,13 +1,14 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CPFooter } from "../../componentes/Others/CPFooter";
 import { CPHeader1 } from "../../componentes/Others/CPHeader";
 import { CPProfileG } from "../../componentes/Profiles/CPProfileG";
-import { DivBloco, DivCabecalho, DivContainer, DivCXAreia, DivFoto, DivInfo, DivMedia, DivMetodos, DivSeparacao, DivSubContainer, DivText, H1Tittle, PAlterarFt, PClick, PDescricao, PResposta } from "./styled";
+import { DivBloco, DivCabecalho, DivContainer, DivCXAreia, DivFoto, DivInfo, DivMedia, DivMetodos, DivSeparacao, DivSubContainer, DivText, H1Tittle, ModalBackground, PAlterarFt, PClick, PDescricao, PResposta } from "./styled";
 import { AuthContext } from "../../context/authContext";
 import { PrestadorContext } from "../../context/prestadorConntext";
 import { navegarParaPaginaHome } from "../../util/navigation";
 import { useNavigate } from "react-router";
 import { EditDialog } from "../../componentes/Others/Dialog";
+import { CPModalSN } from "../../componentes/Modals/CPModalSN";
 
 export function Profile() {
 
@@ -15,11 +16,17 @@ export function Profile() {
 
     const authData = useContext(AuthContext);
     const prestadorContext = useContext(PrestadorContext);
+    const [visibilidadeModal, setVisibilidadeModal] = useState(false);
+
 
     const fazerLogout = () => {
+        setVisibilidadeModal(true); // Exibe o modal ao clicar em "Sair"
+    };
+
+    const confirmarLogout = () => {
         authData.logOut();
         navegarParaPaginaHome(navigate);
-    }
+    };
 
     const buscarDadosPrestador = async () => {
         try {
@@ -93,6 +100,18 @@ export function Profile() {
                 </DivBloco>
             </DivSubContainer>
             <CPFooter></CPFooter>
+            {/* Modal de Confirmação */}
+            {visibilidadeModal && (
+                <ModalBackground>
+                    <CPModalSN
+                        icone="warning"
+                        menssagem="Deseja realmente sair da conta?"
+                        titulo="Logout"
+                        botaoNao={() => setVisibilidadeModal(false)}
+                        botaoSim={confirmarLogout}
+                    />
+                </ModalBackground>
+            )}
         </DivContainer>
     );
 }
