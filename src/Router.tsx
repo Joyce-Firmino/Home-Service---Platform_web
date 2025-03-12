@@ -18,10 +18,13 @@ export function Router() {
   return (
     <Routes>
       {!authData ? (
-        <Route path="/" >
+        <Route path="/">
           <Route path="/" element={<Home />} />
           <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/anunciosCategoria/:categoria/:id" element={<Category />} />
+          <Route
+            path="/anunciosCategoria/:categoria/:id"
+            element={<Category />}
+          />
           <Route path="/prestadores" element={<EncontrarPrestador />} />
           <Route path="/login" element={<Login />} />
         </Route>
@@ -30,7 +33,7 @@ export function Router() {
           <Route path="/" element={<Anuncio />} />
           <Route path="/criarAnuncio" element={<CriarAnuncio />} />
           <Route path="/perfil" element={<Profile />} />
-          <Route path ="/editarAnuncio" element={<EditarAnuncio />} />
+          <Route path="/editarAnuncio" element={<EditarAnuncio />} />
         </Route>
       )}
     </Routes>

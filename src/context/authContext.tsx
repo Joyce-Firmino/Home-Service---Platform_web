@@ -24,11 +24,16 @@ export function AuthProvider({ children }: IpropsDTO) {
     const [authData, setAuthData] = useState<AuthDataDTO | null>(null);
     const [error, setError] = useState(false);
 
+
     const [cookieToken, setCookieToken, removeCookieToken] = useCookies(["token"]);
     const [cookieEmail, setCookieEmail, removeCookieEmail] = useCookies(["email"]);
 
 
     async function signIn(email: string, senha: string): Promise<AuthDataDTO | undefined> {
+
+        const timeout = (ms: number) =>
+            new Promise((_, reject) => setTimeout(() => reject(new Error("Tempo limite atingido")), ms));
+
         const usuario: UsuarioLoginDTO = {
             email: email,
             senha: senha
@@ -38,19 +43,21 @@ export function AuthProvider({ children }: IpropsDTO) {
 
             const userAutenticated = response.data as AuthDataDTO;
 
-            api.defaults.headers.common.Authorization= `Bearer ${userAutenticated.token}`;
+            api.defaults.headers.common.Authorization = `Bearer ${userAutenticated.token}`;
             api.defaults.headers.common["Email"] = userAutenticated.email;
-          
+
             setCookieToken("token", userAutenticated.token);
             setCookieEmail("email", userAutenticated.email);
 
             setAuthData(userAutenticated);
 
             setError(false);
+            
+            return userAutenticated;
         }
         catch (error: any) {
             setError(true)
-            return error;
+            return undefined;
         }
     }
 
@@ -66,7 +73,7 @@ export function AuthProvider({ children }: IpropsDTO) {
                 token: cookieToken.token,
                 email: cookieEmail.email
             }
-            api.defaults.headers.common.Authorization= `Bearer ${cookieToken.token}`;
+            api.defaults.headers.common.Authorization = `Bearer ${cookieToken.token}`;
             api.defaults.headers.common["Email"] = cookieEmail.email;
 
             setAuthData(authData);
