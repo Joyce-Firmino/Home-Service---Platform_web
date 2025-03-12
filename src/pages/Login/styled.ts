@@ -87,6 +87,7 @@ export const DivConteudo = styled.div`
   gap: 15px;
   align-items: flex-start;
 
+
   @media (${breakpoints.tablet}px) {
     height: 100%;
   }
