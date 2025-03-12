@@ -9,8 +9,8 @@ import { CPModalConfirm } from "../../componentes/Modals/CPModalConfirmacao";
 import { UserSchemaLogin, UserSchemaLoginType } from "../../validacoes/validacaoLogin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { navegarParaPaginaHome, navegarParaPaginaLogin } from "../../util/navigation";
 import { useNavigate } from "react-router-dom";
+import { navegarParaPaginaHome } from "../../util/navigation";
 
 
 export function Login() {
@@ -18,24 +18,14 @@ export function Login() {
 
   const navigate = useNavigate();
 
-  const [mostrarModal, setMostrarModal] = useState(false);
-
-
   const { register, handleSubmit, formState: { errors }, reset } = useForm<UserSchemaLoginType>({
     resolver: zodResolver(UserSchemaLogin),
   });
 
-  // const chamarSigIn = async (data: UserSchemaLoginType) => {
-  //   await authContext.signIn(data.email, data.senha);
-  //   navegarParaPaginaHome(navigate);
-  // };
-
   const chamarSigIn = async (data: UserSchemaLoginType) => {
-    try {
-      await authContext.signIn(data.email, data.senha);
+    const response = await authContext.signIn(data.email, data.senha);
+    if (response !== undefined) {
       navegarParaPaginaHome(navigate);
-    } catch (error) {
-      authContext.setError(true);
     }
   };
 
@@ -50,9 +40,7 @@ export function Login() {
             variant="erro"
             onClose={() => {
               console.log("cheguei aqui");
-              
               authContext.setError(false);
-              navegarParaPaginaLogin(navigate);
             }}
           ></CPModalConfirm>
         )}
