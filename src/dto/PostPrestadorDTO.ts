@@ -5,6 +5,6 @@ export interface PostPrestadorDTO {
     telefone: string;
     cnpj: string;
     horarioDisponibilidade: string;
-    latitude: number;
-    longitude: number;
+    latitude: number | undefined;
+    longitude: number | undefined;
 }

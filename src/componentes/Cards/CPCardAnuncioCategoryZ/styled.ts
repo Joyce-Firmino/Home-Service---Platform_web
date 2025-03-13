@@ -83,7 +83,8 @@
     
     
     @media (${breakpoints.tablet}px) {
-      
+      width: 254px;
+      height: 169px;
     }
     @media (${breakpoints.mobile}px) {
       width: 196px;
@@ -103,6 +104,7 @@ export const DivTextos = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
+    width: 100%;
 `
 
   export const H1Title = styled.h1`
@@ -110,6 +112,11 @@ export const DivTextos = styled.div`
     font-family: var(--font-family-bold);
     color: ${props => props.theme.COLORS.purple700};
     margin-top: 15px;
+    width: 100%;/* Ajuste conforme necessário */
+    max-width: 80%;/* Defina um limite para evitar ocupar toda a tela */
+    white-space: nowrap; /* Impede quebra de linha */
+    overflow: hidden; /* Esconde o texto que ultrapassa o limite */
+    text-overflow: ellipsis; /* Adiciona os "..." */
   
     @media (${breakpoints.mobile}px) {
       font-size: 1.2rem;
@@ -137,7 +144,6 @@ export const DivTextos = styled.div`
   export const ImgImage = styled.img`
     width: 100px;
     height: 100px;
-    object-fit: cover;
   
     @media (${breakpoints.mobile}px) {
       width: 130px;
@@ -155,6 +161,7 @@ export const DivTextos = styled.div`
     flex-direction: column;
     align-items: flex-start;
     margin-top: 22px;
+    width: 100%;
 
     @media (${breakpoints.mobile}px) {
       margin-top: 0;
@@ -164,13 +171,18 @@ export const DivTextos = styled.div`
   
   export const DivIconText = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 5px;
     flex-wrap: wrap;
+    
   
     @media (${breakpoints.mobile}px) {
+      width: 100%;
       gap: 3px;
+      align-items: flex-start;
+      justify-content: flex-start;
     }
   `;
   
@@ -186,6 +198,12 @@ export const DivTextos = styled.div`
     color: ${props => props.theme.COLORS.purple700};
     margin: 5px;
     font-size: 0.9rem;
+    width: 100%;/* Ajuste conforme necessário */
+    max-width: 80%;/* Defina um limite para evitar ocupar toda a tela */
+    white-space: nowrap; /* Impede quebra de linha */
+    overflow: hidden; /* Esconde o texto que ultrapassa o limite */
+    text-overflow: ellipsis; /* Adiciona os "..." */
+    
   
     @media (${breakpoints.mobile}px) {
       font-size: 0.8rem;
@@ -193,5 +211,6 @@ export const DivTextos = styled.div`
   
     @media (${breakpoints.mobile}px) {
       font-size: 0.7rem;
+      max-width: 70%;
     }
   `;

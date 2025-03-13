@@ -67,8 +67,9 @@ export const IIcon = styled.i`
   font-size: 22px;
   display: inline-block;
   vertical-align: middle;
-  padding: 13px 20px;
+  padding: 13px 0px;
   color: ${props => props.theme.COLORS.purple700};
+  cursor: pointer;
 
 
 

@@ -7,7 +7,6 @@ export const DivContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${props => props.theme.COLORS.purple200};
-  width: 100%;
   height: 100%;
 
   @media (max-width: 500px) {
@@ -22,6 +21,8 @@ export const DivMediana = styled.div`
   justify-content: center;
   padding: 40px 0;
   align-items: center;
+  min-height: 40vh;
+
   
   @media (${breakpoints.tablet}px) {
   gap: 10px;
@@ -135,6 +136,8 @@ export const DivInferior = styled.div`
    gap: 120px;
    width: 100%;
    justify-content: center;
+  min-height: 40vh;
+
   
   @media (${breakpoints.tablet}px) {
    gap: 12px;

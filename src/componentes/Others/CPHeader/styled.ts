@@ -76,6 +76,21 @@ export const DivCategorias = styled.div<HeaderProps>`
 
   @media (${breakpoints.mobile}px) {
     display: none;
+    /* display: ${({ variantType }) => (variantType === "primario" ? "none" : "flex")};
+    flex-direction: column;
+    align-items: center; */
+  }
+`;
+
+
+export const DivProfileMobile = styled.div`
+  display: none; // Esconde no desktop
+
+  @media (${breakpoints.mobile}px) {
+    display: flex;  // Mostra no mobile
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
   }
 `;
 
@@ -132,6 +147,7 @@ export const PWelcome = styled.div`
   gap: 0;
 
   @media (${breakpoints.mobile}px) {
+    
   }
 `;
 
@@ -147,6 +163,25 @@ export const PCabecalho = styled.p`
   font-size: 20px;
   color: ${(props) => props.theme.COLORS.white};
   font-weight: normal;
+  width: 100%;
+  text-align: center;
+  max-width: 88%;/* Defina um limite para evitar ocupar toda a tela */
+  white-space: nowrap; /* Impede quebra de linha */
+  overflow: hidden; /* Esconde o texto que ultrapassa o limite */
+  text-overflow: ellipsis; /* Adiciona os "..." */;
+  
+
+  @media (${breakpoints.tablet}px) {
+    max-width: 77%;
+  }
+`;
+
+
+export const PBemVindo = styled.p`
+  font-size: 20px;
+  color: ${(props) => props.theme.COLORS.white};
+  font-weight: normal;
+  
 
   @media (${breakpoints.mobile}px) {
     font-size: ${(props) => props.theme.FONTSIZE.p}px;

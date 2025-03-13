@@ -3,7 +3,7 @@
 
 
   export const DivContainer = styled.button`
-    background-color: ${props => props.theme.COLORS.white};
+    background-color: ${props => props.theme.COLORS.purple500};
     width: 174px;
     height: 121px;
     border-radius: 18px;
@@ -14,10 +14,9 @@
     align-items: center;
     justify-content: center;
     gap: 12px;
-    border: 2px solid ${props => props.theme.COLORS.purple700};
+    border: 0px;
     cursor: pointer;
 
-  
     @media (${breakpoints.tablet}px) {
       width: 135px;
       padding: 15px;
@@ -34,7 +33,6 @@
 export const ImgImage = styled.img`
 width: 40px;
 height: 40px;
-object-fit: cover;
 
 @media (${breakpoints.tablet}px) {
 
@@ -48,7 +46,7 @@ object-fit: cover;
   
   export const PService = styled.p`
     font-size: ${props => props.theme.FONTSIZE.p}px;
-    color: ${props => props.theme.COLORS.purple700};
+    color: ${props => props.theme.COLORS.white};
     font-weight: bold;
 
   

@@ -1,58 +1,63 @@
 import { useState } from "react";
 import { CPImagemLogin } from "../../componentes/Others/CPImagemLogin";
+import { CPMapa } from "../../componentes/Others/CPMapa/index.tsx";
 import { DivContainer, DivDPessoais, DivDProfissionais, DivGlobal, DivInfo, DivInputs1, DivSubGlobal, H1Titulo, LabelError, PDescricao, DivButton, DivInput } from "./styled";
 import { PostPrestadorDTO } from "../../dto/PostPrestadorDTO";
 import { api } from "../../api/axios";
 import { useNavigate } from "react-router";
 import { CPModalConfirm } from "../../componentes/Modals/CPModalConfirmacao";
-import { UserSchemaRegisterCadastro, UserSchemaRegisterCadastroType, } from "../../validacoes/validacaoCadastro";
+import { UserSchemaRegisterCadastro, UserSchemaRegisterCadastroType } from "../../validacoes/validacaoCadastro";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { CPInputForm } from "../../componentes/Inputs/CPInputForm";
 import { CPButtonG } from "../../componentes/Buttons/CPButtonG";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import "leaflet/dist/leaflet.css"
-import "./cadastro.css"
+import "../../componentes/Others/CPMapa/cadastro.css";
+import { CPInput03 } from "../../componentes/Inputs/CPInput03";
 
 export function Cadastro() {
   const navigate = useNavigate();
   const [mostrarModal, setMostrarModal] = useState(false);
+  const [latitude, setLatitude] = useState<number | null>(null);
+  const [longitude, setLongitude] = useState<number | null>(null);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<UserSchemaRegisterCadastroType>({
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<UserSchemaRegisterCadastroType>({
     resolver: zodResolver(UserSchemaRegisterCadastro),
   });
 
+  const handleCoordinateChange = (lat: number, lng: number) => {
+    setLatitude(lat);
+    setLongitude(lng);
+  };
+
   const criarPrestador = async (data: UserSchemaRegisterCadastroType) => {
     try {
-      const prestador: PostPrestadorDTO = {
-        nome: data.nome,
-        email: data.email,
-        senha: data.senha,
-        telefone: data.telefone,
-        cnpj: data.cnpj,
-        horarioDisponibilidade: data.horarioDisponibilidade,
-        latitude: 0,
-        longitude: 0,
-      };
+      if (latitude && longitude) {
+        const prestador: PostPrestadorDTO = {
+          nome: data.nome,
+          email: data.email,
+          senha: data.senha,
+          telefone: data.telefone, 
+          cnpj: data.cnpj,
+          horarioDisponibilidade: data.horarioDisponibilidade,
+          latitude: latitude,
+          longitude: longitude,
+        };
 
-      console.log("Dados recebidos no submit:", data);
+        console.log("Dados recebidos no submit:", data);
 
 
-      const response = await api.post<PostPrestadorDTO>(
-        "/prestador",
-        prestador
-      );
+        const response = await api.post<PostPrestadorDTO>(
+          "/prestador",
+          prestador
+        );
 
-      if (response.status === 200 || response.status === 201) {
-        reset(); // Limpa o formulário
-        setMostrarModal(true); // Exibe o modal de confirmação
-        console.log("Prestador cadastrado com sucesso!");
+        if (response.status === 200 || response.status === 201) {
+          reset(); // Limpa o formulário
+          setMostrarModal(true); // Exibe o modal de confirmação
+          console.log("Prestador cadastrado com sucesso!");
+        }
       }
+
+
     } catch (error: any) {
       console.error("Error details:", error);
     } finally {
@@ -76,11 +81,11 @@ export function Cadastro() {
                 <PDescricao>Dados Pessoais</PDescricao>
                 <DivInputs1>
                   <DivInput>
-                    <CPInputForm
+                    <CPInput03
                       titulo="Nome"
                       placeholder="Informe seu nome"
                       variantSize="pequeno"
-                      {...register("nome")}
+                      register={register("nome")}
                     />
                     {errors.nome && (
                       <LabelError>{errors.nome.message}</LabelError>
@@ -88,11 +93,11 @@ export function Cadastro() {
                   </DivInput>
 
                   <DivInput>
-                    <CPInputForm
+                    <CPInput03
                       titulo="Telefone"
                       placeholder="Informe seu telefone"
                       variantSize="pequeno"
-                      {...register("telefone")}
+                      register={register("telefone")}
                     />
                     {errors.telefone && (
                       <LabelError>{errors.telefone.message}</LabelError>
@@ -101,11 +106,11 @@ export function Cadastro() {
                 </DivInputs1>
                 <DivInputs1>
                   <DivInput>
-                    <CPInputForm
+                    <CPInput03
                       titulo="Email"
                       placeholder="Informe seu email"
                       variantSize="pequeno"
-                      {...register("email")}
+                      register={register("email")}
                     />
                     {errors.email && (
                       <LabelError>{errors.email.message}</LabelError>
@@ -113,11 +118,11 @@ export function Cadastro() {
                   </DivInput>
 
                   <DivInput>
-                    <CPInputForm
+                    <CPInput03
                       titulo="Senha"
                       placeholder="Informe sua senha"
                       variantSize="pequeno"
-                      {...register("senha")}
+                      register={register("senha")}
                     />
                     {errors.senha && (
                       <LabelError>{errors.senha.message}</LabelError>
@@ -129,11 +134,11 @@ export function Cadastro() {
                 <PDescricao>Dados Profissionais</PDescricao>
                 <DivInputs1>
                   <DivInput>
-                    <CPInputForm
+                    <CPInput03
                       titulo="CNPJ"
                       placeholder="Informe seu CNPJ"
                       variantSize="pequeno"
-                      {...register("cnpj")}
+                      register={register("cnpj")}
                     />
                     {errors.cnpj && (
                       <LabelError>{errors.cnpj.message}</LabelError>
@@ -141,11 +146,11 @@ export function Cadastro() {
                   </DivInput>
 
                   <DivInput>
-                    <CPInputForm
+                    <CPInput03
                       titulo="Horário de Disponibilidade"
                       placeholder="Informe sua disponibilidade"
                       variantSize="pequeno"
-                      {...register("horarioDisponibilidade")}
+                      register={register("horarioDisponibilidade")}
                     />
                     {errors.horarioDisponibilidade && (
                       <LabelError>
@@ -155,19 +160,7 @@ export function Cadastro() {
                   </DivInput>
                 </DivInputs1>
               </DivDProfissionais>
-              <div>
-                <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-                  <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  />
-                  <Marker position={[51.505, -0.09]}>
-                    <Popup>
-                      A pretty CSS3 popup. <br /> Easily customizable.
-                    </Popup>
-                  </Marker>
-                </MapContainer>
-              </div>
+              <CPMapa onCoordinateChange={handleCoordinateChange} />
             </DivInfo>
             <DivButton>
               <CPButtonG
@@ -179,20 +172,20 @@ export function Cadastro() {
           </DivSubGlobal>
         </DivGlobal>
 
-      {/* Modal de Confirmação */}
-      {mostrarModal && (
-        <CPModalConfirm
-          icone="✅"
-          titulo="Sucesso"
-          menssagem="Prestador cadastrado com sucesso! Faça login para continuar!"
-          variant="sucesso"
-          onClose={() => {
-            setMostrarModal(false);
-            navigate(`/`);
-          }}
-        />
-      )}
-    </DivContainer>
+        {/* Modal de Confirmação */}
+        {mostrarModal && (
+          <CPModalConfirm
+            icone="✅"
+            titulo="Sucesso"
+            menssagem="Prestador cadastrado com sucesso! Faça login para continuar!"
+            variant="sucesso"
+            onClose={() => {
+              setMostrarModal(false);
+              navigate(`/`);
+            }}
+          />
+        )}
+      </DivContainer>
     </form>
   );
 }

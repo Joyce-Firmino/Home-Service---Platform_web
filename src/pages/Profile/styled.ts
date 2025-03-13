@@ -21,6 +21,8 @@ export const DivSubContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+      min-height: 100vh;
+
     padding: 140px 0;
 
     @media (${breakpoints.tablet}px) {
@@ -127,6 +129,10 @@ export const H1Tittle = styled.h1`
     font-size: ${props => props.theme.FONTSIZE.g3}px;
     font-weight: bold;
 
+    @media (${breakpoints.tablet}px) {
+        font-size: ${props => props.theme.FONTSIZE.g1}px; 
+    }
+
     @media (${breakpoints.mobile}px) {
         font-size: ${props => props.theme.FONTSIZE.m2}px; 
     }
@@ -212,9 +218,18 @@ export const PDescricao = styled.p`
 export const PResposta = styled.p`
     color: ${props => props.theme.COLORS.purple400};
     font-size: ${props => props.theme.FONTSIZE.m}px;
-    /* white-space: nowrap; // Impede a quebra de linha 
-    overflow: hidden; // Oculta o texto que ultrapassar a largura 
-    text-overflow: ellipsis; // Adiciona os "..." no final 
-    max-width: 153px; // Defina um tamanho máximo para o elemento  */
+`;
 
+export const ModalBackground = styled.div`
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #1c1b1f80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;

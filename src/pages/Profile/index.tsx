@@ -1,28 +1,38 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CPFooter } from "../../componentes/Others/CPFooter";
 import { CPHeader1 } from "../../componentes/Others/CPHeader";
 import { CPProfileG } from "../../componentes/Profiles/CPProfileG";
-import { DivBloco, DivCabecalho, DivContainer, DivCXAreia, DivFoto, DivInfo, DivMedia, DivMetodos, DivSeparacao, DivSubContainer, DivText, H1Tittle, PAlterarFt, PClick, PDescricao, PResposta } from "./styled";
+import { DivBloco, DivCabecalho, DivContainer, DivCXAreia, DivFoto, DivInfo, DivMedia, DivMetodos, DivSeparacao, DivSubContainer, DivText, H1Tittle, ModalBackground, PAlterarFt, PClick, PDescricao, PResposta } from "./styled";
 import { AuthContext } from "../../context/authContext";
 import { PrestadorContext } from "../../context/prestadorConntext";
-import { useNavigate } from 'react-router';
+import { navegarParaPaginaHome } from "../../util/navigation";
+import { useNavigate } from "react-router";
+import { EditDialog } from "../../componentes/Others/Dialog";
+import { CPModalSN } from "../../componentes/Modals/CPModalSN";
 
 export function Profile() {
 
-    const authData = useContext(AuthContext);
-    const prestadorContext = useContext(PrestadorContext);
     const navigate = useNavigate();
 
+    const authData = useContext(AuthContext);
+    const prestadorContext = useContext(PrestadorContext);
+    const [visibilidadeModal, setVisibilidadeModal] = useState(false);
+
+
     const fazerLogout = () => {
+        setVisibilidadeModal(true); // Exibe o modal ao clicar em "Sair"
+    };
+
+    const confirmarLogout = () => {
         authData.logOut();
-        navigate(`/`);
-    }
+        navegarParaPaginaHome(navigate);
+    };
 
     const buscarDadosPrestador = async () => {
         try {
             prestadorContext.buscarDadosPrestador();
         } catch (error) {
-
+            console.log(error);
         }
       }
 
@@ -31,6 +41,7 @@ export function Profile() {
             buscarDadosPrestador();
         }
     }, []);
+    
     return (
         <DivContainer>
             <CPHeader1
@@ -43,13 +54,12 @@ export function Profile() {
                         <CPProfileG
                             name= {prestadorContext.prestadorData?.name}
                             variantType="primario" />
-                        {/* <PAlterarFt> Alterar foto</PAlterarFt> */}
                     </DivFoto>
                     <DivInfo>
                         <DivCabecalho>
                             <H1Tittle>Meu Perfil</H1Tittle>
                             <DivMetodos>
-                                <PClick onClick={fazerLogout}>editar</PClick>
+                                <EditDialog></EditDialog>
                                 <PClick onClick={fazerLogout}>sair</PClick>
                             </DivMetodos>
                         </DivCabecalho>
@@ -90,6 +100,18 @@ export function Profile() {
                 </DivBloco>
             </DivSubContainer>
             <CPFooter></CPFooter>
+            {/* Modal de Confirmação */}
+            {visibilidadeModal && (
+                <ModalBackground>
+                    <CPModalSN
+                        icone="warning"
+                        menssagem="Deseja realmente sair da conta?"
+                        titulo="Logout"
+                        botaoNao={() => setVisibilidadeModal(false)}
+                        botaoSim={confirmarLogout}
+                    />
+                </ModalBackground>
+            )}
         </DivContainer>
     );
 }

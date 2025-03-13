@@ -11,25 +11,15 @@ import { CPFooter } from '../../componentes/Others/CPFooter';
 import CPCarrossel from '../../componentes/Others/CPCarrossel';
 import { SwiperProps, SwiperSlide } from 'swiper/react';
 
-
-import './style.css';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CategoriaDTO } from '../../dto/CategoriaDTO';
 import { api } from '../../api/axios';
-import { PrestadorDTO } from '../../dto/GetPrestadorDTO';
-import { useNavigate } from 'react-router';
-import { ProfilePrestadorDTO } from '../../dto/ProfilePrestadorDTO';
-import { AuthContext } from '../../context/authContext';
-import { PrestadorContext } from '../../context/prestadorConntext';
 import { Loader } from '../../componentes/Others/CPLoader';
+import { navegarParaPaginaCategory, navegarParaPaginaEncontrarPrestador } from '../../util/navigation';
+import { useNavigate } from 'react-router-dom';
 
 
 export function Home() {
-  //fazer a lógica de navegação
-  const category = () => {
-    // navigation.navigate("Category") 
-  };
-
 
   const settings: SwiperProps = {
     navigation: false,
@@ -53,19 +43,7 @@ export function Home() {
   const [dadosCategoria, setDadosCategoria] = useState<CategoriaDTO[]>([]);
   const [carregando, setCarregando] = useState<boolean>(false);
 
-  const authData = useContext(AuthContext);
-  const prestadorContext = useContext(PrestadorContext);
-
   const navigate = useNavigate();
-
-  function navegarParaPaginaCategory(id: string): void {
-    navigate(`/anunciosCategoria/${id}`);
-  }
-
-  function navegarParaPaginaEncontrarPrestador() {
-    navigate(`/prestadores/`);
-  }
-
 
   const buscarCategoria = async () => {
     try {
@@ -83,25 +61,20 @@ export function Home() {
     buscarCategoria();
     const interval = setInterval(() => {
       buscarCategoria();
-    }, 300000); // Atualiza a cada 30 segundos
+    }, 300000);
 
     return () => clearInterval(interval);
   }, []);
 
-
-  const usuario = {
-    id: 1, iniciais: "JV", name: "José Vieira"
-  }
-
   return (
     <DivContainer>
 
-      <CPHeader1 name={usuario.name} variantType='primario'></CPHeader1>
+      <CPHeader1 variantType='primario'></CPHeader1>
 
       <CPCarrossel settings={settings} >
         {carregando ? (<Loader></Loader>) : (<div>{dadosCategoria.map((dado) => (
           <SwiperSlide key={dado.id}>
-            <a onClick={() => navegarParaPaginaCategory(dado.id)}>
+            <a onClick={() => navegarParaPaginaCategory(navigate, dado.id, dado.servico)}>
               <CPCardCategory categoria={dado.servico} uriFoto={dado.icone} />
             </a>
           </SwiperSlide>
@@ -116,11 +89,11 @@ export function Home() {
             <H1Titulo>Encontre o serviço que você procura!</H1Titulo>
             <PDescricao>Aqui você descobre prestadores de serviço qualificados para resolver qualquer necessidade, seja ela grande ou pequena. Acesse as categorias e encontre o o serviço ideal para você!</PDescricao>
           </DivTextos>
-          <CPButtonG title='Encontrar prestador' variantType='primario' onClick={navegarParaPaginaEncontrarPrestador}></CPButtonG>
+          <CPButtonG type='button' title='Encontrar prestador' variantType='primario' onClick={() => navegarParaPaginaEncontrarPrestador(navigate)}></CPButtonG>
         </DivDescricao>
         <ImgTrabalhador src={trabalhador} alt="Homem com roupa de trabalho" />
       </DivMediana>
-
+        
       <DivInferior>
         <ImgCelulares src={celulares} alt="Homem com roupa de trabalho" />
         <DivBaixar>

@@ -39,6 +39,7 @@ export function CPForm() {
     setValue,
     formState: { errors },
   } = useForm({
+    mode: "onBlur",
     resolver: zodResolver(schema),
   });
 
@@ -68,7 +69,7 @@ export function CPForm() {
     }
 
     carregarCategorias();
-  }, []);
+  }, [token, email]);
 
   useEffect(() => {
     if (id) {
@@ -108,8 +109,11 @@ export function CPForm() {
         });
         console.log("Anúncio atualizado com sucesso!");
       } else {
-        console.log(data, token, email);
-        await api.post("/anuncio", data, {
+        const formattedData = {
+          ...data,
+          preco: `R$ ${data.preco}`,
+        };
+        await api.post("/anuncio", formattedData, {
           headers: {
             Authorization: `Bearer ${token}`,
             email,
@@ -162,6 +166,7 @@ export function CPForm() {
           <CPButtonG
             title={id ? "Salvar alterações" : "Criar anúncio"}
             onClick={() => console.log("clicado!")}
+            type="submit"
             variantType="primario"
           />
         </GrupoBotao>
@@ -176,7 +181,7 @@ export function CPForm() {
             variant="sucesso"
             onClose={() => {
               setVisibilidadeModal(false);
-              navigate("/anuncios");
+              navigate("/");
             }}
           />
         </ModalBackground>

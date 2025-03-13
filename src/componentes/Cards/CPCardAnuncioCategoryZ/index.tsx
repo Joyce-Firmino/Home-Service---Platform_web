@@ -1,20 +1,27 @@
-import foto from '../../../assets/cozinhar-comida-em-uma-cacarola-quenteBranca.png';
+import { useEffect, useState } from 'react';
 import { DivBloco, ImgImage, DivContainer, IIcon, DivIconText, PService, DivImagem, H1Title, PText, DivInferior, DivTextos, HrLiinha } from './styled';
 
 interface CustomCardProps {
   uriFoto: string;
   prestador: string;
   servico: string;
-  city: string;
+  city: Promise<string>;
   telefone: string;
   email: string;
 }
 
-export function CPCardAnuncioCategory({ prestador, servico, city, telefone, email }: CustomCardProps) {
+export function CPCardAnuncioCategory({ prestador, servico, city, telefone, email, uriFoto }: CustomCardProps) {
+    const [cidade, setCidade] = useState<string>("Carregando...");
+  
+    useEffect(() => {
+      city.then(setCidade).catch(() => setCidade("Erro ao carregar"));
+    }, [city]);
+  
+  
   return (
     <DivContainer>
       <DivImagem>
-        <ImgImage src={foto} alt="Foto perfil" />
+        <ImgImage src={uriFoto} alt="Foto perfil" />
       </DivImagem>
       <DivInferior>
         <DivTextos>
@@ -26,7 +33,7 @@ export function CPCardAnuncioCategory({ prestador, servico, city, telefone, emai
         <DivBloco>
           <DivIconText>
             <IIcon>location_on</IIcon>
-            <PText>{city}</PText>
+            <PText>{cidade}</PText>
           </DivIconText>
           <DivIconText>
             <IIcon>call</IIcon>

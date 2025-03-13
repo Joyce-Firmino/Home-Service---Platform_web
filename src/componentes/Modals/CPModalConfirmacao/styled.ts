@@ -5,24 +5,15 @@ type CustomModalProps = {
   variantComponent: string;
 }
 
-export const DivSombra = styled.div`
+export const DivSombra = styled.button`
     display: flex;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.5); /* Transparência */
     z-index: 1000; /* Camada abaixo do menu */  
-
-  @media (${breakpoints.tablet}px) {
-    margin-top: 2vh;
-  }
-
-  @media (${breakpoints.mobile}px)  {
-    margin-top: 2vh;
-    height: 9%;
-  }
 `;
 
 export const DivContainer = styled.div`
@@ -38,10 +29,11 @@ export const DivContainer = styled.div`
   border-radius: 20px;
   padding: 16px;
   box-shadow: 0px 0px 0.7em 0px rgba(0, 0, 0, 0.19);
-  top: 25%;
-  left: 33%;
+  top: 50%; // Coloca o modal na metade da tela
+  left: 50%;
+  transform: translate(-50%, -50%); // Centraliza o modal
   z-index: 1001;
-
+  position: absolute;
 
   @media (${breakpoints.tablet}px){
     padding: 1rem;
@@ -49,8 +41,7 @@ export const DivContainer = styled.div`
   }
 
   @media (${breakpoints.mobile}px) {
-    padding: 0.8rem;
-    width: 250px;
+    padding: 0.7rem;
   }
 `;
 
@@ -88,11 +79,11 @@ export const IIcon = styled.i<CustomModalProps>`
   
 
   @media (${breakpoints.tablet}px) {
-    font-size: 8vw;
+    font-size: 10vw;
   }
 
   @media (${breakpoints.mobile}px)  {
-    font-size: 10vw;
+    font-size: 16vw;
   }
 `;
 

@@ -6,14 +6,12 @@ import { DivCards, DivContainer, DivMedia, DivSubcontainer, DivTitulo, H1Titulo,
 import { AuthContext } from "../../context/authContext";
 import { PrestadorDTO } from "../../dto/GetPrestadorDTO";
 import { api } from "../../api/axios";
+import { fetchAddress } from "../../util/converterEndereco";
 
 export function EncontrarPrestador() {
 
     const [prestadores, setPrestadores] = useState<PrestadorDTO[]>([]);
-    const [carregando, setCarregando] = useState<boolean>(false);
-    const [erroCarregarDados, setErroCarregarDados] = useState<boolean>(false);
 
-    const context = useContext(AuthContext);
 
     const buscarPrestadores = async () => {
         try {
@@ -21,19 +19,17 @@ export function EncontrarPrestador() {
             setPrestadores(response.data);
         } catch (error) {
             console.error('Erro ao carregar anúncios:', error);
-            setErroCarregarDados(true);
-        } finally {
-            setCarregando(false);
         }
     }
 
     useEffect(() => {
         buscarPrestadores();
     }, []);
+    
 
     useEffect(() => {
         console.log("Novo estado de dadosPrestador:", prestadores);
-    }, [prestadores]);
+    }, [prestadores]);  
 
     return (
         <DivContainer>
@@ -48,7 +44,7 @@ export function EncontrarPrestador() {
                 <DivCards>{
                     prestadores.map((prestador) => (
                         <CPCardPrestador
-                        city="São José de Piranhas - PB"
+                        city={fetchAddress(prestador.prestador.latitude, prestador.prestador.longitude)}
                         email={prestador.email}
                         prestador={prestador.nome}
                         telefone={prestador.telefone}
@@ -61,5 +57,4 @@ export function EncontrarPrestador() {
             </DivMedia>
         </DivContainer>
     );
-
 }

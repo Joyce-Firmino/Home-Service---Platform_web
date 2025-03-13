@@ -24,6 +24,7 @@ export function AuthProvider({ children }: IpropsDTO) {
     const [authData, setAuthData] = useState<AuthDataDTO | null>(null);
     const [error, setError] = useState(false);
 
+
     const [cookieToken, setCookieToken, removeCookieToken] = useCookies(["token"]);
     const [cookieEmail, setCookieEmail, removeCookieEmail] = useCookies(["email"]);
 
@@ -38,11 +39,8 @@ export function AuthProvider({ children }: IpropsDTO) {
 
             const userAutenticated = response.data as AuthDataDTO;
 
-            api.defaults.headers.common.Authorization= `Bearer ${userAutenticated.token}`;
+            api.defaults.headers.common.Authorization = `Bearer ${userAutenticated.token}`;
             api.defaults.headers.common["Email"] = userAutenticated.email;
-
-            console.log(userAutenticated.token + "OLa");
-            
 
             setCookieToken("token", userAutenticated.token);
             setCookieEmail("email", userAutenticated.email);
@@ -50,6 +48,8 @@ export function AuthProvider({ children }: IpropsDTO) {
             setAuthData(userAutenticated);
 
             setError(false);
+            
+            return userAutenticated;
         }
         catch (error: any) {
             setError(true)
@@ -69,7 +69,7 @@ export function AuthProvider({ children }: IpropsDTO) {
                 token: cookieToken.token,
                 email: cookieEmail.email
             }
-            api.defaults.headers.common.Authorization= `Bearer ${cookieToken.token}`;
+            api.defaults.headers.common.Authorization = `Bearer ${cookieToken.token}`;
             api.defaults.headers.common["Email"] = cookieEmail.email;
 
             setAuthData(authData);

@@ -32,6 +32,7 @@ export const H1Titulo = styled.h1`
 
   @media (${breakpoints.mobile}px) {
     width: 300px;
+    text-align: center;
   }
 `;
 
@@ -60,6 +61,7 @@ export const DivGridContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-bottom: 80px;
+  min-height: 60vh;
 
   @media (${breakpoints.tablet}px) {
     grid-template-columns: repeat(2, minmax(250px, 1fr));
@@ -96,4 +98,17 @@ export const ModalBackground = styled.div`
 
 export const TextoVazio = styled.p`
   text-align: center;
+`;
+
+export const DivConteudo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  background-color: ${(props) => props.theme.COLORS.purple200};
+  @media (${breakpoints.tablet}px) {
+  }
+
+  @media (${breakpoints.mobile}px) {
+  }
 `;

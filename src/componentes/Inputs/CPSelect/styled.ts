@@ -62,12 +62,13 @@ export const SelectDropdown = styled.div`
   width: 100%;
   height: 140px;
   overflow: auto;
-  border-radius: 0px 20px;
 `;
 
 export const SelectOption = styled.a`
   padding: 20px 14px;
   color: ${(props) => props.theme.COLORS.purple700};
+  border: 1px solid ${(props) => props.theme.COLORS.purple200} ;
+
 `;
 
 export const PTitulo = styled.p`

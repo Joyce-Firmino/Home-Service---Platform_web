@@ -1,4 +1,3 @@
-import foto from "../../../assets/cozinhar-comida-em-uma-cacarola-quenteBranca.png";
 import { CPButtonPP } from "../../Buttons/CPButtonPP";
 import {
   DivBloco,
@@ -27,6 +26,7 @@ interface CustomCardProps {
 }
 
 export function CPCardAnuncio({
+  uriFoto,
   prestador,
   servico,
   descricao,
@@ -37,7 +37,7 @@ export function CPCardAnuncio({
   return (
     <DivContainer>
       <DivImagem>
-        <ImgImage src={foto} alt="Foto perfil" />
+        <ImgImage src={uriFoto} alt="Foto perfil" />
       </DivImagem>
       <DivInferior>
         <DivTextos>
